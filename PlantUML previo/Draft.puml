@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Timer {
++ getActualTime() : TimeStamp
+}
+
+class Task {
++ name : String
++ startTime : TimeStamp
++ duration : TimeStamp
++ Task(name : String)
+}
+
+class Interface {
++ show() : void
++ {static} main(args : String[])
+}
+
+class Tasker {
++ tasks : Task[]
+
+}
+
+class TimeCalculator {
++ getDuration(date1 : TimeStamp, date2 : TimeStamp) : TimeStamp
++ getDuration(task : Task) : TimeStamp
+}
+
+class TaskSearcher {
++ searchTaskFromName(name : String) : Task
+}
+
+
+Tasker *->"0..*" Task : tasks
+Interface -> "1" Tasker : tasker
+TaskSearcher --> Tasker
+TimeCalculator --> Task
+
+
+@enduml
