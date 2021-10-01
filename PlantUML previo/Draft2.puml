@@ -1,0 +1,71 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class Interface  {
++ show() : void
++ {static} main(args : String[])
+}
+
+
+abstract ProjectComponent
+{
+}
+
+class Timer {
++ getActualTime() : TimeStamp
+}
+
+class Task {
++ name : String
++ startTime : TimeStamp
++ duration : TimeStamp
++ Task(name : String)
+}
+
+
+class Project {
+- tasks : ProjectComponent[]
++ add(c : ProjectComponent)
++ remove(c : ProjectComponent)
++ getChildren(): Component[]
+
+
+}
+
+class TimeCalculator {
++ getDuration(date1 : TimeStamp, date2 : TimeStamp) : TimeStamp
++ getDuration(task : Task) : TimeStamp
+}
+
+class TaskSearcher {
++ searchTaskFromName(name : String) : Task
+}
+
+class Clock {
++draw()
++update(arg0: Observable, arg1 : Object)
+}
+
+package "java.util" {
+abstract Observable {
++addObserver(ob : Observer)
++deleteObserver(ob : Observer)
++setChanged()
++notifyObservers(arg0 : Observable, arg1 : Object)
+}
+interface Observer{
++update(arg0: Observable, arg1 : Object)
+}
+
+
+Interface --> ProjectComponent
+Observable o--> "*" Observer : observers
+Project o-- ProjectComponent : projectComponent
+Task --|> ProjectComponent
+Project --|> ProjectComponent
+Timer --|> Observable
+Clock ..|> Observer
+
+
+@enduml
