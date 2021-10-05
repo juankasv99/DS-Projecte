@@ -1,0 +1,90 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Interface  {
+    + show() : void
+    + {static} main(args : String[])
+}
+
+
+abstract ProjectComponent
+{
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + getDuration() : Duration
+    + getName() : String
+}
+
+class Project {
+    - name : String
+    - tasks : ProjectComponent[]
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + getDuration() : Duration
+    + getName() : String
+    + isProject() : boolean
+}
+
+class Task {
+    + name : String
+    + Task(name : String)
+    + startTask()
+    + endTask()
+    + getDuration() : Duration
+    + getName() : String
+}
+
+class Interval {
+    - startTime : TimeStamp
+    - endTime : TimeStamp
+    + startInterval()
+    + endInterval()
+    + getDuration() : Duration
+}
+
+class Timer {
+    + getActualTime() : TimeStamp
+}
+
+class TimeCalculator {
+    + getDuration(date1 : TimeStamp, date2 : TimeStamp) : TimeStamp
+    + getDuration(task : Task) : TimeStamp
+}
+
+class TaskSearcher {
+    + searchTaskFromName(name : String) : Task[]
+}
+
+class Clock {
+    + draw()
+    + update(arg0: Observable, arg1 : Object)
+}
+
+package "java.util" {
+    abstract Observable {
+        + addObserver(ob : Observer)
+        + deleteObserver(ob : Observer)
+        + setChanged()
+        + notifyObservers(arg0 : Observable, arg1 : Object)
+    }
+
+    interface Observer {
+        + update(arg0: Observable, arg1 : Object)
+    }
+}
+
+Observable o--> "*" Observer : observers
+
+Timer --|> Observable
+Clock ..|> Observer
+
+Interface --> ProjectComponent
+TaskSearcher --> ProjectComponent
+Project o-- ProjectComponent : projectComponent
+Project --|> ProjectComponent
+Task --|> ProjectComponent
+Interval o-- Task : intervals
+TimeCalculator --> Interval
+@enduml
