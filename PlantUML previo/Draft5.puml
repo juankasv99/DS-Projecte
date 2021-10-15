@@ -1,0 +1,92 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+    + show() : void
+    + {static} main(args : String[])
+}
+
+interface ProjectVisitor {
+    + visit(Project)
+    + visit(Task)
+}
+
+class PrinterVisitor {
+    + visitProject()
+    + visitTask()
+    + print()
+}
+
+class SaveJSONVisitor {
+    + visitProject()
+    + visitTask()
+    + save()
+}
+
+interface ProjectComponent {
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + getDuration() : Duration
+    + getName() : String
+    + accept()
+}
+
+class Project {
+    - name : String
+    - tasks : ProjectComponent[]
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + accept(v : ProjectVisitor)
+}
+
+class Task {
+    + name : String
+    + Task(name : String)
+    + startTask()
+    + endTask()
+    + accept(v : ProjectVisitor)
+}
+
+class Interval {
+    - startTime : LocalDateTime
+    - endTime : LocalDateTime
+    + startInterval()
+    + endInterval()
+}
+
+class Clock {
+    - {static} uniqueInstance : Clock  - Clock()
+    + getInstance() : Clock
+    - tick() : void
+}
+
+package "java.util" {
+    abstract Observable {
+        + addObserver(ob : Observer)
+        + deleteObserver(ob : Observer)
+        + setChanged()
+        + notifyObservers(arg0 : Observable, arg1 : Object)
+    }
+
+    interface Observer {
+        + update(arg0: Observable, arg1 : Object)
+    }
+}
+
+Observable "0..*" o-- "1" Observer : observers
+
+Clock --|> Observable
+Interval ..|> Observer
+
+Client --> ProjectComponent
+Project "0..n" o-- "1" ProjectComponent : projectComponent
+Project --|> ProjectComponent
+Task --|> ProjectComponent
+Interval "0..n" o-- "1" Task : intervals
+
+Client --> ProjectVisitor
+PrinterVisitor --|> ProjectVisitor
+SaveJSONVisitor --|> ProjectVisitor
+@enduml

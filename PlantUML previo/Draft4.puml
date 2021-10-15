@@ -1,0 +1,105 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+    + show() : void
+    + {static} main(args : String[])
+}
+
+interface ProjectVisitor {
+    + visit(Project)
+    + visit(Task)
+}
+
+
+class DurationVisitor {
+   + visit(Project)
+   + visit(Task)
+}
+
+class NameVisitor {
+   + visit(Project)
+   + visit(Task)
+}
+
+
+interface ProjectComponent {
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + getDuration() : Duration
+    + getName() : String
+    + accept()
+}
+
+class Project {
+    - name : String
+    - tasks : ProjectComponent[]
+    + add(c : ProjectComponent)
+    + remove(c : ProjectComponent)
+    + getChildren() : Component[]
+    + accept(v : ProjectVisitor)
+}
+
+class Task {
+    + name : String
+    + Task(name : String)
+    + startTask()
+    + endTask()
+    + accept(v : ProjectVisitor)
+}
+
+class Interval {
+    - startTime : TimeStamp
+    - endTime : TimeStamp
+    + startInterval()
+    + endInterval()
+}
+
+class ClockTimer {
+    - {static} uniqueInstance : ClockTimer
+    - ClockTimer()
+    + getInstance() : ClockTimer
+    - tick() : void
+}
+
+class TimeCalculator {
+    + getDuration(date1 : TimeStamp, date2 : TimeStamp) : TimeStamp
+    + getDuration(task : Task) : TimeStamp
+}
+
+class TaskSearcher {
+    + searchTaskFromName(name : String) : Task[]
+}
+
+package "java.util" {
+    abstract Observable {
+        + addObserver(ob : Observer)
+        + deleteObserver(ob : Observer)
+        + setChanged()
+        + notifyObservers(arg0 : Observable, arg1 : Object)
+    }
+
+    interface Observer {
+        + update(arg0: Observable, arg1 : Object)
+    }
+}
+
+Observable o--> "*" Observer : observers
+
+ClockTimer --|> Observable
+Interval ..|> Observer
+
+Client --> ProjectComponent
+TaskSearcher --> ProjectComponent
+Project o-- ProjectComponent : projectComponent
+Project --|> ProjectComponent
+Task --|> ProjectComponent
+Interval o-- Task : intervals
+
+TimeCalculator --> Interval
+
+Client --> ProjectVisitor
+DurationVisitor --|> ProjectVisitor
+NameVisitor --|> ProjectVisitor
+@enduml
