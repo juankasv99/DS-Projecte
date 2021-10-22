@@ -9,17 +9,11 @@ public class Clock extends Observable {
 
   private static Clock uniqueInstance;
   private Timer timer;
-  private TimerTask timerTask;
+  private int period;
+  private LocalDateTime time;
 
   private Clock() {
     this.timer = new Timer("Timer");
-    this.timerTask = new TimerTask() {
-      @Override
-      public void run() {
-        tick();
-      }
-    };
-    this.timer.scheduleAtFixedRate(timerTask, 0, 1000);
   }
 
   public static Clock getInstance() {
@@ -30,7 +24,32 @@ public class Clock extends Observable {
     return uniqueInstance;
   }
 
+  public void start(int period) {
+    this.period = period;
+
+    TimerTask timerTask = new TimerTask() {
+      @Override
+      public void run() {
+        tick();
+      }
+    };
+    this.timer.scheduleAtFixedRate(timerTask, 0, this.period * 1000L);
+  }
+
+  public void stop() {
+    this.timer.cancel();
+  }
+
+  public int getPeriod() {
+    return this.period;
+  }
+
+  public LocalDateTime getTime() {
+    return this.time;
+  }
+
   private void tick() {
+    this.time = LocalDateTime.now();
     setChanged();
     notifyObservers();
   }

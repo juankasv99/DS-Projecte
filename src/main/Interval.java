@@ -13,16 +13,25 @@ public class Interval implements Observer {
   private Task task;
 
   public Interval(Task task) {
-    this.startTime = LocalDateTime.now();
+    this.startTime = Clock.getInstance().getTime();
+
+    if (this.task.getStartTime() == null) this.task.setStartTime(this.startTime);
+
     this.duration = Duration.ZERO;
     this.task = task;
     Clock.getInstance().addObserver(this);
+  }
+
+  public void stopInterval() {
+    Clock.getInstance().deleteObserver(this);
   }
 
   @Override
   public void update(Observable o, Object arg) {
     this.duration = this.duration.plusSeconds(1);
     this.endTime = this.startTime.plusSeconds(1);
+
+    this.task.update();
 
     /*
     if (this.startTime == null) {

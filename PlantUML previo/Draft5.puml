@@ -23,10 +23,7 @@ class SaveJSONVisitor {
     + save()
 }
 
-interface ProjectComponent {
-    + add(c : ProjectComponent)
-    + remove(c : ProjectComponent)
-    + getChildren() : Component[]
+abstract ProjectComponent {
     + getDuration() : Duration
     + getName() : String
     + accept()
