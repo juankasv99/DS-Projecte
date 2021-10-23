@@ -1,0 +1,77 @@
+Project root | child of null |    null | null | 0
+Project P1 | child of root |    null | null | 0
+Task T2 | child of P1 |    null | null | 0
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    null | null | 0
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.475790200 | 1
+Project P1 | child of root |    null | null | 0
+Task T2 | child of P1 |    null | null | 0
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.475790200 | 1
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 1
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:48.476617700 | 2
+Project P1 | child of root |    null | null | 0
+Task T2 | child of P1 |    null | null | 0
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:48.476617700 | 2
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 2
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:49.475964800 | 3
+Project P1 | child of root |    null | null | 0
+Task T2 | child of P1 |    null | null | 0
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:49.475964800 | 3
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 3
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:50.483292600 | 4
+Project P1 | child of root |    null | null | 0
+Task T2 | child of P1 |    null | null | 0
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:50.483292600 | 4
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 4
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:50.483292600 | 4
+Project P1 | child of root |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.475648900 | 1
+Task T2 | child of P1 |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.475648900 | 1
+Interval | child of task T2 | 2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.483292600 | 1
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:50.483292600 | 4
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 4
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:51.475648900 | 6
+Project P1 | child of root |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.475648900 | 1
+Task T2 | child of P1 |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.475648900 | 1
+Interval | child of task T2 | 2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.483292600 | 1
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:51.475648900 | 5
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 5
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:51.475648900 | 6
+Project P1 | child of root |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:52.486472800 | 2
+Task T2 | child of P1 |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:52.486472800 | 2
+Interval | child of task T2 | 2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.483292600 | 2
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:51.475648900 | 5
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 5
+------------
+Project root | child of null |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:52.486472800 | 8
+Project P1 | child of root |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:52.486472800 | 2
+Task T2 | child of P1 |    2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:52.486472800 | 2
+Interval | child of task T2 | 2021-10-23T18:58:50.483292600 | 2021-10-23T18:58:51.483292600 | 2
+Project P2 | child of root |    null | null | 0
+Task T3 | child of P2 |    null | null | 0
+Task T1 | child of root |    2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:52.486472800 | 6
+Interval | child of task T1 | 2021-10-23T18:58:46.487414500 | 2021-10-23T18:58:47.487414500 | 6
+------------
+
+Process finished with exit code 0
