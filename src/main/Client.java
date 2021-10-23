@@ -16,8 +16,16 @@ public class Client {
         PrinterVisitor printer = PrinterVisitor.getInstance(root);
 
         t1.startTask();
+        Thread.sleep(4000);
+        t2.startTask();
+        Thread.sleep(2000);
 
-        System.out.println("Pasada");
+        t1.stopTask();
+        t2.stopTask();
+
+        clock.stop();
+
+
     }
 
 }

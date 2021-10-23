@@ -17,16 +17,22 @@ public class PrinterVisitor implements ProjectVisitor{
 
     @Override
     public void visitProject(Project project) {
-        System.out.println("Project: " + project.getName()); //TODO: hacer el toString()
+        System.out.println(project.toString());
+    }
+
+    public void print() {
+        this.root.acceptVisitor(this);
+        System.out.println("------------");
     }
 
     @Override
     public void visitTask(Task task) {
-        System.out.println("Task: " + task.getName()); //TODO: hacer el toString()
+        System.out.println(task.toString());
+
     }
 
     @Override
     public void visitInterval(Interval interval) {
-        System.out.println("Interval"); //TODO: hacer el toString()
+        System.out.println(interval.toString());
     }
 }

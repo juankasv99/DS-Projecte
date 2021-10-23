@@ -16,6 +16,7 @@ public abstract class ProjectComponent {
   public ProjectComponent(String name, ProjectComponent parent) {
     this.name = name;
     this.parent = parent;
+    this.duration = Duration.ZERO;
 
     if (this.parent != null) this.parent.addChildren(this); //Añadimos el parent al Component
   }
@@ -39,7 +40,7 @@ public abstract class ProjectComponent {
   public void setStartTime(LocalDateTime startTime) {
     this.startTime = startTime;
 
-    if (this.parent.getStartTime() == null) this.parent.setStartTime(this.startTime);
+    if (this.parent!=null && this.parent.getStartTime() == null) this.parent.setStartTime(this.startTime);
   }
 
   public void setEndTime(LocalDateTime endTime) {
@@ -55,4 +56,14 @@ public abstract class ProjectComponent {
   public abstract void removeChildren(ProjectComponent children);
 
   public abstract void acceptVisitor(ProjectVisitor visitor);
+
+  @Override
+  public String toString() {
+
+    String parentName= (this.parent == null) ? null : this.parent.getName();
+
+
+
+    return this.getClass().getSimpleName() + " " + this.name + " | child of " + parentName + " |    " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
+  }
 }

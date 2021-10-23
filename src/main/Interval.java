@@ -33,6 +33,9 @@ public class Interval implements Observer {
 
     this.task.update();
 
+    PrinterVisitor.getInstance(null).print();
+
+
     /*
     if (this.startTime == null) {
       this.startTime = currentTime;
@@ -46,12 +49,13 @@ public class Interval implements Observer {
     */
   }
 
-  @Override
-  public String toString() {
-    return "";
-  }
 
   public void acceptVisitor(ProjectVisitor visitor) {
     visitor.visitInterval(this);
+  }
+
+  @Override
+  public String toString() {
+    return "Interval | child of task" + this.task.getName() + " | " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
   }
 }

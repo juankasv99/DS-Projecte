@@ -33,6 +33,10 @@ public class Task extends ProjectComponent {
     return this.intervals.get(index);
   }
 
+  public ArrayList<Interval> getIntervals() {
+    return this.intervals;
+  }
+
   public void addChildren(ProjectComponent children) {}
 
   public void removeChildren(ProjectComponent children) {}
