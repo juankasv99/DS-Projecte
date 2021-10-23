@@ -14,11 +14,11 @@ public class Interval implements Observer {
 
   public Interval(Task task) {
     this.startTime = Clock.getInstance().getTime();
+    this.task = task;
 
-    if (this.task.getStartTime() == null) this.task.setStartTime(this.startTime);
+    if (task.getStartTime() == null) task.setStartTime(this.startTime);
 
     this.duration = Duration.ZERO;
-    this.task = task;
     Clock.getInstance().addObserver(this);
   }
 
@@ -49,5 +49,9 @@ public class Interval implements Observer {
   @Override
   public String toString() {
     return "";
+  }
+
+  public void acceptVisitor(ProjectVisitor visitor) {
+    visitor.visitInterval(this);
   }
 }

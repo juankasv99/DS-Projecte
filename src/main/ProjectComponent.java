@@ -3,6 +3,9 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+// Task:      Time Spent (sum of intervals), When
+// Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
+
 public abstract class ProjectComponent {
   private String name;
   private ProjectComponent parent;
@@ -13,6 +16,8 @@ public abstract class ProjectComponent {
   public ProjectComponent(String name, ProjectComponent parent) {
     this.name = name;
     this.parent = parent;
+
+    if (this.parent != null) this.parent.addChildren(this); //Añadimos el parent al Component
   }
 
   public String getName() {
@@ -44,4 +49,10 @@ public abstract class ProjectComponent {
   public void setDuration(Duration duration) {
     this.duration = duration;
   }
+
+  public abstract void addChildren(ProjectComponent children);
+
+  public abstract void removeChildren(ProjectComponent children);
+
+  public abstract void acceptVisitor(ProjectVisitor visitor);
 }

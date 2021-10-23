@@ -11,6 +11,8 @@ public class Task extends ProjectComponent {
   public Task(String name, ProjectComponent parent) {
     super(name, parent);
     this.intervals = new ArrayList<>();
+    parent.addChildren(this);
+
   }
 
   public void startTask() {
@@ -29,5 +31,16 @@ public class Task extends ProjectComponent {
   private Interval getCurrentInterval() {
     int index = this.intervals.size() - 1;
     return this.intervals.get(index);
+  }
+
+  public void addChildren(ProjectComponent children) {}
+
+  public void removeChildren(ProjectComponent children) {}
+
+  public void acceptVisitor(ProjectVisitor visitor) {
+    visitor.visitTask(this);
+    for(Interval interval : this.intervals) {
+      interval.acceptVisitor(visitor);
+    }
   }
 }
