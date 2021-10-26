@@ -2,8 +2,7 @@ package main;
 
 public class Client {
 
-    public static void main(String[] args) throws
-            InterruptedException{
+    public static void main(String[] args) throws InterruptedException{
         Clock clock = Clock.getInstance();
 
         clock.start(1);
@@ -18,18 +17,21 @@ public class Client {
         PrinterVisitor printer = PrinterVisitor.getInstance(root);
         System.out.println("------------");
 
-        Thread.sleep(4000);
+        //Thread.sleep(4000);
         t1.startTask();
-        Thread.sleep(4000);
+        //Thread.sleep(4000);
         t2.startTask();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         t1.stopTask();
         t2.stopTask();
 
         clock.stop();
 
+        SaveJSONVisitor saveJSONVisitor = new SaveJSONVisitor();
+        root.acceptVisitor(saveJSONVisitor);
 
+        System.out.println(saveJSONVisitor.getRoot().toString());
     }
 
 }

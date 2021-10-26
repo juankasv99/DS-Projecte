@@ -26,6 +26,18 @@ public class Interval implements Observer {
     return duration;
   }
 
+  public LocalDateTime getStartTime() {
+    return startTime;
+  }
+
+  public LocalDateTime getEndTime() {
+    return endTime;
+  }
+
+  public Task getTask() {
+    return task;
+  }
+
   public void stopInterval() {
     Clock.getInstance().deleteObserver(this);
   }
