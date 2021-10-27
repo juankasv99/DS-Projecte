@@ -2,7 +2,8 @@ package main;
 
 public class Client {
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
+        /*
         Clock clock = Clock.getInstance();
 
         clock.start(1);
@@ -32,6 +33,10 @@ public class Client {
         root.acceptVisitor(saveJSONVisitor);
 
         saveJSONVisitor.save("test.json");
+        */
+
+        LoadJSONVisitor loadJSONVisitor = new LoadJSONVisitor();
+        loadJSONVisitor.load("../../test.json");
     }
 
 }
