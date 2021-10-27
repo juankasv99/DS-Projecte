@@ -36,7 +36,10 @@ public class Client {
         */
 
         LoadJSONVisitor loadJSONVisitor = new LoadJSONVisitor();
-        loadJSONVisitor.load("../../test.json");
+        Project root = new Project("root", null);
+
+        loadJSONVisitor.load("test.json");
+        root.acceptVisitor(loadJSONVisitor);
     }
 
 }

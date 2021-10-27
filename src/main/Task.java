@@ -25,7 +25,7 @@ public class Task extends ProjectComponent {
   @Override
   public void update() {
     //super.setDuration(Duration.ZERO);
-    super.setEndTime(LocalDateTime.now());
+    super.setEndTime(Clock.getInstance().getTime());
 
     Duration counter = Duration.ZERO;
     for(Interval interval : this.intervals) {

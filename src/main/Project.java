@@ -22,7 +22,11 @@ public class Project extends ProjectComponent {
     }
 
     super.setDuration(counter);
-    super.setEndTime(LocalDateTime.now());
+    super.setEndTime(Clock.getInstance().getTime());
+
+    if(super.getParent() != null) {
+      super.getParent().update();
+    }
   }
 
   public ArrayList<ProjectComponent> getChildren() {

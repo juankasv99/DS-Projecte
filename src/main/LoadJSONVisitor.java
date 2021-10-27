@@ -47,6 +47,9 @@ public class LoadJSONVisitor implements ProjectVisitor {
         LocalDateTime startTime = LocalDateTime.parse(this.root.getString("startTime"));
         LocalDateTime endTime = LocalDateTime.parse(this.root.getString("endTime"));
         Duration duration = Duration.ofSeconds(this.root.getLong("duration"));
+
+
+
         ProjectComponent parent = null;
 
         System.out.println(name + " - " + startTime + " - " + endTime + " - " + duration.getSeconds());
