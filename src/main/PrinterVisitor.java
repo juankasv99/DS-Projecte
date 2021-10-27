@@ -15,20 +15,19 @@ public class PrinterVisitor implements ProjectVisitor{
 
     private PrinterVisitor(ProjectComponent root) { this.root = root; root.acceptVisitor(this); }
 
-    @Override
-    public void visitProject(Project project) {
-        System.out.println(project.toString());
-    }
-
     public void print() {
         this.root.acceptVisitor(this);
         System.out.println("------------");
     }
 
     @Override
+    public void visitProject(Project project) {
+        System.out.println(project.toString());
+    }
+
+    @Override
     public void visitTask(Task task) {
         System.out.println(task.toString());
-
     }
 
     @Override

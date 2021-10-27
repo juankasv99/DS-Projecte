@@ -63,11 +63,7 @@ public abstract class ProjectComponent {
 
   @Override
   public String toString() {
-
     String parentName= (this.parent == null) ? null : this.parent.getName();
-
-
-
     return this.getClass().getSimpleName() + " " + this.name + " | child of " + parentName + " |    " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
   }
 }

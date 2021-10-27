@@ -1,30 +1,54 @@
 package main;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class SaveJSONVisitor implements ProjectVisitor {
 
     private JSONObject root;
     private JSONArray children;
-    /*
-    private static SaveJSONVisitor uniqueInstance;
+    private JSONArray intervals;
 
-    public static SaveJSONVisitor getInstance(ProjectComponent root) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new SaveJSONVisitor(root);
-        }
-
-        return uniqueInstance;
-    }*/
-
-    //TODO
     public SaveJSONVisitor() {
         this.root = new JSONObject();
         this.children = new JSONArray();
+        this.intervals = new JSONArray();
     }
 
     public JSONObject getRoot() {
         return this.root;
+    }
+
+    private JSONArray removeJSONS(JSONArray jsonArray, ArrayList<Integer> indexes) {
+        JSONArray result = new JSONArray();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            if (!indexes.contains(i)) result.put(jsonArray.get(i));
+        }
+
+       return result;
+    }
+
+    public void save(String fileName) {
+        FileWriter file = null;
+
+        try {
+            file = new FileWriter(fileName);
+            file.write(this.root.toString(2));
+        } catch (IOException error) {
+            error.printStackTrace();
+        } finally {
+            try {
+                file.flush();
+                file.close();
+            } catch (IOException error) {
+                error.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -39,17 +63,28 @@ public class SaveJSONVisitor implements ProjectVisitor {
         projectDetails.put("endTime", project.getEndTime());
         projectDetails.put("duration", project.getDuration().toSeconds());
         if (project.getParent() != null) projectDetails.put("parent", project.getParent().getName());
-        projectDetails.put("children", this.children);
 
-        this.children = new JSONArray();
+        JSONArray children = new JSONArray();
 
-        if (this.root.isEmpty()) {
+        ArrayList<Integer> indexesToRemove = new ArrayList<>();
+
+        for (int i = 0; i < this.children.length(); i++) {
+            JSONObject jsonChild = (JSONObject) this.children.get(i);
+
+            if (jsonChild.getString("parent").equals(project.getName())) {
+                children.put(jsonChild);
+                indexesToRemove.add(i);
+            }
+        }
+
+        this.children = this.removeJSONS(this.children, indexesToRemove);
+
+        projectDetails.put("children", children);
+
+        if (project.getParent() == null) {
             this.root = projectDetails;
         } else {
-            this.children.put(this.root);
             this.children.put(projectDetails);
-
-            this.root = new JSONObject();
         }
     }
 
@@ -65,17 +100,28 @@ public class SaveJSONVisitor implements ProjectVisitor {
         taskDetails.put("endTime", task.getEndTime());
         if (task.getParent() != null) taskDetails.put("duration", task.getDuration().toSeconds());
         taskDetails.put("parent", task.getParent().getName());
-        taskDetails.put("intervals", this.children);
 
-        this.children = new JSONArray();
+        JSONArray intervals = new JSONArray();
 
-        if (this.root.isEmpty()) {
+        ArrayList<Integer> indexesToRemove = new ArrayList<>();
+
+        for (int i = 0; i < this.intervals.length(); i++) {
+            JSONObject jsonChild = (JSONObject) this.intervals.get(i);
+
+            if (jsonChild.getString("task").equals(task.getName())) {
+                intervals.put(jsonChild);
+                indexesToRemove.add(i);
+            }
+        }
+
+        this.intervals = this.removeJSONS(this.intervals, indexesToRemove);
+
+        taskDetails.put("intervals", intervals);
+
+        if (task.getParent() == null) {
             this.root = taskDetails;
         } else {
-            this.children.put(this.root);
             this.children.put(taskDetails);
-
-            this.root = new JSONObject();
         }
     }
 
@@ -87,6 +133,6 @@ public class SaveJSONVisitor implements ProjectVisitor {
         intervalDetails.put("duration", interval.getDuration().toSeconds());
         intervalDetails.put("task", interval.getTask().getName());
 
-        this.children.put(intervalDetails);
+        this.intervals.put(intervalDetails);
     }
 }

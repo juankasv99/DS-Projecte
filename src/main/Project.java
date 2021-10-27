@@ -9,16 +9,12 @@ public class Project extends ProjectComponent {
   private ArrayList<ProjectComponent> children;
 
   public Project(String name, ProjectComponent parent) {
-
     super(name, parent);
-
-    this.children = new ArrayList<>(); //La inicializamos así en el primer "add" no da error de lista sin inicializar
-
+    this.children = new ArrayList<>();
   }
 
   @Override
   public void update() {
-
     Duration counter = Duration.ZERO;
 
     for(ProjectComponent component : this.children) {
@@ -26,7 +22,6 @@ public class Project extends ProjectComponent {
     }
 
     super.setDuration(counter);
-
     super.setEndTime(LocalDateTime.now());
   }
 

@@ -17,11 +17,11 @@ public class Client {
         PrinterVisitor printer = PrinterVisitor.getInstance(root);
         System.out.println("------------");
 
-        //Thread.sleep(4000);
+        Thread.sleep(4000);
         t1.startTask();
-        //Thread.sleep(4000);
+        Thread.sleep(4000);
         t2.startTask();
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
 
         t1.stopTask();
         t2.stopTask();
@@ -31,7 +31,7 @@ public class Client {
         SaveJSONVisitor saveJSONVisitor = new SaveJSONVisitor();
         root.acceptVisitor(saveJSONVisitor);
 
-        System.out.println(saveJSONVisitor.getRoot().toString());
+        saveJSONVisitor.save("test.json");
     }
 
 }
