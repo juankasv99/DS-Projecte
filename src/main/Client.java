@@ -35,11 +35,9 @@ public class Client {
         saveJSONVisitor.save("test.json");
         */
 
-        LoadJSONVisitor loadJSONVisitor = new LoadJSONVisitor();
-        Project root = new Project("root", null);
-
-        loadJSONVisitor.load("test.json");
-        root.acceptVisitor(loadJSONVisitor);
+        LoadJSON loadJSON = new LoadJSON();
+        loadJSON.load("test.json");
+        Project root = loadJSON.getRoot();
     }
 
 }

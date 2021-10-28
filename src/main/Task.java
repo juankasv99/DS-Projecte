@@ -11,7 +11,14 @@ public class Task extends ProjectComponent {
   public Task(String name, ProjectComponent parent) {
     super(name, parent);
     this.intervals = new ArrayList<>();
+  }
 
+  public Task(String name, LocalDateTime startTime, LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+    super(name, parent);
+    super.setStartTime(startTime);
+    super.setEndTime(endTime);
+    super.setDuration(duration);
+    this.intervals = new ArrayList<>();
   }
 
   public void startTask() {
@@ -43,6 +50,10 @@ public class Task extends ProjectComponent {
 
   public ArrayList<Interval> getIntervals() {
     return this.intervals;
+  }
+
+  public void setIntervals(ArrayList<Interval> intervals) {
+    this.intervals = intervals;
   }
 
   public void addChildren(ProjectComponent children) {}

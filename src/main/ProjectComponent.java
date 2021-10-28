@@ -21,6 +21,14 @@ public abstract class ProjectComponent {
     if (this.parent != null) this.parent.addChildren(this); //Añadimos el parent al Component
   }
 
+  public ProjectComponent(String name, LocalDateTime startTime, LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+    this.name = name;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.duration = duration;
+    this.parent = parent;
+  }
+
   public ProjectComponent getParent() { return parent; }
 
   public String getName() {

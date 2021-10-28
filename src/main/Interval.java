@@ -22,6 +22,13 @@ public class Interval implements Observer {
     Clock.getInstance().addObserver(this);
   }
 
+  public Interval(LocalDateTime startTime, LocalDateTime endTime, Duration duration, Task task) {
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.duration = duration;
+    this.task = task;
+  }
+
   public Duration getDuration() {
     return duration;
   }
@@ -50,21 +57,7 @@ public class Interval implements Observer {
     this.task.update();
 
     PrinterVisitor.getInstance(null).print();
-
-
-    /*
-    if (this.startTime == null) {
-      this.startTime = currentTime;
-      task.setStartTime(this.startTime);
-    }
-    this.duration = Duration.between(this.startTime, currentTime);
-    this.endTime = currentTime;
-    this.task.componentDuration();
-    this.task.setEndTime(this.endTime);
-    Printer.getInstance(null).print();
-    */
   }
-
 
   public void acceptVisitor(ProjectVisitor visitor) {
     visitor.visitInterval(this);

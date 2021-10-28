@@ -13,6 +13,14 @@ public class Project extends ProjectComponent {
     this.children = new ArrayList<>();
   }
 
+  public Project(String name, LocalDateTime startTime, LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+    super(name, parent);
+    super.setStartTime(startTime);
+    super.setEndTime(endTime);
+    super.setDuration(duration);
+    this.children = new ArrayList<>();
+  }
+
   @Override
   public void update() {
     Duration counter = Duration.ZERO;
@@ -31,6 +39,10 @@ public class Project extends ProjectComponent {
 
   public ArrayList<ProjectComponent> getChildren() {
     return children;
+  }
+
+  public void setChildren(ArrayList<ProjectComponent> children) {
+    this.children = children;
   }
 
   public void addChildren(ProjectComponent appendChildren) {
