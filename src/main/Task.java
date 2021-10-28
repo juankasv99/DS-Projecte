@@ -38,6 +38,7 @@ public class Task extends ProjectComponent {
   @Override
   public void update(Interval activeInterval) {
     Duration counter = Duration.ZERO;
+    /* duracion = Suma de las duraciones de los hijos */
     for (Interval interval : this.intervals) {
       counter = counter.plus(interval.getDuration());
     }
