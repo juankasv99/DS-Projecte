@@ -10,10 +10,10 @@ public class Interval implements Observer {
   private LocalDateTime startTime;
   private LocalDateTime endTime;
   private Duration duration;
-  private Task task;
+  private Task task; //parent
 
   public Interval(Task task, int delay) {
-    this.startTime = Clock.getInstance().getTime();
+    this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
     this.task = task;
 
     if (task.getStartTime() == null) task.setStartTime(this.startTime);
@@ -51,10 +51,11 @@ public class Interval implements Observer {
 
   @Override
   public void update(Observable o, Object arg) {
+    /* A cada tick se actualiza la duration y el endTime */
     this.duration = this.duration.plusSeconds(Clock.getInstance().getPeriod());
     this.endTime = this.startTime.plusSeconds(Clock.getInstance().getPeriod());
 
-    this.task.update(this);
+    this.task.update(this); //actualiza el parent
 
     PrinterVisitor.getInstance(null).print();
   }
@@ -65,7 +66,7 @@ public class Interval implements Observer {
 
   @Override
   public String toString() {
-    // return "Interval | child of task " + this.task.getName() + " | " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
+    //printa la informacion con una columna por cada atributo
     return String.format("%-31s child of %-20s %-30s %-30s %-5d", this.getClass().getSimpleName(), this.task.getName(),
         this.startTime, this.endTime, this.duration.toSeconds());
   }

@@ -18,7 +18,7 @@ public abstract class ProjectComponent {
     this.parent = parent;
     this.duration = Duration.ZERO;
 
-    if (this.parent != null) this.parent.addChildren(this); //Añadimos el parent al Component
+    if (this.parent != null) this.parent.addChildren(this); //Añadimos al padre este hijo
   }
 
   public ProjectComponent getParent() { return parent; }
@@ -64,7 +64,7 @@ public abstract class ProjectComponent {
   @Override
   public String toString() {
     String parentName = (this.parent == null) ? null : this.parent.getName();
-    //return this.getClass().getSimpleName() + " " + this.name + " | child of " + parentName + " |    " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
+    //printa la informacion con una columna por cada atributo
     return String.format("%-10s %-20s child of %-20s %-30s %-30s %-5d", this.getClass().getSimpleName(),
         this.name, parentName, this.startTime,
         this.endTime, this.duration.toSeconds());

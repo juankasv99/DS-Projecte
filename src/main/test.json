@@ -1,69 +1,71 @@
 {
-  "duration": 0,
+  "duration": 26,
   "children": [
     {
-      "duration": 0,
+      "duration": 10,
       "parent": "root",
-      "children": [
+      "intervals": [
         {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "first list"
-            },
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "second list"
-            }
-          ],
-          "name": "problems"
+          "duration": 6,
+          "task": "transportation",
+          "startTime": "2021-10-28T19:21:59.196709600",
+          "endTime": "2021-10-28T19:22:01.196709600"
         },
         {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "read handout"
-            },
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "first milestone"
-            }
-          ],
-          "name": "project time tracker"
+          "duration": 4,
+          "task": "transportation",
+          "startTime": "2021-10-28T19:22:19.197788300",
+          "endTime": "2021-10-28T19:22:21.197788300"
         }
       ],
-      "name": "software design"
+      "name": "transportation",
+      "startTime": "2021-10-28T19:21:59.196709600",
+      "endTime": "2021-10-28T19:22:21.197788300"
     },
     {
-      "duration": 0,
+      "duration": 16,
       "parent": "root",
-      "children": [],
-      "name": "software testing"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [],
-      "name": "databases"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "intervals": [],
-      "name": "transportation"
+      "children": [{
+        "duration": 16,
+        "parent": "software design",
+        "children": [
+          {
+            "duration": 10,
+            "parent": "problems",
+            "intervals": [{
+              "duration": 10,
+              "task": "first list",
+              "startTime": "2021-10-28T19:22:05.196820700",
+              "endTime": "2021-10-28T19:22:07.196820700"
+            }],
+            "name": "first list",
+            "startTime": "2021-10-28T19:22:05.196820700",
+            "endTime": "2021-10-28T19:22:07.196820700"
+          },
+          {
+            "duration": 6,
+            "parent": "problems",
+            "intervals": [{
+              "duration": 6,
+              "task": "second list",
+              "startTime": "2021-10-28T19:22:11.196518800",
+              "endTime": "2021-10-28T19:22:13.196518800"
+            }],
+            "name": "second list",
+            "startTime": "2021-10-28T19:22:11.196518800",
+            "endTime": "2021-10-28T19:22:13.196518800"
+          }
+        ],
+        "name": "problems",
+        "startTime": "2021-10-28T19:22:05.196820700",
+        "endTime": "2021-10-28T19:22:13.196518800"
+      }],
+      "name": "software design",
+      "startTime": "2021-10-28T19:22:05.196820700",
+      "endTime": "2021-10-28T19:22:13.196518800"
     }
   ],
-  "name": "root"
+  "name": "root",
+  "startTime": "2021-10-28T19:21:59.196709600",
+  "endTime": "2021-10-28T19:22:21.197788300"
 }

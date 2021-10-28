@@ -24,6 +24,7 @@ public class Project extends ProjectComponent {
   @Override
   public void update(Interval activeInterval) {
     Duration counter = Duration.ZERO;
+    /* duracion = Suma de las duraciones de los hijos */
     for(ProjectComponent component : this.children) {
       counter = counter.plus(component.getDuration());
     }
