@@ -60,6 +60,7 @@ public class Interval implements Observer {
 
   @Override
   public String toString() {
-    return "Interval | child of task " + this.task.getName() + " | " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
+    //return "Interval \t child of task " + this.task.getName() + "\t" + this.startTime + "\t" + this.endTime + "\t" + this.duration.toSeconds();
+    return (String.format("%-15s %-30s %-30s %-30s %-4s", "Interval", "child of task " + this.task.getName(), this.startTime, this.endTime,this.duration.toSeconds()));
   }
 }

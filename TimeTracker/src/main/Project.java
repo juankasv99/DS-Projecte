@@ -28,6 +28,10 @@ public class Project extends ProjectComponent {
     super.setDuration(counter);
 
     super.setEndTime(LocalDateTime.now());
+
+    if(super.getParent() != null) {
+      super.getParent().update();
+    }
   }
 
   public ArrayList<ProjectComponent> getChildren() {

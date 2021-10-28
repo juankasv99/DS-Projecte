@@ -68,6 +68,7 @@ public abstract class ProjectComponent {
 
 
 
-    return this.getClass().getSimpleName() + " " + this.name + " | child of " + parentName + " |    " + this.startTime + " | " + this.endTime + " | " + this.duration.toSeconds();
+    //return (this.getClass().getSimpleName() + " " + this.name + "\tchild of " + parentName + "\t" + this.startTime + "\t" + this.endTime + "\t" + this.duration.toSeconds());
+    return (String.format("%-15s %-30s %-30s %-30s %-4s", this.getClass().getSimpleName()+" "+this.name, "child of " + parentName, this.startTime, this.endTime,this.duration.toSeconds()));
   }
 }
