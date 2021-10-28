@@ -22,18 +22,17 @@ public class Project extends ProjectComponent {
   }
 
   @Override
-  public void update() {
+  public void update(Interval activeInterval) {
     Duration counter = Duration.ZERO;
-
     for(ProjectComponent component : this.children) {
       counter = counter.plus(component.getDuration());
     }
 
     super.setDuration(counter);
-    super.setEndTime(Clock.getInstance().getTime());
+    super.setEndTime(activeInterval.getEndTime());
 
     if(super.getParent() != null) {
-      super.getParent().update();
+      super.getParent().update(activeInterval);
     }
   }
 

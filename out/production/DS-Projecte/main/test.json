@@ -1,52 +1,69 @@
 {
-  "duration": 8,
+  "duration": 0,
   "children": [
     {
-      "duration": 2,
+      "duration": 0,
       "parent": "root",
-      "children": [{
-        "duration": 2,
-        "parent": "P1",
-        "intervals": [{
-          "duration": 2,
-          "task": "T2",
-          "startTime": "2021-10-27T10:32:52.402533300",
-          "endTime": "2021-10-27T10:32:53.402533300"
-        }],
-        "name": "T2",
-        "startTime": "2021-10-27T10:32:52.402533300",
-        "endTime": "2021-10-27T10:32:54.402119"
-      }],
-      "name": "P1",
-      "startTime": "2021-10-27T10:32:52.402533300",
-      "endTime": "2021-10-27T10:32:54.402119"
+      "children": [
+        {
+          "duration": 0,
+          "parent": "software design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "problems",
+              "intervals": [],
+              "name": "first list"
+            },
+            {
+              "duration": 0,
+              "parent": "problems",
+              "intervals": [],
+              "name": "second list"
+            }
+          ],
+          "name": "problems"
+        },
+        {
+          "duration": 0,
+          "parent": "software design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "project time tracker",
+              "intervals": [],
+              "name": "read handout"
+            },
+            {
+              "duration": 0,
+              "parent": "project time tracker",
+              "intervals": [],
+              "name": "first milestone"
+            }
+          ],
+          "name": "project time tracker"
+        }
+      ],
+      "name": "software design"
     },
     {
       "duration": 0,
       "parent": "root",
-      "children": [{
-        "duration": 0,
-        "parent": "P2",
-        "intervals": [],
-        "name": "T3"
-      }],
-      "name": "P2"
+      "children": [],
+      "name": "software testing"
     },
     {
-      "duration": 6,
+      "duration": 0,
       "parent": "root",
-      "intervals": [{
-        "duration": 6,
-        "task": "T1",
-        "startTime": "2021-10-27T10:32:48.403224800",
-        "endTime": "2021-10-27T10:32:49.403224800"
-      }],
-      "name": "T1",
-      "startTime": "2021-10-27T10:32:48.403224800",
-      "endTime": "2021-10-27T10:32:54.402119"
+      "children": [],
+      "name": "databases"
+    },
+    {
+      "duration": 0,
+      "parent": "root",
+      "intervals": [],
+      "name": "transportation"
     }
   ],
-  "name": "root",
-  "startTime": "2021-10-27T10:32:48.403224800",
-  "endTime": "2021-10-27T10:32:54.402119"
+  "name": "root"
 }

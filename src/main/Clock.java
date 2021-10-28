@@ -14,6 +14,7 @@ public class Clock extends Observable {
 
   private Clock() {
     this.timer = new Timer("Timer");
+    this.time = LocalDateTime.now();
   }
 
   public static Clock getInstance() {
@@ -24,9 +25,7 @@ public class Clock extends Observable {
     return uniqueInstance;
   }
 
-  public void start(int period) {
-    this.period = period;
-
+  public void start() {
     TimerTask timerTask = new TimerTask() {
       @Override
       public void run() {
@@ -42,6 +41,10 @@ public class Clock extends Observable {
 
   public int getPeriod() {
     return this.period;
+  }
+
+  public void setPeriod(int period) {
+    this.period = period;
   }
 
   public LocalDateTime getTime() {

@@ -53,8 +53,6 @@ public class LoadJSON {
         for (Object childObject : jsonChildren) {
             JSONObject jsonChild = (JSONObject) childObject;
 
-            System.out.println("loadChildren(): " + jsonChild.toString(4));
-
             String name = getStringFromJSON(jsonChild, "name");
             LocalDateTime startTime = getLocalDateTimeFromJSON(jsonChild, "startTime");
             LocalDateTime endTime = getLocalDateTimeFromJSON(jsonChild, "endTime");
@@ -114,24 +112,5 @@ public class LoadJSON {
         }
 
         this.root = root;
-
-        /*
-        String name = this.root.getString("name");
-        LocalDateTime startTime = LocalDateTime.parse(this.root.getString("startTime"));
-        LocalDateTime endTime = LocalDateTime.parse(this.root.getString("endTime"));
-        Duration duration = Duration.ofSeconds(this.root.getLong("duration"));
-
-
-
-        ProjectComponent parent = null;
-
-        System.out.println(name + " - " + startTime + " - " + endTime + " - " + duration.getSeconds());
-        */
-        /*
-        System.out.println("Id  : " + object.getLong("id"));
-        System.out.println("Name: " + object.getString("name"));
-        System.out.println("Age : " + object.getInt("age"));
-        JSONArray courses = object.getJSONArray("courses");
-        */
     }
 }

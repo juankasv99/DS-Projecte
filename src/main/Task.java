@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Task extends ProjectComponent {
 
+  private final int ZERO_SECONDS_DELAY = 0;
+
   private ArrayList<Interval> intervals;
 
   public Task(String name, ProjectComponent parent) {
@@ -22,7 +24,11 @@ public class Task extends ProjectComponent {
   }
 
   public void startTask() {
-    this.intervals.add(new Interval(this));
+    this.intervals.add(new Interval(this, ZERO_SECONDS_DELAY));
+  }
+
+  public void startTask(int delay) {
+    this.intervals.add(new Interval(this, delay));
   }
 
   public void stopTask() {
@@ -30,17 +36,16 @@ public class Task extends ProjectComponent {
   }
 
   @Override
-  public void update() {
-    //super.setDuration(Duration.ZERO);
-    super.setEndTime(Clock.getInstance().getTime());
-
+  public void update(Interval activeInterval) {
     Duration counter = Duration.ZERO;
-    for(Interval interval : this.intervals) {
+    for (Interval interval : this.intervals) {
       counter = counter.plus(interval.getDuration());
     }
     super.setDuration(counter);
 
-    super.getParent().update();
+    super.setEndTime(this.getCurrentInterval().getEndTime());
+
+    super.getParent().update(activeInterval);
   }
 
   private Interval getCurrentInterval() {

@@ -13,11 +13,11 @@ public class PrinterVisitor implements ProjectVisitor{
         return uniqueInstance;
     }
 
-    private PrinterVisitor(ProjectComponent root) { this.root = root; root.acceptVisitor(this); }
+    private PrinterVisitor(ProjectComponent root) {this.root = root;}
 
     public void print() {
         this.root.acceptVisitor(this);
-        System.out.println("------------");
+        System.out.println("\n");
     }
 
     @Override
