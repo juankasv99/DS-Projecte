@@ -5,16 +5,30 @@ import org.json.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class SaveJSONVisitor implements ProjectVisitor {
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
+public class savejsonvisitor implements ProjectVisitor {
 
   private JSONObject root;
   private JSONArray children;
   private JSONArray intervals;
 
-  public SaveJSONVisitor() {
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
+  public savejsonvisitor() {
     this.root = new JSONObject();
     this.children = new JSONArray();
     this.intervals = new JSONArray();
@@ -24,15 +38,24 @@ public class SaveJSONVisitor implements ProjectVisitor {
     return this.root;
   }
 
-  private JSONArray removeJSONS(JSONArray jsonArray, ArrayList<Integer> indexes) {
+  private JSONArray removejsons(JSONArray jsonArray, ArrayList<Integer> indexes) {
     JSONArray result = new JSONArray();
     for (int i = 0; i < jsonArray.length(); i++) {
-      if (!indexes.contains(i)) result.put(jsonArray.get(i));
+      if (!indexes.contains(i)) {
+        result.put(jsonArray.get(i));
+      }
     }
 
     return result;
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public void save(String fileName) {
     FileWriter file = null;
 
@@ -62,8 +85,9 @@ public class SaveJSONVisitor implements ProjectVisitor {
     projectDetails.put("startTime", project.getStartTime());
     projectDetails.put("endTime", project.getEndTime());
     projectDetails.put("duration", project.getDuration().toSeconds());
-    if (project.getParent() != null) projectDetails.put("parent", project.getParent().getName());
-
+    if (project.getParent() != null) {
+      projectDetails.put("parent", project.getParent().getName());
+    }
     JSONArray children = new JSONArray();
 
     ArrayList<Integer> indexesToRemove = new ArrayList<>();
@@ -77,7 +101,7 @@ public class SaveJSONVisitor implements ProjectVisitor {
       }
     }
 
-    this.children = this.removeJSONS(this.children, indexesToRemove);
+    this.children = this.removejsons(this.children, indexesToRemove);
 
     projectDetails.put("children", children);
 
@@ -98,7 +122,9 @@ public class SaveJSONVisitor implements ProjectVisitor {
     taskDetails.put("name", task.getName());
     taskDetails.put("startTime", task.getStartTime());
     taskDetails.put("endTime", task.getEndTime());
-    if (task.getParent() != null) taskDetails.put("duration", task.getDuration().toSeconds());
+    if (task.getParent() != null) {
+      taskDetails.put("duration", task.getDuration().toSeconds());
+    }
     taskDetails.put("parent", task.getParent().getName());
 
     JSONArray intervals = new JSONArray();
@@ -114,7 +140,7 @@ public class SaveJSONVisitor implements ProjectVisitor {
       }
     }
 
-    this.intervals = this.removeJSONS(this.intervals, indexesToRemove);
+    this.intervals = this.removejsons(this.intervals, indexesToRemove);
 
     taskDetails.put("intervals", intervals);
 

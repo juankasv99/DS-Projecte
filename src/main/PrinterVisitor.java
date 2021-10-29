@@ -1,10 +1,25 @@
 package main;
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public class PrinterVisitor implements ProjectVisitor {
 
   private static PrinterVisitor uniqueInstance;
   private ProjectComponent root;
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public static PrinterVisitor getInstance(ProjectComponent root) {
     if (uniqueInstance == null) {
       uniqueInstance = new PrinterVisitor(root);

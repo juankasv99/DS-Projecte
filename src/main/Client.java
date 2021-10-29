@@ -1,7 +1,22 @@
 package main;
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public class Client {
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
     // testSampleTree();
@@ -26,9 +41,9 @@ public class Client {
     Project databases = new Project("databases", root);
     Task transportation = new Task("transportation", root);
 
-    SaveJSONVisitor saveJSONVisitor = new SaveJSONVisitor();
-    root.acceptVisitor(saveJSONVisitor);
-    saveJSONVisitor.save("src/main/test.json");
+    savejsonvisitor savejsonvisitor = new savejsonvisitor();
+    root.acceptVisitor(savejsonvisitor);
+    savejsonvisitor.save("src/main/test.json");
 
     System.out.println("Test sample tree ends");
   }
@@ -36,9 +51,9 @@ public class Client {
   private static void testLoadSampleTree() {
     System.out.println("Test load sample tree starts:");
 
-    LoadJSON loadJSON = new LoadJSON();
-    loadJSON.load("test.json");
-    Project root = loadJSON.getRoot();
+    loadjson loadjson = new loadjson();
+    loadjson.load("test.json");
+    Project root = loadjson.getRoot();
 
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
     printer.print();

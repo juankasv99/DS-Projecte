@@ -6,6 +6,14 @@ import java.time.LocalDateTime;
 // Task:      Time Spent (sum of intervals), When
 // Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public abstract class ProjectComponent {
   private String name;
   private ProjectComponent parent;
@@ -13,12 +21,21 @@ public abstract class ProjectComponent {
   private LocalDateTime endTime;
   private Duration duration;
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public ProjectComponent(String name, ProjectComponent parent) {
     this.name = name;
     this.parent = parent;
     this.duration = Duration.ZERO;
 
-    if (this.parent != null) this.parent.addChildren(this); //Añadimos al padre este hijo
+    if (this.parent != null) {
+      this.parent.addChildren(this); //Añadimos al padre este hijo//
+    }
   }
 
   public ProjectComponent getParent() {
@@ -41,10 +58,19 @@ public abstract class ProjectComponent {
     return duration;
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public void setStartTime(LocalDateTime startTime) {
     this.startTime = startTime;
 
-    if (this.parent != null && this.parent.getStartTime() == null) this.parent.setStartTime(this.startTime);
+    if (this.parent != null && this.parent.getStartTime() == null) {
+      this.parent.setStartTime(this.startTime);
+    }
   }
 
   public void setEndTime(LocalDateTime endTime) {
@@ -67,8 +93,9 @@ public abstract class ProjectComponent {
   public String toString() {
     String parentName = (this.parent == null) ? null : this.parent.getName();
     //printa la informacion con una columna por cada atributo
-    return String.format("%-10s %-20s child of %-20s %-30s %-30s %-5d", this.getClass().getSimpleName(),
-        this.name, parentName, this.startTime,
-        this.endTime, this.duration.toSeconds());
+    return String.format("%-10s %-20s child of %-20s %-30s %-30s %-5d",
+            this.getClass().getSimpleName(),
+            this.name, parentName, this.startTime,
+            this.endTime, this.duration.toSeconds());
   }
 }

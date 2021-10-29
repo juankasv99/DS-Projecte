@@ -8,20 +8,27 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class LoadJSON {
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
+public class loadjson {
 
   private Project root;
 
-  public LoadJSON() {
+  public loadjson() {
   }
 
   public Project getRoot() {
     return this.root;
   }
 
-  private String getStringFromJSON(JSONObject jsonObject, String key) {
+  private String getstringfromjson(JSONObject jsonObject, String key) {
     String text = "";
     if (jsonObject.has(key)) {
       text = jsonObject.getString(key);
@@ -30,7 +37,7 @@ public class LoadJSON {
     return text;
   }
 
-  private LocalDateTime getLocalDateTimeFromJSON(JSONObject jsonObject, String key) {
+  private LocalDateTime getlocaldatetimefromjson(JSONObject jsonObject, String key) {
     LocalDateTime localDateTime = null;
     if (jsonObject.has(key)) {
       localDateTime = LocalDateTime.parse(jsonObject.getString(key));
@@ -39,7 +46,7 @@ public class LoadJSON {
     return localDateTime;
   }
 
-  private long getLongFromJSON(JSONObject jsonObject, String key) {
+  private long getlongfromjson(JSONObject jsonObject, String key) {
     long data = 0;
     if (jsonObject.has(key)) {
       data = jsonObject.getLong(key);
@@ -48,16 +55,17 @@ public class LoadJSON {
     return data;
   }
 
-  private ArrayList<ProjectComponent> loadChildren(ProjectComponent parent, JSONArray jsonChildren) {
+  private ArrayList<ProjectComponent> loadChildren(ProjectComponent parent,
+                                                   JSONArray jsonChildren) {
     ArrayList<ProjectComponent> children = new ArrayList<>();
 
     for (Object childObject : jsonChildren) {
       JSONObject jsonChild = (JSONObject) childObject;
 
-      String name = getStringFromJSON(jsonChild, "name");
-      LocalDateTime startTime = getLocalDateTimeFromJSON(jsonChild, "startTime");
-      LocalDateTime endTime = getLocalDateTimeFromJSON(jsonChild, "endTime");
-      Duration duration = Duration.ofSeconds(getLongFromJSON(jsonChild, "duration"));
+      String name = getstringfromjson(jsonChild, "name");
+      LocalDateTime startTime = getlocaldatetimefromjson(jsonChild, "startTime");
+      LocalDateTime endTime = getlocaldatetimefromjson(jsonChild, "endTime");
+      Duration duration = Duration.ofSeconds(getlongfromjson(jsonChild, "duration"));
 
       if (jsonChild.has("children")) {
         Project child = new Project(name, startTime, endTime, duration, parent);
@@ -81,9 +89,9 @@ public class LoadJSON {
     for (Object intervalObject : jsonIntervals) {
       JSONObject jsonInterval = (JSONObject) intervalObject;
 
-      LocalDateTime startTime = getLocalDateTimeFromJSON(jsonInterval, "startTime");
-      LocalDateTime endTime = getLocalDateTimeFromJSON(jsonInterval, "endTime");
-      Duration duration = Duration.ofSeconds(getLongFromJSON(jsonInterval, "duration"));
+      LocalDateTime startTime = getlocaldatetimefromjson(jsonInterval, "startTime");
+      LocalDateTime endTime = getlocaldatetimefromjson(jsonInterval, "endTime");
+      Duration duration = Duration.ofSeconds(getlongfromjson(jsonInterval, "duration"));
 
       Interval interval = new Interval(startTime, endTime, duration, task);
       intervals.add(interval);
@@ -92,8 +100,15 @@ public class LoadJSON {
     return intervals;
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public void load(String fileName) {
-    InputStream is = LoadJSON.class.getResourceAsStream(fileName);
+    InputStream is = loadjson.class.getResourceAsStream(fileName);
     if (is == null) {
       throw new NullPointerException("Cannot find resource file " + fileName);
     }
@@ -101,10 +116,10 @@ public class LoadJSON {
     JSONTokener tokenizer = new JSONTokener(is);
     JSONObject jsonObject = new JSONObject(tokenizer);
 
-    String name = getStringFromJSON(jsonObject, "name");
-    LocalDateTime startTime = getLocalDateTimeFromJSON(jsonObject, "startTime");
-    LocalDateTime endTime = getLocalDateTimeFromJSON(jsonObject, "endTime");
-    Duration duration = Duration.ofSeconds(getLongFromJSON(jsonObject, "duration"));
+    String name = getstringfromjson(jsonObject, "name");
+    LocalDateTime startTime = getlocaldatetimefromjson(jsonObject, "startTime");
+    LocalDateTime endTime = getlocaldatetimefromjson(jsonObject, "endTime");
+    Duration duration = Duration.ofSeconds(getlongfromjson(jsonObject, "duration"));
 
     Project root = new Project(name, startTime, endTime, duration, null);
 
