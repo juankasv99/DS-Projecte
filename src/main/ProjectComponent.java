@@ -21,7 +21,9 @@ public abstract class ProjectComponent {
     if (this.parent != null) this.parent.addChildren(this); //Añadimos al padre este hijo
   }
 
-  public ProjectComponent getParent() { return parent; }
+  public ProjectComponent getParent() {
+    return parent;
+  }
 
   public String getName() {
     return name;
@@ -42,7 +44,7 @@ public abstract class ProjectComponent {
   public void setStartTime(LocalDateTime startTime) {
     this.startTime = startTime;
 
-    if (this.parent!=null && this.parent.getStartTime() == null) this.parent.setStartTime(this.startTime);
+    if (this.parent != null && this.parent.getStartTime() == null) this.parent.setStartTime(this.startTime);
   }
 
   public void setEndTime(LocalDateTime endTime) {

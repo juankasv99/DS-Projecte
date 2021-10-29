@@ -1,0 +1,21 @@
+Frank Calderón Molina - 1526745
+Colaboración en la creación del diagrama UML, 
+elaboración de los tests de la clase cliente, 
+colaboración en el desarrollo de las clases ProjectComponent, Project, Task y Interval siguiendo el patrón composite, 
+colaboración en el desarrollo de la clase Clock implementando el patrón singleton y observer, 
+colaboración en el desarrollo de la clase ProjectVisitor, PrinterVisitor y SaveJSONVisitor siguiendo el patrón visitor y desarrollo de la clase LoadJSON.
+Júlia Pérez Hofland - 1570021
+Colaboración en el desarrollo de las clases ProjectComponent, Project, Task y Interval siguiendo el patrón composite, 
+colaboración en el desarrollo de la clase Clock implementando el patrón singleton y observer, 
+colaboración en el desarrollo de la clase ProjectVisitor, PrinterVisitor y SaveJSONVisitor siguiendo el patrón visitor.
+Juan Carlos Soriano Valle - 1493037
+Colaboración en la creción y desarrollo del diagrama UML,
+Colaboración en el desarrollo de las clases ProjectComponent, Project, Task y Interval siguiendo el patrón composite,
+Colaboración en el desarrollo de la clase printerVisitor siguiendo el patrón Visitor,
+Colaboración en el desarrollo de la clase Clock implementando el patrón singleton y observer,
+Colaboración en el desarrollo de la clase ProjectVisitor y PrinterVisitor
+Roger Boadella Parra - 1494330
+Colaboración en la creción y desarrollo del diagrama UML,
+Colaboración en el desarrollo de las clases ProjectComponent, Project, Task y Interval siguiendo el patrón composite,
+colaboración en el desarrollo de la clase ProjectVisitor, PrinterVisitor y SaveJSONVisitor siguiendo el patrón visitor. 
+

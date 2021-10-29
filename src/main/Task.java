@@ -62,13 +62,15 @@ public class Task extends ProjectComponent {
     this.intervals = intervals;
   }
 
-  public void addChildren(ProjectComponent children) {}
+  public void addChildren(ProjectComponent children) {
+  }
 
-  public void removeChildren(ProjectComponent children) {}
+  public void removeChildren(ProjectComponent children) {
+  }
 
   public void acceptVisitor(ProjectVisitor visitor) {
     visitor.visitTask(this);
-    for(Interval interval : this.intervals) {
+    for (Interval interval : this.intervals) {
       interval.acceptVisitor(visitor);
     }
   }
