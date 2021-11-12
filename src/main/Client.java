@@ -5,8 +5,8 @@ public class Client {
     public static void main(String[] args) throws InterruptedException {
         /* Seleccionar test  */
         // testSampleTree();
-        // testLoadSampleTree();
-        testOfCountingTime();
+        testLoadSampleTree();
+        // testOfCountingTime();
     }
 
     private static void testSampleTree() {
@@ -99,5 +99,9 @@ public class Client {
         System.out.println("Test of counting time ends");
 
         Clock.getInstance().stop();
+
+        SaveJSONVisitor saveJSONVisitor = new SaveJSONVisitor();
+        root.acceptVisitor(saveJSONVisitor);
+        saveJSONVisitor.save("src/main/test.json");
     }
 }
