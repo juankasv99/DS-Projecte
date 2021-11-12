@@ -5,6 +5,14 @@ import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public class Clock extends Observable {
 
   private static Clock uniqueInstance;
@@ -17,6 +25,13 @@ public class Clock extends Observable {
     this.time = LocalDateTime.now();
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public static Clock getInstance() {
     if (uniqueInstance == null) {
       uniqueInstance = new Clock();
@@ -25,6 +40,13 @@ public class Clock extends Observable {
     return uniqueInstance;
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public void start() {
     TimerTask timerTask = new TimerTask() {
       @Override

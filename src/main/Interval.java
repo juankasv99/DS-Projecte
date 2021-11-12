@@ -5,6 +5,14 @@ import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public class Interval implements Observer {
 
   private LocalDateTime startTime;
@@ -12,16 +20,32 @@ public class Interval implements Observer {
   private Duration duration;
   private Task task; //parent
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public Interval(Task task, int delay) {
     this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
     this.task = task;
 
-    if (task.getStartTime() == null) task.setStartTime(this.startTime);
+    if (task.getStartTime() == null) {
+      task.setStartTime(this.startTime);
+    }
 
     this.duration = Duration.ofSeconds(delay);
     Clock.getInstance().addObserver(this);
   }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public Interval(LocalDateTime startTime, LocalDateTime endTime, Duration duration, Task task) {
     this.startTime = startTime;
     this.endTime = endTime;
@@ -67,7 +91,8 @@ public class Interval implements Observer {
   @Override
   public String toString() {
     //printa la informacion con una columna por cada atributo
-    return String.format("%-31s child of %-20s %-30s %-30s %-5d", this.getClass().getSimpleName(), this.task.getName(),
-        this.startTime, this.endTime, this.duration.toSeconds());
+    return String.format("%-31s child of %-20s %-30s %-30s %-5d",
+            this.getClass().getSimpleName(), this.task.getName(),
+            this.startTime, this.endTime, this.duration.toSeconds());
   }
 }

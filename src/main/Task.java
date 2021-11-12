@@ -4,9 +4,17 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
+
 public class Task extends ProjectComponent {
 
-  private final int ZERO_SECONDS_DELAY = 0;
+  private final int zeroSecondsDelay = 0;
 
   private ArrayList<Interval> intervals;
 
@@ -15,7 +23,15 @@ public class Task extends ProjectComponent {
     this.intervals = new ArrayList<>();
   }
 
-  public Task(String name, LocalDateTime startTime, LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
+  public Task(String name, LocalDateTime startTime,
+              LocalDateTime endTime, Duration duration, ProjectComponent parent) {
     super(name, parent);
     super.setStartTime(startTime);
     super.setEndTime(endTime);
@@ -24,7 +40,7 @@ public class Task extends ProjectComponent {
   }
 
   public void startTask() {
-    this.intervals.add(new Interval(this, ZERO_SECONDS_DELAY));
+    this.intervals.add(new Interval(this, zeroSecondsDelay));
   }
 
   public void startTask(int delay) {
@@ -62,13 +78,22 @@ public class Task extends ProjectComponent {
     this.intervals = intervals;
   }
 
-  public void addChildren(ProjectComponent children) {}
+  public void addChildren(ProjectComponent children) {
+  }
 
-  public void removeChildren(ProjectComponent children) {}
+  public void removeChildren(ProjectComponent children) {
+  }
 
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
   public void acceptVisitor(ProjectVisitor visitor) {
     visitor.visitTask(this);
-    for(Interval interval : this.intervals) {
+    for (Interval interval : this.intervals) {
       interval.acceptVisitor(visitor);
     }
   }

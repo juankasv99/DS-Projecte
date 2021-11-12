@@ -1,37 +1,54 @@
 package main;
 
-public class PrinterVisitor implements ProjectVisitor{
+/**
+ * Some javadoc.
+ *
+ * @author Some javadoc.
+ * @version Some javadoc.
+ * @deprecated Some javadoc.
+ */
 
-    private static PrinterVisitor uniqueInstance;
-    private ProjectComponent root;
+public class PrinterVisitor implements ProjectVisitor {
 
-    public static PrinterVisitor getInstance(ProjectComponent root) {
-        if (uniqueInstance == null) {
-            uniqueInstance = new PrinterVisitor(root);
-        }
+  private static PrinterVisitor uniqueInstance;
+  private ProjectComponent root;
 
-        return uniqueInstance;
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   * @version Some javadoc.
+   * @deprecated Some javadoc.
+   */
+  public static PrinterVisitor getInstance(ProjectComponent root) {
+    if (uniqueInstance == null) {
+      uniqueInstance = new PrinterVisitor(root);
     }
 
-    private PrinterVisitor(ProjectComponent root) {this.root = root;}
+    return uniqueInstance;
+  }
 
-    public void print() {
-        this.root.acceptVisitor(this);
-        System.out.println("\n");
-    }
+  private PrinterVisitor(ProjectComponent root) {
+    this.root = root;
+  }
 
-    @Override
-    public void visitProject(Project project) {
-        System.out.println(project.toString());
-    }
+  public void print() {
+    this.root.acceptVisitor(this);
+    System.out.println("\n");
+  }
 
-    @Override
-    public void visitTask(Task task) {
-        System.out.println(task.toString());
-    }
+  @Override
+  public void visitProject(Project project) {
+    System.out.println(project.toString());
+  }
 
-    @Override
-    public void visitInterval(Interval interval) {
-        System.out.println(interval.toString());
-    }
+  @Override
+  public void visitTask(Task task) {
+    System.out.println(task.toString());
+  }
+
+  @Override
+  public void visitInterval(Interval interval) {
+    System.out.println(interval.toString());
+  }
 }
