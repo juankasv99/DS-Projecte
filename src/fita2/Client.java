@@ -4,6 +4,8 @@ import main.PrinterVisitor;
 import main.Project;
 import main.Task;
 import main.savejsonvisitor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -21,6 +23,8 @@ public class Client {
    * @author Some javadoc.
    * @deprecated Some javadoc.
    */
+  static Logger logger = LoggerFactory.getLogger(Client.class);
+
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
     testSearchByTag();
@@ -59,11 +63,11 @@ public class Client {
     databases.addTag("C++");
     Task transportation = new Task("transportation", root);
 
-    System.out.println("Test search by tag starts:");
+    logger.debug("Test search by tag starts:");
 
     SearchByTagVisitor searchByTagVisitor = SearchByTagVisitor.getInstance(root);
-    searchByTagVisitor.search("java");
+    searchByTagVisitor.search("");
 
-    System.out.println("Test search by tag ends");
+    logger.debug("Test search by tag ends");
   }
 }

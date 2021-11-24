@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -19,6 +21,7 @@ public class Clock extends Observable {
   private Timer timer;
   private int period;
   private LocalDateTime time;
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   private Clock() {
     this.timer = new Timer("Timer");
@@ -77,5 +80,6 @@ public class Clock extends Observable {
     this.time = LocalDateTime.now();
     setChanged();
     notifyObservers();
+    logger.trace("El reloj ha hecho tick. Se inician los updates.");
   }
 }

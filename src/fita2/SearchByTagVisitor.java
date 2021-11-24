@@ -1,6 +1,8 @@
 package fita2;
 
 import main.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -15,6 +17,7 @@ public class SearchByTagVisitor implements ProjectVisitor {
   private static SearchByTagVisitor uniqueInstance;
   private ProjectComponent root;
   private String tag;
+  Logger logger = LoggerFactory.getLogger(SearchByTagVisitor.class);
 
   /**
    * Some javadoc.
@@ -44,14 +47,14 @@ public class SearchByTagVisitor implements ProjectVisitor {
   @Override
   public void visitProject(Project project) {
     if (project.getTags().contains(tag)) {
-      System.out.println(project.getName());
+      logger.info(project.getName());
     }
   }
 
   @Override
   public void visitTask(Task task) {
     if (task.getTags().contains(tag)) {
-      System.out.println(task.getName());
+      logger.info(task.getName());
     }
   }
 

@@ -3,6 +3,8 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Task:      Time Spent (sum of intervals), When
 // Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
@@ -22,6 +24,7 @@ public abstract class ProjectComponent {
   private LocalDateTime endTime;
   private Duration duration;
   private ArrayList<String> tags;
+  Logger logger = LoggerFactory.getLogger(ProjectComponent.class);
 
   /**
    * Some javadoc.
@@ -89,6 +92,7 @@ public abstract class ProjectComponent {
   }
 
   public void addTag(String tag) {
+    logger.info("Se ha añadido el tag " + tag);
     this.tags.add(tag);
   }
 
