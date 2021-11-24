@@ -3,6 +3,8 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class Project extends ProjectComponent {
 
   private ArrayList<ProjectComponent> children;
+  Logger logger = LoggerFactory.getLogger(Project.class);
 
   /**
    * Some javadoc.
@@ -28,6 +31,12 @@ public class Project extends ProjectComponent {
     assert this.children == null : "La lista de hijos del Project debe ser null antes de ser creado.";
 
     this.children = new ArrayList<>();
+    if (getParent() == null) {
+      logger.debug("Se crea Project " + name + " ,que no tiene padre.");
+
+    } else {
+      logger.debug("Se crea Project " + name + " ,hijo de " + parent.getName());
+    }
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";

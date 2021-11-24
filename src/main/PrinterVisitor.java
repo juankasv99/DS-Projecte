@@ -1,4 +1,6 @@
 package main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -12,6 +14,7 @@ public class PrinterVisitor implements ProjectVisitor {
 
   private static PrinterVisitor uniqueInstance;
   private ProjectComponent root;
+  Logger logger = LoggerFactory.getLogger(PrinterVisitor.class);
 
   /**
    * Some javadoc.
@@ -39,16 +42,16 @@ public class PrinterVisitor implements ProjectVisitor {
 
   @Override
   public void visitProject(Project project) {
-    System.out.println(project.toString());
+    logger.info(project.toString());
   }
 
   @Override
   public void visitTask(Task task) {
-    System.out.println(task.toString());
+    logger.info(task.toString());
   }
 
   @Override
   public void visitInterval(Interval interval) {
-    System.out.println(interval.toString());
+    logger.info(interval.toString());
   }
 }

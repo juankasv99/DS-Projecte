@@ -1,5 +1,6 @@
 package main;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Some javadoc.
  *
@@ -16,6 +17,7 @@ public class Client {
    * @author Some javadoc.
    * @deprecated Some javadoc.
    */
+  static Logger logger = LoggerFactory.getLogger(Client.class);
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
     // testSampleTree();
@@ -24,11 +26,11 @@ public class Client {
   }
 
   private static void testSampleTree() {
-    System.out.println("Test sample tree starts:");
+    logger.debug("Test sample tree starts:");
 
     Project root = new Project("root", null);
-
     Project softwareDesign = new Project("software design", root);
+
     Project problems = new Project("problems", softwareDesign);
     Task firstList = new Task("first list", problems);
     Task secondList = new Task("second list", problems);
@@ -44,11 +46,11 @@ public class Client {
     root.acceptVisitor(savejsonvisitor);
     savejsonvisitor.save("src/main/test.json");
 
-    System.out.println("Test sample tree ends");
+    logger.debug("Test sample tree ends");
   }
 
   private static void testLoadSampleTree() {
-    System.out.println("Test load sample tree starts:");
+    logger.debug("Test load sample tree starts:");
 
     loadjson loadjson = new loadjson();
     loadjson.load("test.json");
@@ -57,11 +59,12 @@ public class Client {
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
     printer.print();
 
-    System.out.println("Test load sample tree ends");
+    logger.debug("Test load sample tree ends");
   }
 
   private static void testOfCountingTime() throws InterruptedException {
     Clock clock = Clock.getInstance();
+    logger.trace("Se ha instanciado la variable periodo a 2.");
     clock.setPeriod(2);
     clock.start();
 

@@ -3,6 +3,8 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Some javadoc.
@@ -17,6 +19,8 @@ public class Task extends ProjectComponent {
 
   private ArrayList<Interval> intervals;
 
+  Logger logger = LoggerFactory.getLogger(Task.class);
+
   /**
    * Some javadoc.
    *
@@ -28,6 +32,7 @@ public class Task extends ProjectComponent {
     assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
+    logger.debug("Se crea Task "+ name + " hija de " + parent.getName());
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -51,6 +56,7 @@ public class Task extends ProjectComponent {
     super.setStartTime(startTime);
     super.setEndTime(endTime);
     super.setDuration(duration);
+
 
     // Precondiciones
     assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
