@@ -85,37 +85,44 @@ public class Client {
 
     logger.debug("transportation starts");
     transportation.startTask(Clock.getInstance().getPeriod());
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
     transportation.stopTask();
     logger.debug("transportation stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
     logger.debug("first list starts");
     firstList.startTask();
+    logger.trace("El thread se para durante 6 segundos.");
     Thread.sleep(6000);
 
    logger.debug("second list starts");
     secondList.startTask();
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
 
     firstList.stopTask();
-    System.out.println("first list stops");
+    logger.debug("first list stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
     secondList.stopTask();
-    System.out.println("second list stops");
+    logger.debug("second list stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
-    System.out.println("transportation starts");
+    logger.debug("transportation starts");
     transportation.startTask();
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
     transportation.stopTask();
-    System.out.println("transportation stops");
+    logger.debug("transportation stops");
 
-    System.out.println("Test of counting time ends");
+    logger.debug("Test of counting time ends");
 
     Clock.getInstance().stop();
   }

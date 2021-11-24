@@ -2699,3 +2699,1794 @@ TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
 <td class="Logger">main.PrinterVisitor</td>
 <td class="Message">Interval                        child of second list          2021-11-24T20:06:54.247619200  2021-11-24T20:06:56.247619200  6    </td>
 </tr>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Logback Log Messages</title>
+<style  type="text/css">
+table { margin-left: 2em; margin-right: 2em; border-left: 2px solid #AAA; }
+TR.even { background: #FFFFFF; }
+TR.odd { background: #EAEAEA; }
+TR.warn TD.Level, TR.error TD.Level, TR.fatal TD.Level {font-weight: bold; color: #FF4040 }
+TD { padding-right: 1ex; padding-left: 1ex; border-right: 2px solid #AAA; }
+TD.Time, TD.Date { text-align: right; font-family: courier, monospace; font-size: smaller; }
+TD.Thread { text-align: left; }
+TD.Level { text-align: right; }
+TD.Logger { text-align: left; }
+TR.header { background: #596ED5; color: #FFF; font-weight: bold; font-size: larger; }
+TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
+</style>
+
+  </head>
+<body>
+<hr/>
+<p>Log session start time Wed Nov 24 20:16:47 CET 2021</p><p></p>
+
+<table cellspacing="0">
+<tr class="header">
+<td class="Thread">Thread</td>
+<td class="Level">Level</td>
+<td class="Logger">Logger</td>
+<td class="Message">Message</td>
+</tr>
+
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">Se inicia el reloj.</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project root, que no tiene padre.</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task transportation hija de root</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project software design, hijo de root</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project problems, hijo de software design</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task first list hija de problems</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task second list hija de problems</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">Test of counting time starts:</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation starts</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation stops</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">first list starts</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:55.965437800  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:55.965437800  12   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">second list starts</td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:17:01.962125900  14   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:55.965437800  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:17:01.962125900  18   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  12   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  12   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:16:55.965437800  20   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  14   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  14   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:17:01.962125900  22   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:17:09.962014300  24   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:17:09.962014300  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:17:07.962014300  2021-11-24T20:17:09.962014300  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:16:47.961345     2021-11-24T20:17:09.962014300  26   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:16:47.961345     2021-11-24T20:17:09.962014300  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:16:47.961345     2021-11-24T20:16:49.961345     6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:17:07.962014300  2021-11-24T20:17:09.962014300  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:16:53.965437800  2021-11-24T20:17:01.962125900  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:16:53.965437800  2021-11-24T20:16:55.965437800  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:16:59.962125900  2021-11-24T20:17:01.962125900  6    </td>
+</tr>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Logback Log Messages</title>
+<style  type="text/css">
+table { margin-left: 2em; margin-right: 2em; border-left: 2px solid #AAA; }
+TR.even { background: #FFFFFF; }
+TR.odd { background: #EAEAEA; }
+TR.warn TD.Level, TR.error TD.Level, TR.fatal TD.Level {font-weight: bold; color: #FF4040 }
+TD { padding-right: 1ex; padding-left: 1ex; border-right: 2px solid #AAA; }
+TD.Time, TD.Date { text-align: right; font-family: courier, monospace; font-size: smaller; }
+TD.Thread { text-align: left; }
+TD.Level { text-align: right; }
+TD.Logger { text-align: left; }
+TR.header { background: #596ED5; color: #FFF; font-weight: bold; font-size: larger; }
+TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
+</style>
+
+  </head>
+<body>
+<hr/>
+<p>Log session start time Wed Nov 24 20:21:45 CET 2021</p><p></p>
+
+<table cellspacing="0">
+<tr class="header">
+<td class="Thread">Thread</td>
+<td class="Level">Level</td>
+<td class="Logger">Logger</td>
+<td class="Message">Message</td>
+</tr>
+
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">Se inicia el reloj.</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project root, que no tiene padre.</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task transportation, hija de root</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project software design, hijo de root</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Project</td>
+<td class="Message">Se crea Project problems, hijo de software design</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task first list, hija de problems</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Task</td>
+<td class="Message">Se crea Task second list, hija de problems</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">main</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">Test of counting time starts:</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation starts</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation stops</td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">first list starts</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:53.419022200  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:53.419022200  12   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             null                           null                           0    </td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">second list starts</td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:59.419453600  14   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:53.419022200  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  2    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:59.419453600  18   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  12   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  12   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  8    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:53.419022200  20   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  14   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  14   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  4    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  4    </td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">first list stops</td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:59.419453600  22   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">second list stops</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation starts</td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:22:07.418464400  24   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:22:07.418464400  8    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:22:05.418464400  2021-11-24T20:22:07.418464400  2    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    root                 child of null                 2021-11-24T20:21:45.419000700  2021-11-24T20:22:07.418464400  26   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       transportation       child of root                 2021-11-24T20:21:45.419000700  2021-11-24T20:22:07.418464400  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:21:45.419000700  2021-11-24T20:21:47.419000700  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of transportation       2021-11-24T20:22:05.418464400  2021-11-24T20:22:07.418464400  4    </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    software design      child of root                 2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Project    problems             child of software design      2021-11-24T20:21:51.419022200  2021-11-24T20:21:59.419453600  16   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       first list           child of problems             2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of first list           2021-11-24T20:21:51.419022200  2021-11-24T20:21:53.419022200  10   </td>
+</tr>
+
+<tr class="info even">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Task       second list          child of problems             2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="info odd">
+<td class="Thread">Timer</td>
+<td class="Level">INFO</td>
+<td class="Logger">main.PrinterVisitor</td>
+<td class="Message">Interval                        child of second list          2021-11-24T20:21:57.419453600  2021-11-24T20:21:59.419453600  6    </td>
+</tr>
+
+<tr class="debug even">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">transportation stops</td>
+</tr>
+
+<tr class="debug odd">
+<td class="Thread">main</td>
+<td class="Level">DEBUG</td>
+<td class="Logger">main.Client</td>
+<td class="Message">Test of counting time ends</td>
+</tr>

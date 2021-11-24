@@ -33,7 +33,7 @@ public class Task extends ProjectComponent {
 
     this.intervals = new ArrayList<>();
     if (getParent() != null) {
-      logger.debug("Se crea Task " + name + " hija de " + parent.getName());
+      logger.debug("Se crea Task " + name + ", hija de " + parent.getName());
     } else {
       logger.warn("La Task " + name + " no tiene padre.");
     }
