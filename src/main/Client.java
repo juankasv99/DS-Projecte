@@ -14,7 +14,6 @@ public class Client {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @version Some javadoc.
    * @deprecated Some javadoc.
    */
   public static void main(String[] args) throws InterruptedException {

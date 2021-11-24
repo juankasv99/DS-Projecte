@@ -2,6 +2,7 @@ package main;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 // Task:      Time Spent (sum of intervals), When
 // Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
@@ -20,6 +21,7 @@ public abstract class ProjectComponent {
   private LocalDateTime startTime;
   private LocalDateTime endTime;
   private Duration duration;
+  private ArrayList<String> tags;
 
   /**
    * Some javadoc.
@@ -32,6 +34,7 @@ public abstract class ProjectComponent {
     this.name = name;
     this.parent = parent;
     this.duration = Duration.ZERO;
+    this.tags = new ArrayList<>();
 
     if (this.parent != null) {
       this.parent.addChildren(this); //Añadimos al padre este hijo//
@@ -58,6 +61,10 @@ public abstract class ProjectComponent {
     return duration;
   }
 
+  public ArrayList<String> getTags() {
+    return tags;
+  }
+
   /**
    * Some javadoc.
    *
@@ -79,6 +86,10 @@ public abstract class ProjectComponent {
 
   public void setDuration(Duration duration) {
     this.duration = duration;
+  }
+
+  public void addTag(String tag) {
+    this.tags.add(tag);
   }
 
   public abstract void addChildren(ProjectComponent children);

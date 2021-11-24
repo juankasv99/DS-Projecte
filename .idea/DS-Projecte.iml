@@ -13,5 +13,8 @@
     <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="slf4j.ext" level="project" />
+    <orderEntry type="library" name="ch.qos.logback.core" level="project" />
+    <orderEntry type="library" name="ch.qos.logback.classic" level="project" />
   </component>
 </module>
