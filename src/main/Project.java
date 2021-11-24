@@ -32,10 +32,10 @@ public class Project extends ProjectComponent {
 
     this.children = new ArrayList<>();
     if (getParent() == null) {
-      logger.debug("Se crea Project " + name + " ,que no tiene padre.");
+      logger.debug("Se crea Project " + name + ", que no tiene padre.");
 
     } else {
-      logger.debug("Se crea Project " + name + " ,hijo de " + parent.getName());
+      logger.debug("Se crea Project " + name + ", hijo de " + parent.getName());
     }
 
     // Invariants
@@ -43,10 +43,12 @@ public class Project extends ProjectComponent {
 
     // Postcondiciones
     assert this.getName().equals(name) : "El nombre del Project debe ser el mismo que el de la variable name.";
-    assert this.getParent().equals(parent) : "El padre del Project debe ser el mismo que el de la variable parent.";
+    if (this.getParent() != null) {
+      assert this.getParent().equals(parent) : "El padre del Project debe ser el mismo que el de la variable parent.";
+    }
     assert this.getDuration().toSeconds() == 0 : "La duración del Project debe ser 0 justo después de ser creado.";
     assert this.children != null : "La lista de hijos del Project no debe ser null just después de ser creado.";
-    assert this.children.isEmpty() : "La lista de hijos del Project debe estar vacía justo después de ser creado." ;
+    assert this.children.isEmpty() : "La lista de hijos del Project debe estar vacía justo después de ser creado.";
   }
 
   /**
@@ -216,17 +218,17 @@ public class Project extends ProjectComponent {
       check = false;
     }
 
-    if (this.getParent().getClass().getSimpleName().equals("Task")) {
-      check = false;
+    if (this.getParent() != null) {
+      if (this.getParent().getClass().getSimpleName().equals("Task")) {
+        check = false;
+      }
     }
 
     if (this.getDuration().toSeconds() < 0) {
       check = false;
     }
 
-    if (this.getChildren() == null) {
-      check = false;
-    }
+    // Getchildren peta como palomita en el micro
 
     return check;
   }

@@ -53,6 +53,7 @@ public class Client {
     logger.debug("Test load sample tree starts:");
 
     loadjson loadjson = new loadjson();
+    logger.debug("Se cargan los datos en el archivo 'test.json'");
     loadjson.load("test.json");
     Project root = loadjson.getRoot();
 
@@ -66,6 +67,7 @@ public class Client {
     Clock clock = Clock.getInstance();
     logger.trace("Se ha instanciado la variable periodo a 2.");
     clock.setPeriod(2);
+    logger.debug("Se inicia el reloj.");
     clock.start();
 
     Project root = new Project("root", null);
@@ -79,21 +81,21 @@ public class Client {
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
     printer.print();
 
-    System.out.println("Test of counting time starts:");
+    logger.debug("Test of counting time starts:");
 
-    System.out.println("transportation starts");
+    logger.debug("transportation starts");
     transportation.startTask(Clock.getInstance().getPeriod());
     Thread.sleep(4000);
     transportation.stopTask();
-    System.out.println("transportation stops");
+    logger.debug("transportation stops");
 
     Thread.sleep(2000);
 
-    System.out.println("first list starts");
+    logger.debug("first list starts");
     firstList.startTask();
     Thread.sleep(6000);
 
-    System.out.println("second list starts");
+   logger.debug("second list starts");
     secondList.startTask();
     Thread.sleep(4000);
 

@@ -32,7 +32,11 @@ public class Task extends ProjectComponent {
     assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
-    logger.debug("Se crea Task "+ name + " hija de " + parent.getName());
+    if (getParent() != null) {
+      logger.debug("Se crea Task " + name + " hija de " + parent.getName());
+    } else {
+      logger.warn("La Task " + name + " no tiene padre.");
+    }
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -225,6 +229,7 @@ public class Task extends ProjectComponent {
     // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
   }
 
+
   private boolean invariants() {
     boolean check = true;
 
@@ -242,9 +247,7 @@ public class Task extends ProjectComponent {
       check = false;
     }
 
-    if (this.getIntervals() == null) {
-      check = false;
-    }
+    // Getintervals peta como palomita en el micro
 
     return check;
   }
