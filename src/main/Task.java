@@ -242,9 +242,7 @@ public class Task extends ProjectComponent {
       check = false;
     }
 
-    if (this.getIntervals() == null) {
-      check = false;
-    }
+    // Getintervals peta como palomita en el micro
 
     return check;
   }
