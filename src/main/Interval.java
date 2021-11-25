@@ -10,22 +10,20 @@ import java.util.Observer;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 
 public class Interval implements Observer {
 
-  private LocalDateTime startTime;
+  private final LocalDateTime startTime;
   private LocalDateTime endTime;
   private Duration duration;
-  private Task task; //parent
+  private final Task task; //parent
 
   /**
    * Some javadoc.
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public Interval(Task task, int delay) {
     this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
@@ -44,7 +42,6 @@ public class Interval implements Observer {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public Interval(LocalDateTime startTime, LocalDateTime endTime, Duration duration, Task task) {
     this.startTime = startTime;

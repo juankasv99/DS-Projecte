@@ -12,13 +12,12 @@ import org.slf4j.LoggerFactory;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 
 public class Clock extends Observable {
 
   private static Clock uniqueInstance;
-  private Timer timer;
+  private final Timer timer;
   private int period;
   private LocalDateTime time;
   Logger logger = LoggerFactory.getLogger(Clock.class);
@@ -33,7 +32,6 @@ public class Clock extends Observable {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public static Clock getInstance() {
     if (uniqueInstance == null) {
@@ -48,7 +46,6 @@ public class Clock extends Observable {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void start() {
     TimerTask timerTask = new TimerTask() {

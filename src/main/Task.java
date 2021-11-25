@@ -7,24 +7,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Aquesta classe sempre tindra com a pare un project.
+ * Cada vegada que es treballi en una tasca creara un interval.
+ * Aquest interval s'afegira a la llista d'intervals de la classe.
+ * Son aquest intervals els que acualitzen els valors de temps.
+ * d'aquesta classe i auqesta actualitza al seu pare.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 public class Task extends ProjectComponent {
-
-  private final int zeroSecondsDelay = 0;
 
   private ArrayList<Interval> intervals;
 
   Logger logger = LoggerFactory.getLogger(Task.class);
 
   /**
-   * Some javadoc.
+   * Constructor de la classe.
+   * Sempre ha de tenir un nom i un pare.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public Task(String name, ProjectComponent parent) {
     super(name, parent);
@@ -56,12 +58,13 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Constructor de la classe que utilitza el loadjson.
+   * Crea una Task amb els valors de temps afegits.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
-  public Task(String name, @Deprecated LocalDateTime startTime,
-              @Deprecated LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+  public Task(String name, LocalDateTime startTime,
+              LocalDateTime endTime, Duration duration, ProjectComponent parent) {
     super(name, parent);
     super.setStartTime(startTime);
     super.setEndTime(endTime);
@@ -91,9 +94,10 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Creara un nou interval i sel afegeix a la llista d'intervals.
+   * A mes aquest interval comerçara a actualitzar la task amb els tick del Clock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void startTask() {
     // Precondiciones
@@ -103,6 +107,7 @@ public class Task extends ProjectComponent {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
+    int zeroSecondsDelay = 0;
     Interval interval = new Interval(this, zeroSecondsDelay);
     this.intervals.add(interval);
 
@@ -117,9 +122,10 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Creara un nou interval amb delay i sel afegeix a la llista d'intervals.
+   * A mes aquest interval comerçara a actualitzar la task amb els tick del Clock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void startTask(int delay) {
     // Precondiciones
@@ -144,9 +150,10 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * La task avisa al Interval de que deixi d'escoltar al Clock.
+   * i per tant ja no actualitza la task amb cada tik del CLock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void stopTask() {
     // Precondiciones
@@ -189,9 +196,9 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Retorna els Intervals.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public ArrayList<Interval> getIntervals() {
     // Invariants
@@ -200,9 +207,9 @@ public class Task extends ProjectComponent {
     return this.intervals;
   }
   /**
-   * Some javadoc.
+   * Guarda la llista de intervals que es passa per parametre en la seva llista.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
 
   public void setIntervals(ArrayList<Interval> intervals) {
@@ -217,7 +224,7 @@ public class Task extends ProjectComponent {
 
   public void addChildren(ProjectComponent children) {}
 
-  public void removeChildren(ProjectComponent children) {}
+  // public void removeChildren(ProjectComponent children) {}
 
   private Interval getCurrentInterval() {
     // Invariants
@@ -228,9 +235,9 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Crida a la funcio visitTask i acceptViisitor dels seus intervals.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void acceptVisitor(ProjectVisitor visitor) {
     // Precondiciones
@@ -252,11 +259,7 @@ public class Task extends ProjectComponent {
 
 
   private boolean invariants() {
-    boolean check = true;
-
-    if (this.getName().isEmpty()) {
-      check = false;
-    }
+    boolean check = !this.getName().isEmpty();
 
     if (this.getParent() == null) {
       check = false;

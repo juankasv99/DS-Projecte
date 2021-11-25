@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 public class Project extends ProjectComponent {
 
@@ -22,7 +21,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public Project(String name, ProjectComponent parent) {
     super(name, parent);
@@ -45,10 +43,8 @@ public class Project extends ProjectComponent {
     // Postcondiciones
     assert this.getName().equals(name) : "El nombre del Project"
         + " debe ser el mismo que el de la variable name.";
-    if (this.getParent() != null) {
-      assert this.getParent().equals(parent) : "El padre del Project"
-          + " debe ser el mismo que el de la variable parent.";
-    }
+    assert this.getParent() == null || this.getParent().equals(parent) : "El padre del Project"
+        + " debe ser el mismo que el de la variable parent.";
     assert this.getDuration().toSeconds() == 0 : "La duración del Project"
         + " debe ser 0 justo después de ser creado.";
     assert this.children != null : "La lista de hijos del Project"
@@ -61,7 +57,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public Project(String name, LocalDateTime startTime,
                  LocalDateTime endTime, Duration duration, ProjectComponent parent) {
@@ -82,10 +77,8 @@ public class Project extends ProjectComponent {
     // Postcondiciones
     assert this.getName().equals(name) : "El nombre del Project"
         + " debe ser el mismo que el de la variable name.";
-    if (this.getParent() != null) {
-      assert this.getParent().equals(parent) : "El padre del Project"
-          + " debe ser el mismo que el de la variable parent.";
-    }
+    assert this.getParent() == null || this.getParent().equals(parent) : "El padre del Project"
+        + " debe ser el mismo que el de la variable parent.";
     assert this.getDuration().toSeconds() == 0 : "La duración del Project"
         + " debe ser 0 justo después de ser creado.";
     assert this.children != null : "La lista de hijos del Project"
@@ -130,7 +123,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public ArrayList<ProjectComponent> getChildren() {
     // Invariants
@@ -143,7 +135,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void setChildren(ArrayList<ProjectComponent> children) {
     // Invariants
@@ -159,7 +150,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void addChildren(ProjectComponent children) {
     // Precondiciones
@@ -186,7 +176,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void removeChildren(ProjectComponent children) {
     // Precondiciones
@@ -213,7 +202,6 @@ public class Project extends ProjectComponent {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void acceptVisitor(ProjectVisitor visitor) {
     // Precondiciones
@@ -234,11 +222,7 @@ public class Project extends ProjectComponent {
   }
 
   private boolean invariants() {
-    boolean check = true;
-
-    if (this.getName().isEmpty()) {
-      check = false;
-    }
+    boolean check = !this.getName().isEmpty();
 
     if (this.getParent() != null) {
       if (this.getParent().getClass().getSimpleName().equals("Task")) {

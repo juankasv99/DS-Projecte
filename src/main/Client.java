@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 
 public class Client {
@@ -17,7 +16,6 @@ public class Client {
    * Some javadoc.
    *
    * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   static Logger logger = LoggerFactory.getLogger(Client.class);
 

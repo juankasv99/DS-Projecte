@@ -14,16 +14,15 @@ import org.slf4j.LoggerFactory;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 
 public abstract class ProjectComponent {
-  private String name;
-  private ProjectComponent parent;
+  private final String name;
+  private final ProjectComponent parent;
   private LocalDateTime startTime;
   private LocalDateTime endTime;
   private Duration duration;
-  private ArrayList<String> tags;
+  private final ArrayList<String> tags;
   Logger logger = LoggerFactory.getLogger(ProjectComponent.class);
 
   /**
@@ -31,7 +30,6 @@ public abstract class ProjectComponent {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public ProjectComponent(String name, ProjectComponent parent) {
     this.name = name;
@@ -73,7 +71,6 @@ public abstract class ProjectComponent {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void setStartTime(LocalDateTime startTime) {
     this.startTime = startTime;
@@ -98,7 +95,7 @@ public abstract class ProjectComponent {
 
   public abstract void addChildren(ProjectComponent children);
 
-  public abstract void removeChildren(ProjectComponent children);
+  // public abstract void removeChildren(ProjectComponent children);
 
   public abstract void update(Interval activeInterval);
 

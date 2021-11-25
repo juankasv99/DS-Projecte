@@ -14,7 +14,6 @@ import org.json.JSONTokener;
  *
  * @author Some javadoc.
  * @version Some javadoc.
- * @deprecated Some javadoc.
  */
 
 public class Loadjson {
@@ -105,7 +104,6 @@ public class Loadjson {
    *
    * @author Some javadoc.
    * @version Some javadoc.
-   * @deprecated Some javadoc.
    */
   public void load(String fileName) {
     InputStream is = Loadjson.class.getResourceAsStream(fileName);

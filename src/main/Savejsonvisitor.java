@@ -7,11 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Some javadoc.
+ * Aquesta classe es un visitor que recorre tota la jerarquia de projectes.
+ * i tasques i la guarda en un fitxer json.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
 public class Savejsonvisitor implements ProjectVisitor {
@@ -21,11 +21,11 @@ public class Savejsonvisitor implements ProjectVisitor {
   private JSONArray intervals;
 
   /**
-   * Some javadoc.
+   * Consructor de la classe que inicialitza.
+   * els elements de la classe amb JSONOBJECT.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
+   * @version 1.0.
    */
   public Savejsonvisitor() {
     this.root = new JSONObject();
@@ -49,11 +49,10 @@ public class Savejsonvisitor implements ProjectVisitor {
   }
 
   /**
-   * Some javadoc.
+   * Aquesta es la funcio guarda a jerarquia en el fitxer que es passa per parametre.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
+   * @version 1.0.
    */
   public void save(String fileName) {
     FileWriter file = null;
@@ -65,6 +64,7 @@ public class Savejsonvisitor implements ProjectVisitor {
       error.printStackTrace();
     } finally {
       try {
+        assert file != null;
         file.flush();
         file.close();
       } catch (IOException error) {
