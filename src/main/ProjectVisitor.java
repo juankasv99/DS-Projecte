@@ -1,11 +1,12 @@
 package main;
 
 /**
- * Some javadoc.
+ * Aquest es la classe base que implementa els visitors a ProjectComponent.
+ * les classes que la implementen sobrescriuen les funcions.
+ * d'aquesta classe.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
 public interface ProjectVisitor {

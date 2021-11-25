@@ -9,11 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Aquesta classe en un visitor que recorre tota la jerarquia.
+ * En cada ProjectComponent mira els tags que te i els compara.
+ * Amb el tag amb el que s'has creat la classe.
+ * Si el te mostra el ProjectComponent.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
 public class SearchByTagVisitor implements ProjectVisitor {
@@ -24,11 +26,12 @@ public class SearchByTagVisitor implements ProjectVisitor {
   Logger logger = LoggerFactory.getLogger(SearchByTagVisitor.class);
 
   /**
-   * Some javadoc.
+   * Al ser un singleton en comptes de cridar al constructor es crida.
+   * a aquesta funcio si mai sha cridat abans crida al constructor.
+   * sino retorna la instancia del objecta actual.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
+   * @version 1.0.
    */
   public static SearchByTagVisitor getInstance(ProjectComponent root) {
     if (uniqueInstance == null) {

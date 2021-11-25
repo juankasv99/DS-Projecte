@@ -6,21 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * En el client es on es l'inici del programa.
+ * i aqui es on es selecciona el test a fer.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
 public class Client {
 
-  /**
-   * Some javadoc.
-   *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
-   */
   static Logger logger = LoggerFactory.getLogger(Client.class);
 
   public static void main(String[] args) throws InterruptedException {
@@ -29,10 +23,12 @@ public class Client {
   }
 
   /**
-   * Some javadoc.
+   * Test del SearchByTag.
+   * Es crear diferents projects i task i sels i dona diferents tags.
+   * Una vega afegits es busca un tag i mostra els porjects i task que el tenen.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
+   * @version 1.0.
    */
   public static void testSearchByTag() {
     Project root = new Project("root", null);
