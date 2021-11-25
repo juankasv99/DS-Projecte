@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 // Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
 
 /**
- * Some javadoc.
+ * Aquesta classe és la classe base de la qual es generen tant la classe Task com la classe
+ * Project. En aquesta s'especifica l'estructura base de les dues, amb aquells atributs i
+ * mètodes que comparteixen els dos elements.
  *
- * @author Some javadoc.
- * @version Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
 public abstract class ProjectComponent {
@@ -26,10 +28,10 @@ public abstract class ProjectComponent {
   Logger logger = LoggerFactory.getLogger(ProjectComponent.class);
 
   /**
-   * Some javadoc.
+   * Constructor principal de la classe on es passa per paràmetre el nom amb el que es vol crear
+   * el component i el seu component pare.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public ProjectComponent(String name, ProjectComponent parent) {
     this.name = name;
@@ -67,10 +69,10 @@ public abstract class ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ajuda des d'un element extern especificar quin temps inicial es vol
+   * assignar al component.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void setStartTime(LocalDateTime startTime) {
     this.startTime = startTime;

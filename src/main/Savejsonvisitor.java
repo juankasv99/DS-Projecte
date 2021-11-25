@@ -25,7 +25,6 @@ public class Savejsonvisitor implements ProjectVisitor {
    * els elements de la classe amb JSONOBJECT.
    *
    * @author Grup 1 Torn 422
-   * @version 1.0.
    */
   public Savejsonvisitor() {
     this.root = new JSONObject();
@@ -52,7 +51,6 @@ public class Savejsonvisitor implements ProjectVisitor {
    * Aquesta es la funcio guarda a jerarquia en el fitxer que es passa per parametre.
    *
    * @author Grup 1 Torn 422
-   * @version 1.0.
    */
   public void save(String fileName) {
     FileWriter file = null;

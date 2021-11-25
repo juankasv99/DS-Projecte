@@ -6,10 +6,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Some javadoc.
+ * La classe Interval és la que s'inclou dintre de cada Task cada vegada que hi ha un
+ * periode d'activitat. Tota la informació de cada periode la té la classe interval.
  *
- * @author Some javadoc.
- * @version Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
 public class Interval implements Observer {
@@ -20,10 +21,11 @@ public class Interval implements Observer {
   private final Task task; //parent
 
   /**
-   * Some javadoc.
+   * El constructor de la classe truca a la instància única del timer per tal d'agafar la
+   * informació relativa al temps. Aquesta versió del constructor rep la tasca a la que
+   * afegir l'interval i el delay amb el que es vol afegir l'interval.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Interval(Task task, int delay) {
     this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
@@ -38,10 +40,11 @@ public class Interval implements Observer {
   }
 
   /**
-   * Some javadoc.
+   * El constructor de la classe truca a la instància única del timer per tal d'agafar la
+   * informació relativa al temps. Aquesta versió del constructor rep la tasca a la que
+   * afegir l'interval, el temps final, el temps inicial i la duració de l'interval.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Interval(LocalDateTime startTime, LocalDateTime endTime, Duration duration, Task task) {
     this.startTime = startTime;

@@ -10,10 +10,11 @@ import org.json.JSONTokener;
 
 
 /**
- * Some javadoc.
+ * Aquesta classe s'encarrega de càrregar les dades d'un JSON i importar-les a una estructura
+ * d'arbre amb totes les seves propietats.
  *
- * @author Some javadoc.
- * @version Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
 public class Loadjson {
@@ -100,10 +101,10 @@ public class Loadjson {
   }
 
   /**
-   * Some javadoc.
+   * Funció principal de la classe. Rep el nom de l'arxiu JSON i fa totes les funcions necesàries
+   * per importar tots els elements.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void load(String fileName) {
     InputStream is = Loadjson.class.getResourceAsStream(fileName);

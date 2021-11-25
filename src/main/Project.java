@@ -7,10 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * La classe Project és el component projecte que engloba tasques i altres projectes del
+ * timetracker. Com a paràmetres importants té l'element pare del que procedeix, una
+ * llista amb els elements que engloba, etc. Tots menys la llista de fills les hereda
+ * de la seva classe heredada, ProjectComponent.
  *
- * @author Some javadoc.
- * @version Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 public class Project extends ProjectComponent {
 
@@ -18,9 +21,10 @@ public class Project extends ProjectComponent {
   Logger logger = LoggerFactory.getLogger(Project.class);
 
   /**
-   * Some javadoc.
+   * Constructor principal on rep el nom que se li vol posar al projecte que es vol crear
+   * i l'element pare amb el que es vol relacionar.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Project(String name, ProjectComponent parent) {
     super(name, parent);
@@ -54,9 +58,10 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Aquest constructor rep els atributs d'una classe projecte, i és la que es crida quan és vol
+   * construir un projecte prefabricat, com per exemple quan estem carregant un JSON.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Project(String name, LocalDateTime startTime,
                  LocalDateTime endTime, Duration duration, ProjectComponent parent) {
@@ -120,9 +125,9 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a accedir als elements fills del projecte des d'un element exterior.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public ArrayList<ProjectComponent> getChildren() {
     // Invariants
@@ -132,9 +137,9 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a establir quins són els elements que composa el project actual.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void setChildren(ArrayList<ProjectComponent> children) {
     // Invariants
@@ -147,9 +152,9 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a afegir un element als fills del projecte.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void addChildren(ProjectComponent children) {
     // Precondiciones
@@ -173,9 +178,9 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a eliminar un element fill que passem per paràmetre del projecte.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void removeChildren(ProjectComponent children) {
     // Precondiciones
@@ -199,9 +204,10 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció complementària del patró visitor. Segons el visitor que el crida fa una funció
+   * diferent, segons la seva especificació.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void acceptVisitor(ProjectVisitor visitor) {
     // Precondiciones

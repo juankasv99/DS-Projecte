@@ -4,30 +4,37 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Programa Java on es troba la capa més externa del programa i els tests.
  *
- * @author Some javadoc.
- * @version Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
+@SuppressWarnings("checkstyle:SummaryJavadoc")
 public class Client {
 
   /**
-   * Some javadoc.
+   * Clase client, amb la qual es fan les execucions i els tests de prova.
    *
-   * @author Some javadoc.
    */
   static Logger logger = LoggerFactory.getLogger(Client.class);
 
   /**
-   * Some javadoc.
+   * Funció principal de tot el programa. Es selecciona quin dels diferents tests s'executen.
+   * Hi ha 3 tipus de tests:
+   * el testSampleTree on es comprova si l'estructura d'arbre es construeix
+   * correctament,
+   * el testLoadSampleTree on es comprova el funcionament de la càrrega i la descarrega del
+   * json,
+   * el testOfCountingTime on es comprova si el clock si el recompte de tots els elements
+   * de l'arbre és correcte.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
-    // testSampleTree();
-    // testLoadSampleTree();
+    //testSampleTree();
+    //testLoadSampleTree();
     testOfCountingTime();
   }
 
