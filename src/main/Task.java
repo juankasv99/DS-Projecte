@@ -206,12 +206,12 @@ public class Task extends ProjectComponent {
 
     return this.intervals;
   }
+
   /**
    * Guarda la llista de intervals que es passa per parametre en la seva llista.
    *
    * @author Grup 1 Torn 422
    */
-
   public void setIntervals(ArrayList<Interval> intervals) {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
