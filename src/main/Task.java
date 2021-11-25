@@ -29,7 +29,8 @@ public class Task extends ProjectComponent {
   public Task(String name, ProjectComponent parent) {
     super(name, parent);
     // Precondiciones
-    assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
+    assert this.intervals == null : "La lista de Intervals de la Task"
+        + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
     if (getParent() != null) {
@@ -42,11 +43,16 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre de la Task debe ser el mismo que el de la variable name.";
-    assert this.getParent().equals(parent) : "El padre de la Task debe ser el mismo que el de la variable parent.";
-    assert this.getDuration().toSeconds() == 0 : "La duración de la Task debe ser 0 justo después de ser creada.";
-    assert this.intervals != null : "La lista de Intervals de la Task no debe ser null just después de ser creada.";
-    assert this.intervals.isEmpty() : "La lista de Intervals de la Task debe estar vacía justo después de ser creada." ;
+    assert this.getName().equals(name) : "El nombre de la Task"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent().equals(parent) : "El padre de la Task"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración de la Task"
+        + " debe ser 0 justo después de ser creada.";
+    assert this.intervals != null : "La lista de Intervals de la Task"
+        + " no debe ser null just después de ser creada.";
+    assert this.intervals.isEmpty() : "La lista de Intervals de la Task"
+        + " debe estar vacía justo después de ser creada.";
   }
 
   /**
@@ -63,7 +69,8 @@ public class Task extends ProjectComponent {
 
 
     // Precondiciones
-    assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
+    assert this.intervals == null : "La lista de Intervals de la Task"
+        + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
 
@@ -71,11 +78,16 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre de la Task debe ser el mismo que el de la variable name.";
-    assert this.getParent().equals(parent) : "El padre de la Task debe ser el mismo que el de la variable parent.";
-    assert this.getDuration().toSeconds() == 0 : "La duración de la Task debe ser 0 justo después de ser creada.";
-    assert this.intervals != null : "La lista de Intervals de la Task no debe ser null just después de ser creada.";
-    assert this.intervals.isEmpty() : "La lista de Intervals de la Task debe estar vacía justo después de ser creada." ;
+    assert this.getName().equals(name) : "El nombre de la Task"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent().equals(parent) : "El padre de la Task"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración de la Task"
+        + " debe ser 0 justo después de ser creada.";
+    assert this.intervals != null : "La lista de Intervals de la Task"
+        + " no debe ser null just después de ser creada.";
+    assert this.intervals.isEmpty() : "La lista de Intervals de la Task"
+        + " debe estar vacía justo después de ser creada.";
   }
 
   /**
@@ -86,7 +98,7 @@ public class Task extends ProjectComponent {
   public void startTask() {
     // Precondiciones
     assert this.intervals != null : "La lista de Intervals de la Task no debe ser null.";
-    int sizeBeforeInsert = this.intervals.size();
+    final int sizeBeforeInsert = this.intervals.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -98,8 +110,10 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals de la Task debe aumentar en 1 después de insertar el Interval.";
-    assert this.intervals.contains(interval) : "La lista de Intervals de la Task debe contener el Interval después de insertarlo.";
+    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals "
+        + "de la Task debe aumentar en 1 después de insertar el Interval.";
+    assert this.intervals.contains(interval) : "La lista de Intervals "
+        + "de la Task debe contener el Interval después de insertarlo.";
   }
 
   /**
@@ -111,7 +125,7 @@ public class Task extends ProjectComponent {
     // Precondiciones
     assert this.intervals != null : "La lista de Intervals de la Task no debe ser null.";
     assert delay > 0 : "El delay añadido al Interval debe ser mayor a 0.";
-    int sizeBeforeInsert = this.intervals.size();
+    final int sizeBeforeInsert = this.intervals.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -123,8 +137,10 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals de la Task debe aumentar en 1 después de insertar el Interval.";
-    assert this.intervals.contains(interval) : "La lista de Intervals de la Task debe contener el Interval después de insertarlo.";
+    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals"
+        + " de la Task debe aumentar en 1 después de insertar el Interval.";
+    assert this.intervals.contains(interval) : "La lista de Intervals de la Task"
+        + " debe contener el Interval después de insertarlo.";
   }
 
   /**
@@ -169,7 +185,7 @@ public class Task extends ProjectComponent {
     // Intervals
     assert this.invariants() : "Los invariants no se cumplen.";
 
-    // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
+    //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
   }
 
   /**
@@ -183,6 +199,11 @@ public class Task extends ProjectComponent {
 
     return this.intervals;
   }
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   */
 
   public void setIntervals(ArrayList<Interval> intervals) {
     // Invariants
@@ -226,7 +247,7 @@ public class Task extends ProjectComponent {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
-    // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
+    //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
   }
 
 

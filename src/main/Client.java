@@ -1,6 +1,8 @@
 package main;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
  * Some javadoc.
  *
@@ -18,6 +20,12 @@ public class Client {
    * @deprecated Some javadoc.
    */
   static Logger logger = LoggerFactory.getLogger(Client.class);
+
+  /**
+   * Some javadoc.
+   *
+   * @author Some javadoc.
+   */
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
     // testSampleTree();
@@ -42,7 +50,7 @@ public class Client {
     Project databases = new Project("databases", root);
     Task transportation = new Task("transportation", root);
 
-    savejsonvisitor savejsonvisitor = new savejsonvisitor();
+    Savejsonvisitor savejsonvisitor = new Savejsonvisitor();
     root.acceptVisitor(savejsonvisitor);
     savejsonvisitor.save("src/main/test.json");
 
@@ -52,7 +60,7 @@ public class Client {
   private static void testLoadSampleTree() {
     logger.debug("Test load sample tree starts:");
 
-    loadjson loadjson = new loadjson();
+    Loadjson loadjson = new Loadjson();
     logger.debug("Se cargan los datos en el archivo 'test.json'");
     loadjson.load("test.json");
     Project root = loadjson.getRoot();
@@ -71,16 +79,10 @@ public class Client {
     clock.start();
 
     Project root = new Project("root", null);
-    Task transportation = new Task("transportation", root);
-
-    Project softwareDesign = new Project("software design", root);
-    Project problems = new Project("problems", softwareDesign);
-    Task firstList = new Task("first list", problems);
-    Task secondList = new Task("second list", problems);
 
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
     printer.print();
-
+    Task transportation = new Task("transportation", root);
     logger.debug("Test of counting time starts:");
 
     logger.debug("transportation starts");
@@ -93,12 +95,19 @@ public class Client {
     logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
+    Project softwareDesign = new Project("software design", root);
+    Project problems = new Project("problems", softwareDesign);
+
+    Task firstList = new Task("first list", problems);
+
     logger.debug("first list starts");
     firstList.startTask();
     logger.trace("El thread se para durante 6 segundos.");
     Thread.sleep(6000);
 
-   logger.debug("second list starts");
+    Task secondList = new Task("second list", problems);
+
+    logger.debug("second list starts");
     secondList.startTask();
     logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);

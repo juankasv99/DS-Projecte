@@ -1,11 +1,10 @@
 package main;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Some javadoc.
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  * @deprecated Some javadoc.
  */
 
-public class savejsonvisitor implements ProjectVisitor {
+public class Savejsonvisitor implements ProjectVisitor {
 
   private JSONObject root;
   private JSONArray children;
@@ -28,7 +27,7 @@ public class savejsonvisitor implements ProjectVisitor {
    * @version Some javadoc.
    * @deprecated Some javadoc.
    */
-  public savejsonvisitor() {
+  public Savejsonvisitor() {
     this.root = new JSONObject();
     this.children = new JSONArray();
     this.intervals = new JSONArray();

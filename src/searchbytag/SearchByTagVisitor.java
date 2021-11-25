@@ -1,6 +1,10 @@
-package fita2;
+package searchbytag;
 
-import main.*;
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.ProjectVisitor;
+import main.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,21 +44,25 @@ public class SearchByTagVisitor implements ProjectVisitor {
   }
 
   public void search(String tag) {
-    this.tag = tag;
+    this.tag = tag.toLowerCase();
     this.root.acceptVisitor(this);
   }
 
   @Override
   public void visitProject(Project project) {
-    if (project.getTags().contains(tag)) {
-      logger.info(project.getName());
+    for (String projecttag : project.getTags()) {
+      if (projecttag == tag) {
+        logger.info("Project " + project.getName() + " has tag " + tag);
+      }
     }
   }
 
   @Override
   public void visitTask(Task task) {
-    if (task.getTags().contains(tag)) {
-      logger.info(task.getName());
+    for (String tasktag : task.getTags()) {
+      if (tasktag == tag) {
+        logger.info("Task " + task.getName() + " has tag " + tag);
+      }
     }
   }
 

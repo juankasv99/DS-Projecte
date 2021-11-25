@@ -1,9 +1,7 @@
-package fita2;
+package searchbytag;
 
-import main.PrinterVisitor;
 import main.Project;
 import main.Task;
-import main.savejsonvisitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +64,7 @@ public class Client {
     logger.debug("Test search by tag starts:");
 
     SearchByTagVisitor searchByTagVisitor = SearchByTagVisitor.getInstance(root);
-    searchByTagVisitor.search("");
+    searchByTagVisitor.search("java");
 
     logger.debug("Test search by tag ends");
   }
