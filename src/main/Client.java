@@ -66,7 +66,6 @@ public class Client {
     logger.debug("Test load sample tree starts:");
 
     Loadjson loadjson = new Loadjson();
-    logger.debug("Se cargan los datos en el archivo 'test.json'");
     loadjson.load("test.json");
     Project root = loadjson.getRoot();
 

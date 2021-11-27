@@ -13,7 +13,7 @@
         </encoder>
     </appender>
     <logger name="main" level="TRACE" />
-<!--    <logger name="fita2" level="TRACE" />-->
+    <logger name="searchbytag" level="TRACE" />
     <root level="ERROR">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="HTML" />

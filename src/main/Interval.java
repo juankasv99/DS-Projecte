@@ -4,6 +4,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Observer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * La classe Interval és la que s'inclou dintre de cada Task cada vegada que hi ha un
@@ -19,6 +22,7 @@ public class Interval implements Observer {
   private LocalDateTime endTime;
   private Duration duration;
   private final Task task; //parent
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   /**
    * El constructor de la classe truca a la instància única del timer per tal d'agafar la
@@ -75,6 +79,7 @@ public class Interval implements Observer {
 
   @Override
   public void update(Observable o, Object arg) {
+    logger.trace("El intervalo ha sido actualizado.");
     /* A cada tick se actualiza la duration y el endTime */
     this.duration = this.duration.plusSeconds(Clock.getInstance().getPeriod());
     this.endTime = this.startTime.plusSeconds(Clock.getInstance().getPeriod());

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -20,6 +22,7 @@ import org.json.JSONTokener;
 public class Loadjson {
 
   private Project root;
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   public Loadjson() {
   }
@@ -107,6 +110,7 @@ public class Loadjson {
    * @author Grup 1 Torn 422.
    */
   public void load(String fileName) {
+    logger.trace("Se ha cargado el JSON en una estructura de Arbol");
     InputStream is = Loadjson.class.getResourceAsStream(fileName);
     if (is == null) {
       throw new NullPointerException("Cannot find resource file " + fileName);

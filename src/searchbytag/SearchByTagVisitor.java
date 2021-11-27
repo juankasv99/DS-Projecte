@@ -48,14 +48,14 @@ public class SearchByTagVisitor implements ProjectVisitor {
   }
 
   public void search(String tag) {
-    this.tag = tag.toLowerCase();
+    this.tag = tag;
     this.root.acceptVisitor(this);
   }
 
   @Override
   public void visitProject(Project project) {
     for (String projecttag : project.getTags()) {
-      if (Objects.equals(projecttag, tag)) {
+      if (Objects.equals(projecttag.toLowerCase(), tag.toLowerCase())) {
         logger.info("Project " + project.getName() + " has tag " + tag);
       }
     }
@@ -64,7 +64,7 @@ public class SearchByTagVisitor implements ProjectVisitor {
   @Override
   public void visitTask(Task task) {
     for (String tasktag : task.getTags()) {
-      if (Objects.equals(tasktag, tag)) {
+      if (Objects.equals(tasktag.toLowerCase(), tag.toLowerCase())) {
         logger.info("Task " + task.getName() + " has tag " + tag);
       }
     }

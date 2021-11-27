@@ -59,7 +59,7 @@ public class Client {
     logger.debug("Test search by tag starts:");
 
     SearchByTagVisitor searchByTagVisitor = SearchByTagVisitor.getInstance(root);
-    searchByTagVisitor.search("java");
+    searchByTagVisitor.search("dart");
 
     logger.debug("Test search by tag ends");
   }

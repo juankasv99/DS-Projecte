@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Aquesta classe es un visitor que recorre tota la jerarquia de projectes.
@@ -19,6 +21,7 @@ public class Savejsonvisitor implements ProjectVisitor {
   private JSONObject root;
   private JSONArray children;
   private JSONArray intervals;
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   /**
    * Consructor de la classe que inicialitza.
@@ -53,6 +56,7 @@ public class Savejsonvisitor implements ProjectVisitor {
    * @author Grup 1 Torn 422
    */
   public void save(String fileName) {
+    logger.trace("Se ha guardado la estructura de árbol en un archivo JSON");
     FileWriter file = null;
 
     try {
