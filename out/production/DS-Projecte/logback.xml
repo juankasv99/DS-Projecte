@@ -14,10 +14,10 @@
         </encoder>
     </appender>
 
-    <logger name="src.main" level="TRACE" />
-    <logger name="src.fita2" level="TRACE" />
+    <logger name="main" level="TRACE" />
+    <logger name="fita2" level="TRACE" />
 
-    <root>
+    <root level="ERROR">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="HTML" />
     </root>
