@@ -7,51 +7,64 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Aquesta classe sempre tindra com a pare un project.
+ * Cada vegada que es treballi en una tasca creara un interval.
+ * Aquest interval s'afegira a la llista d'intervals de la classe.
+ * Son aquest intervals els que acualitzen els valors de temps.
+ * d'aquesta classe i auqesta actualitza al seu pare.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 public class Task extends ProjectComponent {
-
-  private final int zeroSecondsDelay = 0;
 
   private ArrayList<Interval> intervals;
 
   Logger logger = LoggerFactory.getLogger(Task.class);
 
   /**
-   * Some javadoc.
+   * Constructor de la classe.
+   * Sempre ha de tenir un nom i un pare.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public Task(String name, ProjectComponent parent) {
     super(name, parent);
     // Precondiciones
-    assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
+    assert this.intervals == null : "La lista de Intervals de la Task"
+        + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
-    logger.debug("Se crea Task "+ name + " hija de " + parent.getName());
+    if (getParent() != null) {
+      logger.debug("Se crea Task " + name + ", hija de " + parent.getName());
+    } else {
+      logger.warn("La Task " + name + " no tiene padre.");
+    }
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre de la Task debe ser el mismo que el de la variable name.";
-    assert this.getParent().equals(parent) : "El padre de la Task debe ser el mismo que el de la variable parent.";
-    assert this.getDuration().toSeconds() == 0 : "La duración de la Task debe ser 0 justo después de ser creada.";
-    assert this.intervals != null : "La lista de Intervals de la Task no debe ser null just después de ser creada.";
-    assert this.intervals.isEmpty() : "La lista de Intervals de la Task debe estar vacía justo después de ser creada." ;
+    assert this.getName().equals(name) : "El nombre de la Task"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent().equals(parent) : "El padre de la Task"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración de la Task"
+        + " debe ser 0 justo después de ser creada.";
+    assert this.intervals != null : "La lista de Intervals de la Task"
+        + " no debe ser null just después de ser creada.";
+    assert this.intervals.isEmpty() : "La lista de Intervals de la Task"
+        + " debe estar vacía justo después de ser creada.";
   }
 
   /**
-   * Some javadoc.
+   * Constructor de la classe que utilitza el loadjson.
+   * Crea una Task amb els valors de temps afegits.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
-  public Task(String name, @Deprecated LocalDateTime startTime,
-              @Deprecated LocalDateTime endTime, Duration duration, ProjectComponent parent) {
+  public Task(String name, LocalDateTime startTime,
+              LocalDateTime endTime, Duration duration, ProjectComponent parent) {
     super(name, parent);
     super.setStartTime(startTime);
     super.setEndTime(endTime);
@@ -59,7 +72,8 @@ public class Task extends ProjectComponent {
 
 
     // Precondiciones
-    assert this.intervals == null : "La lista de Intervals de la Task debe ser null antes de ser creada.";
+    assert this.intervals == null : "La lista de Intervals de la Task"
+        + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
 
@@ -67,26 +81,33 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre de la Task debe ser el mismo que el de la variable name.";
-    assert this.getParent().equals(parent) : "El padre de la Task debe ser el mismo que el de la variable parent.";
-    assert this.getDuration().toSeconds() == 0 : "La duración de la Task debe ser 0 justo después de ser creada.";
-    assert this.intervals != null : "La lista de Intervals de la Task no debe ser null just después de ser creada.";
-    assert this.intervals.isEmpty() : "La lista de Intervals de la Task debe estar vacía justo después de ser creada." ;
+    assert this.getName().equals(name) : "El nombre de la Task"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent().equals(parent) : "El padre de la Task"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración de la Task"
+        + " debe ser 0 justo después de ser creada.";
+    assert this.intervals != null : "La lista de Intervals de la Task"
+        + " no debe ser null just después de ser creada.";
+    assert this.intervals.isEmpty() : "La lista de Intervals de la Task"
+        + " debe estar vacía justo después de ser creada.";
   }
 
   /**
-   * Some javadoc.
+   * Creara un nou interval i sel afegeix a la llista d'intervals.
+   * A mes aquest interval comerçara a actualitzar la task amb els tick del Clock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void startTask() {
     // Precondiciones
     assert this.intervals != null : "La lista de Intervals de la Task no debe ser null.";
-    int sizeBeforeInsert = this.intervals.size();
+    final int sizeBeforeInsert = this.intervals.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
+    int zeroSecondsDelay = 0;
     Interval interval = new Interval(this, zeroSecondsDelay);
     this.intervals.add(interval);
 
@@ -94,20 +115,23 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals de la Task debe aumentar en 1 después de insertar el Interval.";
-    assert this.intervals.contains(interval) : "La lista de Intervals de la Task debe contener el Interval después de insertarlo.";
+    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals "
+        + "de la Task debe aumentar en 1 después de insertar el Interval.";
+    assert this.intervals.contains(interval) : "La lista de Intervals "
+        + "de la Task debe contener el Interval después de insertarlo.";
   }
 
   /**
-   * Some javadoc.
+   * Creara un nou interval amb delay i sel afegeix a la llista d'intervals.
+   * A mes aquest interval comerçara a actualitzar la task amb els tick del Clock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void startTask(int delay) {
     // Precondiciones
     assert this.intervals != null : "La lista de Intervals de la Task no debe ser null.";
     assert delay > 0 : "El delay añadido al Interval debe ser mayor a 0.";
-    int sizeBeforeInsert = this.intervals.size();
+    final int sizeBeforeInsert = this.intervals.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -119,14 +143,17 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals de la Task debe aumentar en 1 después de insertar el Interval.";
-    assert this.intervals.contains(interval) : "La lista de Intervals de la Task debe contener el Interval después de insertarlo.";
+    assert this.intervals.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de Intervals"
+        + " de la Task debe aumentar en 1 después de insertar el Interval.";
+    assert this.intervals.contains(interval) : "La lista de Intervals de la Task"
+        + " debe contener el Interval después de insertarlo.";
   }
 
   /**
-   * Some javadoc.
+   * La task avisa al Interval de que deixi d'escoltar al Clock.
+   * i per tant ja no actualitza la task amb cada tik del CLock.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void stopTask() {
     // Precondiciones
@@ -165,13 +192,13 @@ public class Task extends ProjectComponent {
     // Intervals
     assert this.invariants() : "Los invariants no se cumplen.";
 
-    // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
+    //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
   }
 
   /**
-   * Some javadoc.
+   * Retorna els Intervals.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public ArrayList<Interval> getIntervals() {
     // Invariants
@@ -180,6 +207,11 @@ public class Task extends ProjectComponent {
     return this.intervals;
   }
 
+  /**
+   * Guarda la llista de intervals que es passa per parametre en la seva llista.
+   *
+   * @author Grup 1 Torn 422
+   */
   public void setIntervals(ArrayList<Interval> intervals) {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -192,7 +224,7 @@ public class Task extends ProjectComponent {
 
   public void addChildren(ProjectComponent children) {}
 
-  public void removeChildren(ProjectComponent children) {}
+  // public void removeChildren(ProjectComponent children) {}
 
   private Interval getCurrentInterval() {
     // Invariants
@@ -203,9 +235,9 @@ public class Task extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Crida a la funcio visitTask i acceptViisitor dels seus intervals.
    *
-   * @author Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void acceptVisitor(ProjectVisitor visitor) {
     // Precondiciones
@@ -222,15 +254,12 @@ public class Task extends ProjectComponent {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
-    // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
+    //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
   }
 
-  private boolean invariants() {
-    boolean check = true;
 
-    if (this.getName().isEmpty()) {
-      check = false;
-    }
+  private boolean invariants() {
+    boolean check = !this.getName().isEmpty();
 
     if (this.getParent() == null) {
       check = false;

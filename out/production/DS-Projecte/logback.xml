@@ -4,7 +4,6 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-
     <appender name="HTML" class="ch.qos.logback.core.FileAppender">
         <file>log.html</file>
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
@@ -13,10 +12,8 @@
             </layout>
         </encoder>
     </appender>
-
     <logger name="main" level="TRACE" />
-    <logger name="fita2" level="TRACE" />
-
+    <logger name="searchbytag" level="TRACE" />
     <root level="ERROR">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="HTML" />

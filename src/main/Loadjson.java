@@ -1,27 +1,30 @@
 package main;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import java.io.InputStream;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
- * Some javadoc.
+ * Aquesta classe s'encarrega de càrregar les dades d'un JSON i importar-les a una estructura
+ * d'arbre amb totes les seves propietats.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
-public class loadjson {
+public class Loadjson {
 
   private Project root;
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
-  public loadjson() {
+  public Loadjson() {
   }
 
   public Project getRoot() {
@@ -101,14 +104,14 @@ public class loadjson {
   }
 
   /**
-   * Some javadoc.
+   * Funció principal de la classe. Rep el nom de l'arxiu JSON i fa totes les funcions necesàries
+   * per importar tots els elements.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void load(String fileName) {
-    InputStream is = loadjson.class.getResourceAsStream(fileName);
+    logger.trace("Se ha cargado el JSON en una estructura de Arbol");
+    InputStream is = Loadjson.class.getResourceAsStream(fileName);
     if (is == null) {
       throw new NullPointerException("Cannot find resource file " + fileName);
     }

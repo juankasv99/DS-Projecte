@@ -1,34 +1,35 @@
 package main;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Aquesta classe es un visitor que recorre tota la jerarquia de projectes.
+ * i tasques i la guarda en un fitxer json.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
-public class savejsonvisitor implements ProjectVisitor {
+public class Savejsonvisitor implements ProjectVisitor {
 
   private JSONObject root;
   private JSONArray children;
   private JSONArray intervals;
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   /**
-   * Some javadoc.
+   * Consructor de la classe que inicialitza.
+   * els elements de la classe amb JSONOBJECT.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
    */
-  public savejsonvisitor() {
+  public Savejsonvisitor() {
     this.root = new JSONObject();
     this.children = new JSONArray();
     this.intervals = new JSONArray();
@@ -50,13 +51,12 @@ public class savejsonvisitor implements ProjectVisitor {
   }
 
   /**
-   * Some javadoc.
+   * Aquesta es la funcio guarda a jerarquia en el fitxer que es passa per parametre.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422
    */
   public void save(String fileName) {
+    logger.trace("Se ha guardado la estructura de árbol en un archivo JSON");
     FileWriter file = null;
 
     try {
@@ -66,6 +66,7 @@ public class savejsonvisitor implements ProjectVisitor {
       error.printStackTrace();
     } finally {
       try {
+        assert file != null;
         file.flush();
         file.close();
       } catch (IOException error) {

@@ -1,27 +1,40 @@
 package main;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
- * Some javadoc.
+ * Programa Java on es troba la capa més externa del programa i els tests.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 
+@SuppressWarnings("checkstyle:SummaryJavadoc")
 public class Client {
 
   /**
-   * Some javadoc.
+   * Clase client, amb la qual es fan les execucions i els tests de prova.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
    */
   static Logger logger = LoggerFactory.getLogger(Client.class);
+
+  /**
+   * Funció principal de tot el programa. Es selecciona quin dels diferents tests s'executen.
+   * Hi ha 3 tipus de tests:
+   * el testSampleTree on es comprova si l'estructura d'arbre es construeix
+   * correctament,
+   * el testLoadSampleTree on es comprova el funcionament de la càrrega i la descarrega del
+   * json,
+   * el testOfCountingTime on es comprova si el clock si el recompte de tots els elements
+   * de l'arbre és correcte.
+   *
+   * @author Grup 1 Torn 422.
+   */
   public static void main(String[] args) throws InterruptedException {
     /* Seleccionar test  */
-    // testSampleTree();
-    // testLoadSampleTree();
+    //testSampleTree();
+    //testLoadSampleTree();
     testOfCountingTime();
   }
 
@@ -42,7 +55,7 @@ public class Client {
     Project databases = new Project("databases", root);
     Task transportation = new Task("transportation", root);
 
-    savejsonvisitor savejsonvisitor = new savejsonvisitor();
+    Savejsonvisitor savejsonvisitor = new Savejsonvisitor();
     root.acceptVisitor(savejsonvisitor);
     savejsonvisitor.save("src/main/test.json");
 
@@ -52,7 +65,7 @@ public class Client {
   private static void testLoadSampleTree() {
     logger.debug("Test load sample tree starts:");
 
-    loadjson loadjson = new loadjson();
+    Loadjson loadjson = new Loadjson();
     loadjson.load("test.json");
     Project root = loadjson.getRoot();
 
@@ -66,54 +79,63 @@ public class Client {
     Clock clock = Clock.getInstance();
     logger.trace("Se ha instanciado la variable periodo a 2.");
     clock.setPeriod(2);
+    logger.debug("Se inicia el reloj.");
     clock.start();
 
     Project root = new Project("root", null);
-    Task transportation = new Task("transportation", root);
-
-    Project softwareDesign = new Project("software design", root);
-    Project problems = new Project("problems", softwareDesign);
-    Task firstList = new Task("first list", problems);
-    Task secondList = new Task("second list", problems);
 
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
     printer.print();
+    Task transportation = new Task("transportation", root);
+    logger.debug("Test of counting time starts:");
 
-    System.out.println("Test of counting time starts:");
-
-    System.out.println("transportation starts");
+    logger.debug("transportation starts");
     transportation.startTask(Clock.getInstance().getPeriod());
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
     transportation.stopTask();
-    System.out.println("transportation stops");
+    logger.debug("transportation stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
-    System.out.println("first list starts");
+    Project softwareDesign = new Project("software design", root);
+    Project problems = new Project("problems", softwareDesign);
+
+    Task firstList = new Task("first list", problems);
+
+    logger.debug("first list starts");
     firstList.startTask();
+    logger.trace("El thread se para durante 6 segundos.");
     Thread.sleep(6000);
 
-    System.out.println("second list starts");
+    Task secondList = new Task("second list", problems);
+
+    logger.debug("second list starts");
     secondList.startTask();
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
 
     firstList.stopTask();
-    System.out.println("first list stops");
+    logger.debug("first list stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
     secondList.stopTask();
-    System.out.println("second list stops");
+    logger.debug("second list stops");
 
+    logger.trace("El thread se para durante 2 segundos.");
     Thread.sleep(2000);
 
-    System.out.println("transportation starts");
+    logger.debug("transportation starts");
     transportation.startTask();
+    logger.trace("El thread se para durante 4 segundos.");
     Thread.sleep(4000);
     transportation.stopTask();
-    System.out.println("transportation stops");
+    logger.debug("transportation stops");
 
-    System.out.println("Test of counting time ends");
+    logger.debug("Test of counting time ends");
 
     Clock.getInstance().stop();
   }

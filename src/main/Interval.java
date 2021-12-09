@@ -4,28 +4,32 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Observer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
- * Some javadoc.
+ * La classe Interval és la que s'inclou dintre de cada Task cada vegada que hi ha un
+ * periode d'activitat. Tota la informació de cada periode la té la classe interval.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
 public class Interval implements Observer {
 
-  private LocalDateTime startTime;
+  private final LocalDateTime startTime;
   private LocalDateTime endTime;
   private Duration duration;
-  private Task task; //parent
+  private final Task task; //parent
+  Logger logger = LoggerFactory.getLogger(Clock.class);
 
   /**
-   * Some javadoc.
+   * El constructor de la classe truca a la instància única del timer per tal d'agafar la
+   * informació relativa al temps. Aquesta versió del constructor rep la tasca a la que
+   * afegir l'interval i el delay amb el que es vol afegir l'interval.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Interval(Task task, int delay) {
     this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
@@ -40,11 +44,11 @@ public class Interval implements Observer {
   }
 
   /**
-   * Some javadoc.
+   * El constructor de la classe truca a la instància única del timer per tal d'agafar la
+   * informació relativa al temps. Aquesta versió del constructor rep la tasca a la que
+   * afegir l'interval, el temps final, el temps inicial i la duració de l'interval.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Interval(LocalDateTime startTime, LocalDateTime endTime, Duration duration, Task task) {
     this.startTime = startTime;
@@ -75,6 +79,7 @@ public class Interval implements Observer {
 
   @Override
   public void update(Observable o, Object arg) {
+    logger.trace("El intervalo ha sido actualizado.");
     /* A cada tick se actualiza la duration y el endTime */
     this.duration = this.duration.plusSeconds(Clock.getInstance().getPeriod());
     this.endTime = this.startTime.plusSeconds(Clock.getInstance().getPeriod());

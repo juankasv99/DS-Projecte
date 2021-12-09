@@ -7,11 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * La classe Project és el component projecte que engloba tasques i altres projectes del
+ * timetracker. Com a paràmetres importants té l'element pare del que procedeix, una
+ * llista amb els elements que engloba, etc. Tots menys la llista de fills les hereda
+ * de la seva classe heredada, ProjectComponent.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 public class Project extends ProjectComponent {
 
@@ -19,43 +21,47 @@ public class Project extends ProjectComponent {
   Logger logger = LoggerFactory.getLogger(Project.class);
 
   /**
-   * Some javadoc.
+   * Constructor principal on rep el nom que se li vol posar al projecte que es vol crear
+   * i l'element pare amb el que es vol relacionar.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Project(String name, ProjectComponent parent) {
     super(name, parent);
 
     // Precondiciones
-    assert this.children == null : "La lista de hijos del Project debe ser null antes de ser creado.";
+    assert this.children == null : "La lista de hijos del Project"
+        + " debe ser null antes de ser creado.";
 
     this.children = new ArrayList<>();
     if (getParent() == null) {
-      logger.debug("Se crea Project " + name + " ,que no tiene padre.");
+      logger.debug("Se crea Project " + name + ", que no tiene padre.");
 
     } else {
-      logger.debug("Se crea Project " + name + " ,hijo de " + parent.getName());
+      logger.debug("Se crea Project " + name + ", hijo de " + parent.getName());
     }
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre del Project debe ser el mismo que el de la variable name.";
-    if (this.getParent() != null) {
-      assert this.getParent().equals(parent) : "El padre del Project debe ser el mismo que el de la variable parent.";
-    }
-    assert this.getDuration().toSeconds() == 0 : "La duración del Project debe ser 0 justo después de ser creado.";
-    assert this.children != null : "La lista de hijos del Project no debe ser null just después de ser creado.";
-    assert this.children.isEmpty() : "La lista de hijos del Project debe estar vacía justo después de ser creado." ;
+    assert this.getName().equals(name) : "El nombre del Project"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent() == null || this.getParent().equals(parent) : "El padre del Project"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración del Project"
+        + " debe ser 0 justo después de ser creado.";
+    assert this.children != null : "La lista de hijos del Project"
+        + " no debe ser null just después de ser creado.";
+    assert this.children.isEmpty() : "La lista de hijos del"
+        + " Project debe estar vacía justo después de ser creado.";
   }
 
   /**
-   * Some javadoc.
+   * Aquest constructor rep els atributs d'una classe projecte, i és la que es crida quan és vol
+   * construir un projecte prefabricat, com per exemple quan estem carregant un JSON.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public Project(String name, LocalDateTime startTime,
                  LocalDateTime endTime, Duration duration, ProjectComponent parent) {
@@ -65,7 +71,8 @@ public class Project extends ProjectComponent {
     super.setDuration(duration);
 
     // Precondiciones
-    assert this.children == null : "La lista de hijos del Project debe ser null antes de ser creado.";
+    assert this.children == null : "La lista de hijos del Project"
+        + " debe ser null antes de ser creado.";
 
     this.children = new ArrayList<>();
 
@@ -73,13 +80,16 @@ public class Project extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getName().equals(name) : "El nombre del Project debe ser el mismo que el de la variable name.";
-    if (this.getParent() != null) {
-      assert this.getParent().equals(parent) : "El padre del Project debe ser el mismo que el de la variable parent.";
-    }
-    assert this.getDuration().toSeconds() == 0 : "La duración del Project debe ser 0 justo después de ser creado.";
-    assert this.children != null : "La lista de hijos del Project no debe ser null just después de ser creado.";
-    assert this.children.isEmpty() : "La lista de hijos del Project debe estar vacía justo después de ser creado." ;
+    assert this.getName().equals(name) : "El nombre del Project"
+        + " debe ser el mismo que el de la variable name.";
+    assert this.getParent() == null || this.getParent().equals(parent) : "El padre del Project"
+        + " debe ser el mismo que el de la variable parent.";
+    assert this.getDuration().toSeconds() == 0 : "La duración del Project"
+        + " debe ser 0 justo después de ser creado.";
+    assert this.children != null : "La lista de hijos del Project"
+        + " no debe ser null just después de ser creado.";
+    assert this.children.isEmpty() : "La lista de hijos del Project"
+        + " debe estar vacía justo después de ser creado.";
   }
 
   @Override
@@ -108,15 +118,16 @@ public class Project extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.getDuration().toSeconds() >= 0 : "La duración del Project debe ser mayor o igual 0.";
-    assert this.getEndTime().equals(activeInterval.getEndTime()) : "El tiempo de finalización del Project debe ser el mismo que el del Interval activo.";
+    assert this.getDuration().toSeconds() >= 0 : "La duración del Project"
+        + " debe ser mayor o igual 0.";
+    assert this.getEndTime().equals(activeInterval.getEndTime()) : "El tiempo"
+        + " de finalización del Project debe ser el mismo que el del Interval activo.";
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a accedir als elements fills del projecte des d'un element exterior.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public ArrayList<ProjectComponent> getChildren() {
     // Invariants
@@ -126,10 +137,9 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a establir quins són els elements que composa el project actual.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void setChildren(ArrayList<ProjectComponent> children) {
     // Invariants
@@ -142,15 +152,15 @@ public class Project extends ProjectComponent {
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a afegir un element als fills del projecte.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void addChildren(ProjectComponent children) {
     // Precondiciones
-    assert children != null : "El hijo que va a ser añadido a la lista de hijos del Project no debe ser null.";
-    int sizeBeforeInsert = this.children.size();
+    assert children != null : "El hijo"
+        + " que va a ser añadido a la lista de hijos del Project no debe ser null.";
+    final int sizeBeforeInsert = this.children.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -161,20 +171,22 @@ public class Project extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.children.size() == sizeBeforeInsert + 1 : "El tamaño de la lista de hijos del Project debe aumentar en 1 después de insertar al hijo.";
-    assert this.children.contains(children) : "La lista de hijos del Project debe contener al hijo después de insertarlo.";
+    assert this.children.size() == sizeBeforeInsert + 1 : "El tamaño"
+        + " de la lista de hijos del Project debe aumentar en 1 después de insertar al hijo.";
+    assert this.children.contains(children) : "La lista de hijos"
+        + " del Project debe contener al hijo después de insertarlo.";
   }
 
   /**
-   * Some javadoc.
+   * Funció que ens ajuda a eliminar un element fill que passem per paràmetre del projecte.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void removeChildren(ProjectComponent children) {
     // Precondiciones
-    assert children != null : "El hijo que va a ser eliminado de la lista de hijos del Project no debe ser null.";
-    int sizeBeforeRemove = this.children.size();
+    assert children != null : "El hijo que va a ser eliminado"
+        + " de la lista de hijos del Project no debe ser null.";
+    final int sizeBeforeRemove = this.children.size();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -185,15 +197,17 @@ public class Project extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
-    assert this.children.size() == sizeBeforeRemove - 1 : "El tamaño de la lista de hijos del Project debe disminuir en 1 después de eliminar al hijo.";
-    assert !this.children.contains(children) : "La lista de hijos del Project no debe contener al hijo después de eliminarlo.";
+    assert this.children.size() == sizeBeforeRemove - 1 : "El tamaño"
+        + " de la lista de hijos del Project debe disminuir en 1 después de eliminar al hijo.";
+    assert !this.children.contains(children) : "La lista de hijos"
+        + " del Project no debe contener al hijo después de eliminarlo.";
   }
 
   /**
-   * Some javadoc.
+   * Funció complementària del patró visitor. Segons el visitor que el crida fa una funció
+   * diferent, segons la seva especificació.
    *
-   * @author Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public void acceptVisitor(ProjectVisitor visitor) {
     // Precondiciones
@@ -210,15 +224,11 @@ public class Project extends ProjectComponent {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
-    // Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase.
+    //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
   }
 
   private boolean invariants() {
-    boolean check = true;
-
-    if (this.getName().isEmpty()) {
-      check = false;
-    }
+    boolean check = !this.getName().isEmpty();
 
     if (this.getParent() != null) {
       if (this.getParent().getClass().getSimpleName().equals("Task")) {

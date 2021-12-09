@@ -1,27 +1,27 @@
 package main;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Some javadoc.
+ * Aquesta clase implementa un patró Visitor i s'encarrega de printar la informació de cada
+ * component que visita.
  *
- * @author Some javadoc.
- * @version Some javadoc.
- * @deprecated Some javadoc.
+ * @author Grup 1 Torn 422.
+ * @version 1.0.
  */
 
 public class PrinterVisitor implements ProjectVisitor {
 
   private static PrinterVisitor uniqueInstance;
-  private ProjectComponent root;
+  private final ProjectComponent root;
   Logger logger = LoggerFactory.getLogger(PrinterVisitor.class);
 
   /**
-   * Some javadoc.
+   * D'igual manera que es fa en la classe Clock, la funció getInstance el que ens asegura és que
+   * en tota l'execució del programa només existeix una instància de l'objecte PrinterVisitor.
    *
-   * @author Some javadoc.
-   * @version Some javadoc.
-   * @deprecated Some javadoc.
+   * @author Grup 1 Torn 422.
    */
   public static PrinterVisitor getInstance(ProjectComponent root) {
     if (uniqueInstance == null) {
