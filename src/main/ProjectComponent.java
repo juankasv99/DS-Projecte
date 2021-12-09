@@ -3,8 +3,11 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import webserver.IdGenerator;
 
 // Task:      Time Spent (sum of intervals), When
 // Project:   Time Spent (sum of children Intervals), Contains (0-n)Tasks and (0-n)Projects
@@ -19,6 +22,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public abstract class ProjectComponent {
+  private int id;
   private final String name;
   private final ProjectComponent parent;
   private LocalDateTime startTime;
@@ -34,6 +38,8 @@ public abstract class ProjectComponent {
    * @author Grup 1 Torn 422.
    */
   public ProjectComponent(String name, ProjectComponent parent) {
+    IdGenerator idGenerator = IdGenerator.getInstance();
+    this.id = idGenerator.getId();
     this.name = name;
     this.parent = parent;
     this.duration = Duration.ZERO;
@@ -46,6 +52,10 @@ public abstract class ProjectComponent {
 
   public ProjectComponent getParent() {
     return parent;
+  }
+
+  public int getId() {
+    return id;
   }
 
   public String getName() {
@@ -102,6 +112,8 @@ public abstract class ProjectComponent {
   public abstract void update(Interval activeInterval);
 
   public abstract void acceptVisitor(ProjectVisitor visitor);
+
+  public abstract JSONObject toJson(int level);
 
   @Override
   public String toString() {

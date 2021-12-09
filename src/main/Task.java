@@ -3,6 +3,9 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -255,6 +258,30 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     //Postcondiciones: No existen postcondiciones para esta función, puesto que no modifica la clase
+  }
+
+  @Override
+  public JSONObject toJson(int level) {
+    JSONObject json = new JSONObject();
+
+    json.put("id", this.getId());
+    json.put("name", this.getName());
+    json.put("startTime", this.getStartTime());
+    json.put("endTime", this.getEndTime());
+    json.put("duration", this.getDuration());
+    if (this.getParent() != null) {
+      json.put("parent", this.getParent().getName());
+    }
+
+    JSONArray jsonIntervals = new JSONArray();
+    if (level > 0) {
+      for (Interval interval : this.getIntervals()) {
+        jsonIntervals.put(interval.toJson());
+      }
+    }
+    json.put("intervals", jsonIntervals);
+
+    return json;
   }
 
 
