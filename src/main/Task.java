@@ -265,10 +265,11 @@ public class Task extends ProjectComponent {
     JSONObject json = new JSONObject();
 
     json.put("id", this.getId());
+    json.put("type", this.getClass().getSimpleName());
     json.put("name", this.getName());
     json.put("startTime", this.getStartTime());
     json.put("endTime", this.getEndTime());
-    json.put("duration", this.getDuration());
+    json.put("duration", this.getDuration().toSeconds());
     if (this.getParent() != null) {
       json.put("parent", this.getParent().getName());
     }
