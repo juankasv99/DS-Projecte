@@ -1,16 +1,16 @@
 package webserver;
 
-import main.Project;
-import main.ProjectComponent;
-import main.Clock;
-import main.Task;
+import main.*;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class MainWebServer {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     webServer();
   }
 
-  public static void webServer() {
+  public static void webServer() throws InterruptedException {
     final ProjectComponent root = makeTreeCourses();
     // implement this method that returns the tree of
     // appendix A in the practicum handout
@@ -23,7 +23,7 @@ public class MainWebServer {
     new WebServer(root);
   }
 
-  private static ProjectComponent makeTreeCourses() {
+  private static ProjectComponent makeTreeCourses() throws InterruptedException {
     Project root = new Project("root", null);
 
     Project softwareDesign = new Project("software design", root);
@@ -50,6 +50,12 @@ public class MainWebServer {
     databases.addTag("C++");
     Task transportation = new Task("transportation", root);
 
+    LocalDateTime start = LocalDateTime.now();
+    Thread.sleep(1000);
+    LocalDateTime end = LocalDateTime.now();
+
+    Duration duration = Duration.ofSeconds(1);
+    Interval test = new Interval(start,end,duration,transportation);
     return root;
   }
 }
