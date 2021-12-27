@@ -31,6 +31,7 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
   http: ^0.13.3
+  font_awesome_flutter: ^9.2.0
 
 
 

@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TimeTracker',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        //primarySwatch: Colors.red,
+        primaryColor: Color(0xFF960000),
+        secondaryHeaderColor: Color(0xFF620000),
         textTheme: TextTheme(
           subtitle1: TextStyle(fontSize: 20.0),
           bodyText2: TextStyle(fontSize: 20.0),

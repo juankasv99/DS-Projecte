@@ -22,11 +22,11 @@ abstract class Activity {
 
 class Project extends Activity {
   Project.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
-    if(json.containsKey('activities')) {
-      for (Map<String, dynamic> jsonChild in json['activities']) {
-        if(jsonChild['class'] == 'project') {
+    if(json.containsKey('children')) {
+      for (Map<String, dynamic> jsonChild in json['children']) {
+        if(jsonChild['type'].toString().toLowerCase() == 'project') {
           children.add(Project.fromJson(jsonChild));
-        } else if (jsonChild['class'] == 'task') {
+        } else if (jsonChild['type'].toString().toLowerCase() == 'task') {
           children.add(Task.fromJson(jsonChild));
         } else {
           assert(false);
@@ -38,9 +38,10 @@ class Project extends Activity {
 
 
 class Task extends Activity {
-  bool active;
+  bool active = true;
   Task.fromJson(Map<String, dynamic> json) :
-            active = json['active'],
+            //active = json['active'],
+            
             super.fromJson(json) {
     for (Map<String, dynamic> jsonChild in json['intervals']) {
       children.add(Interval.fromJson(jsonChild));
@@ -71,9 +72,9 @@ class Tree {
   Tree(Map<String, dynamic> dec) {
     // 1 level tree, root and children only, root is either Project or Task. If Project
     // children are Project or Task, that is, Activity. If root is Task, children are Instance.
-    if (dec['class'] == "project") {
+    if (dec['type'].toString().toLowerCase() == "project") {
       root = Project.fromJson(dec);
-    } else if (dec['class'] == "task") {
+    } else if (dec['type'].toString().toLowerCase() == "task") {
       root = Task.fromJson(dec);
     } else {
       assert(false, "neither project or task");

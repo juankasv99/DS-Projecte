@@ -4,6 +4,8 @@ import 'package:flutter_test_app/page_report.dart';
 import 'package:flutter_test_app/tree.dart' hide getTree; //old getTree()
 import 'package:flutter_test_app/requests.dart';
 import 'dart:async';
+import 'package:flutter_test_app/util/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PageActivities extends StatefulWidget {
   final int id;
@@ -40,7 +42,9 @@ class _PageActivitiesState extends State<PageActivities> {
         if (snapshot.hasData) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(snapshot.data!.root.name),
+              centerTitle: true,
+              backgroundColor: primaryColorRed,
+              title: Text(snapshot.data!.root.name,),
               actions: <Widget>[
                 IconButton(
                     icon: Icon(Icons.home),
@@ -54,13 +58,36 @@ class _PageActivitiesState extends State<PageActivities> {
                 //TODO: other actions
               ],
             ),
-            body: ListView.separated(
-              padding: const EdgeInsets.all(16.0),
-              itemCount: snapshot.data!.root.children.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  _buildRow(snapshot.data!.root.children[index], index),
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(),
+            body: Column(
+              children: <Widget>[
+                _sumUpProject(activity: snapshot.data!.root),
+                SizedBox(height: 5.0),
+                Divider(
+                  thickness: 5.0,
+                  indent: 12.0,
+                  endIndent: 12.0,
+                ),
+                Expanded(
+                  child: ListView.separated(
+                    //scrollDirection: Axis.vertical,
+                    //shrinkWrap: true,
+                              
+                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 5),
+                    itemCount: snapshot.data!.root.children.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                    _buildRow(snapshot.data!.root.children[index], index),
+                              separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
+                            ),
+                ),
+              ],),
+              
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                print("click add");
+              },
+              backgroundColor: primaryColorRedDark,
+              child: const Icon(Icons.add),
             ),
           );
         } else if (snapshot.hasError) {
@@ -140,6 +167,11 @@ class _PageActivitiesState extends State<PageActivities> {
 
     if(activity is Project) {
       return ListTile(
+        leading: CircleAvatar(
+          child: FaIcon(FontAwesomeIcons.briefcase, color: Colors.white, size: 19,),
+          radius: 21.0,
+          backgroundColor: primaryColorRedDark,
+        ),
         title: Text('${activity.name}'),
         trailing: Text('$strDuration'),
         onTap: () => _navigateDownActivities(activity.id),
@@ -149,6 +181,11 @@ class _PageActivitiesState extends State<PageActivities> {
       Widget trailing;
       trailing = Text('$strDuration');
       return ListTile(
+        leading: CircleAvatar(
+          child: FaIcon(FontAwesomeIcons.listOl, color: Colors.white, size: 20,),
+          radius: 21.0,
+          backgroundColor: primaryColorRedLight,
+        ),
         title: Text('${activity.name}'),
         trailing: trailing,
         onTap: () => _navigateDownIntervals(activity.id),
@@ -206,6 +243,51 @@ class _PageActivitiesState extends State<PageActivities> {
   void dispose() {
     _timer.cancel();
     super.dispose();
+  }
+
+  _sumUpProject({Activity? activity}) {
+      return Container(
+        padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
+        child: Column(
+          children: <Widget>[
+            Row(children: <Widget>[
+              Text("Last Task Worked", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),),
+              Spacer(),
+              Text("Project Duration", textAlign: TextAlign.end, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),)
+            ],),
+            SizedBox(height: 5.0,),
+            Row(children: <Widget>[
+              Text("Task Name (Project)", textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              Spacer(),
+              Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            ],  
+            ),
+            SizedBox(height: 25.0),
+            Row(
+              children: <Widget>[
+                Text("Started:", textAlign: TextAlign.start, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),),
+                Spacer(),
+                Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              ],
+            ),
+            SizedBox(height: 2.0,),
+            Row(
+              children: <Widget>[
+                Text("Last Worked:", textAlign: TextAlign.start, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),),
+                Spacer(),
+                Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                
+              IconButton(onPressed: () {}, icon: Icon(Icons.play_circle), iconSize: 45, splashRadius: 30, color: primaryColorRedDark,)
+            ],)
+            
+          ],
+        ),
+      );
   }
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_app/page_activities.dart';
 import 'package:flutter_test_app/tree.dart' as Tree hide getTree;
 import 'package:flutter_test_app/requests.dart';
+import 'package:flutter_test_app/util/colors.dart';
 
 class PageIntervals extends StatefulWidget {
   final int id;
@@ -40,6 +41,8 @@ class _PageIntervalsState extends State<PageIntervals> {
           int numChildren = snapshot.data!.root.children.length;
           return Scaffold(
             appBar: AppBar(
+              centerTitle: true,
+              backgroundColor: primaryColorRed,
               title: Text(snapshot.data!.root.name),
               actions: <Widget>[
                 IconButton(icon: Icon(Icons.home),
@@ -53,13 +56,30 @@ class _PageIntervalsState extends State<PageIntervals> {
                 )
               ],
             ),
-            body: ListView.separated(
-              padding: const EdgeInsets.all(16.0),
-              itemCount: numChildren,
-              itemBuilder: (BuildContext context, int index) =>
-                      _buildRow(snapshot.data!.root.children[index], index),
-              separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
+            body: Column( 
+              children: <Widget>[
+                _sumUpTask(activity: snapshot.data!.root),
+                SizedBox(height: 15.0),
+                Divider(
+                  thickness: 5.0,
+                  indent: 12.0,
+                  endIndent: 12.0,
+                ),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: numChildren,
+                itemBuilder: (BuildContext context, int index) =>
+                        _buildRow(snapshot.data!.root.children[index], index),
+                separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+              ),
+            ),]),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+              },
+              backgroundColor: primaryColorRedDark,
+              
             ),
           );
         } else if (snapshot.hasError) {
@@ -105,6 +125,37 @@ void dispose() {
   _timer.cancel();
   super.dispose();
 }
+
+  _sumUpTask({Tree.Activity? activity}) {
+    return Container(
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
+      child: Column(
+        children: <Widget>[
+          Row(children: <Widget>[
+            Text("Last Time Worked", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),),
+            Spacer(),
+            Text("Total Duration", textAlign: TextAlign.end, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),)
+          ],),
+          SizedBox(height: 5.0,),
+          Row(children: <Widget>[
+            Text("Task Name (Project)", textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Spacer(),
+            Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+          ],),
+          SizedBox(height: 20.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            Text("Started on:", textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),),
+          ],),
+          SizedBox(height: 5.0,),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
+          ],),
+        ],),
+    );
+  }
 }
 
   /*
