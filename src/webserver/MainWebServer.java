@@ -24,7 +24,7 @@ public class MainWebServer {
   }
 
   private static ProjectComponent makeTreeCourses() throws InterruptedException {
-    Project root = new Project("root", null);
+    Project root = new Project("Home", null);
 
     Project softwareDesign = new Project("software design", root);
     softwareDesign.addTag("java");
@@ -50,12 +50,16 @@ public class MainWebServer {
     databases.addTag("C++");
     Task transportation = new Task("transportation", root);
 
-    LocalDateTime start = LocalDateTime.now();
+    transportation.startTask();
+    Thread.sleep(2000);
+    transportation.stopTask();
+
+    /*LocalDateTime start = LocalDateTime.now();
     Thread.sleep(1000);
     LocalDateTime end = LocalDateTime.now();
 
     Duration duration = Duration.ofSeconds(1);
-    Interval test = new Interval(start,end,duration,transportation);
+    Interval test = new Interval(start,end,duration,transportation);*/
     return root;
   }
 }

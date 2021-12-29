@@ -1,7 +1,9 @@
+import 'dart:math';
+
 import 'package:intl/intl.dart';
 import 'dart:convert' as convert;
 
-final DateFormat _dateFormatter = DateFormat("yyy-MM-dd HH:mm:ss");
+final DateFormat _dateFormatter = DateFormat("yyyy-MM-ddTHH:mm:ss");
 
 abstract class Activity {
   int id;
@@ -58,11 +60,12 @@ class Interval {
   bool active;
 
   Interval.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        initialDate = json['initialDate'] == null ? null : _dateFormatter.parse(json['initialDate']),
-        finalDate = json['finalDate'] == null ? null : _dateFormatter.parse(json['finalDate']),
+      : id = json['id'] ?? 1, //lo mismo que un operador ternario, si el valor es null el valor es 1, si no es el valor que ya tenga
+        initialDate = json['startTime'] == null ? null : _dateFormatter.parse(json['startTime']),
+        finalDate = json['endTime'] == null ? null : _dateFormatter.parse(json['endTime']),
         duration = json['duration'],
-        active = json['active'];
+        //active = json['active'];
+        active = false;
 }
 
 

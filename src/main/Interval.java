@@ -101,7 +101,7 @@ public class Interval implements Observer {
 
     json.put("startTime", this.getStartTime());
     json.put("endTime", this.getEndTime());
-    json.put("duration", this.getDuration());
+    json.put("duration", this.getDuration().toSeconds());
     if (this.getTask() != null) {
       json.put("task", this.getTask().getName());
     }
