@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 public class Task extends ProjectComponent {
 
   private ArrayList<Interval> intervals;
+  private boolean active;
 
   Logger logger = LoggerFactory.getLogger(Task.class);
 
@@ -38,6 +39,7 @@ public class Task extends ProjectComponent {
         + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
+    this.active = false;
     if (getParent() != null) {
       logger.debug("Se crea Task " + name + ", hija de " + parent.getName());
     } else {
@@ -73,12 +75,12 @@ public class Task extends ProjectComponent {
     super.setEndTime(endTime);
     super.setDuration(duration);
 
-
     // Precondiciones
     assert this.intervals == null : "La lista de Intervals de la Task"
         + " debe ser null antes de ser creada.";
 
     this.intervals = new ArrayList<>();
+    this.active = false;
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -113,6 +115,7 @@ public class Task extends ProjectComponent {
     int zeroSecondsDelay = 0;
     Interval interval = new Interval(this, zeroSecondsDelay);
     this.intervals.add(interval);
+    this.activate();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -141,6 +144,7 @@ public class Task extends ProjectComponent {
 
     Interval interval = new Interval(this, delay);
     this.intervals.add(interval);
+    this.activate();
 
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
@@ -167,11 +171,20 @@ public class Task extends ProjectComponent {
     assert this.invariants() : "Los invariants no se cumplen.";
 
     this.getCurrentInterval().stopInterval();
+    this.deactivate();
 
     // Intervals
     assert this.invariants() : "Los invariants no se cumplen.";
 
     // Postcondiciones
+  }
+
+  public void activate() {
+    this.active = true;
+  }
+
+  public void deactivate() {
+    this.active = false;
   }
 
   @Override
@@ -229,7 +242,7 @@ public class Task extends ProjectComponent {
 
   // public void removeChildren(ProjectComponent children) {}
 
-  private Interval getCurrentInterval() {
+  public Interval getCurrentInterval() {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";
 
@@ -270,6 +283,7 @@ public class Task extends ProjectComponent {
     json.put("startTime", this.getStartTime());
     json.put("endTime", this.getEndTime());
     json.put("duration", this.getDuration().toSeconds());
+    json.put("active", this.active);
     if (this.getParent() != null) {
       json.put("parent", this.getParent().getName());
     }

@@ -140,6 +140,19 @@ public class WebServer {
           body = "{}";
           break;
         }
+        case "add": {
+          break;
+        }
+        case "edit": {
+          break;
+        }
+        case "last": {
+          int id = Integer.parseInt(tokens[1]);
+          ProjectComponent activity = findActivityById(id);
+          assert (activity != null);
+          body = ((Task) activity).getCurrentInterval().toJson().toString();
+          break;
+        }
         // TODO: add new task, project
         // TODO: edit task, project properties
         default:
