@@ -50,6 +50,8 @@ public class MainWebServer {
     databases.addTag("C++");
     Task transportation = new Task("transportation", root);
 
+    PrinterVisitor printer = PrinterVisitor.getInstance(root);
+
     /*transportation.startTask();
     Thread.sleep(2000);
     transportation.stopTask();*/

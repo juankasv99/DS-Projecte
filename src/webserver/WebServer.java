@@ -143,9 +143,6 @@ public class WebServer {
         case "add": {
           break;
         }
-        case "edit": {
-          break;
-        }
         case "last": {
           int id = Integer.parseInt(tokens[1]);
           ProjectComponent activity = findActivityById(id);
@@ -153,8 +150,6 @@ public class WebServer {
           body = ((Task) activity).getCurrentInterval().toJson().toString();
           break;
         }
-        // TODO: add new task, project
-        // TODO: edit task, project properties
         default:
           assert false;
       }
