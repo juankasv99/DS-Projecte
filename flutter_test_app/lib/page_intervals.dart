@@ -81,10 +81,11 @@ class _PageIntervalsState extends State<PageIntervals> {
             ),]),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
+                task.active ? stop(task.id) : start(task.id);
                 print("Task was " + task.active.toString());
                 print("Click play");
                 setState(() {
-                  task.active = !task.active;
+                  //task.active = !task.active;
                 });
                 print("And now is " + task.active.toString());
               },
@@ -119,10 +120,10 @@ class _PageIntervalsState extends State<PageIntervals> {
   String strFinalDate = interval.finalDate.toString().split('.')[0];
   return ListTile(
     leading: _generateClock(interval, index),
-    title: Text("29-12-2021"),
+    title: Text(strInitialDate),
     isThreeLine: true,
-    subtitle: Text("From: 12:00:00 \nTo: 13:30:00", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
-    trailing: Text('1h30m'),
+    subtitle: Text("From: ${strInitialDate} \nTo: ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
+    trailing: Text(strDuration),
   );
 
 }

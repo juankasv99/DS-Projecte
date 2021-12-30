@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/page_addactivity.dart';
 import 'package:flutter_test_app/page_intervals.dart';
 import 'package:flutter_test_app/page_report.dart';
 import 'package:flutter_test_app/tree.dart' hide getTree; //old getTree()
@@ -24,7 +25,7 @@ class _PageActivitiesState extends State<PageActivities> {
   late Future<Tree> futureTree;
 
   late Timer _timer;
-  static const int periodeRefresh = 6;
+  static const int periodeRefresh = 3;
 
   @override
   void initState() {
@@ -85,6 +86,7 @@ class _PageActivitiesState extends State<PageActivities> {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 print("click add");
+                _createPage(snapshot.data!.root as Project);
               },
               backgroundColor: primaryColorRedDark,
               child: const Icon(Icons.add),
@@ -164,6 +166,7 @@ class _PageActivitiesState extends State<PageActivities> {
 
   Widget _buildRow(Activity activity, int index) {
     String strDuration = Duration(seconds: activity.duration).toString().split('.').first;
+    
 
     if(activity is Project) {
       return ListTile(
@@ -221,6 +224,18 @@ class _PageActivitiesState extends State<PageActivities> {
         _activateTimer();
         _refresh();
         });
+  }
+
+  _createPage(Project project) {
+    _timer.cancel();
+    Navigator.of(context)
+      .push(MaterialPageRoute<void>(
+        builder: (context) => PageAddActivity(project: project),
+      )).then((var value) {
+        _activateTimer();
+        _refresh();
+      });
+    print("Entered create page from ${project.name} page");
   }
 
   void _refresh() async {
