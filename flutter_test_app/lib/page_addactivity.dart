@@ -23,6 +23,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
   late Project project;
   late int id;
   int _selectedIndex = 0;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -89,6 +90,12 @@ class _PageAddActivityState extends State<PageAddActivity> {
                 border: UnderlineInputBorder(),
                 labelText: "Name"
               ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter a name";
+                }
+                return null;
+              },
             ),
               
             
