@@ -36,6 +36,7 @@ public class Interval implements Observer {
    */
   public Interval(Task task, int delay) {
     this.startTime = Clock.getInstance().getTime(); //la fecha de inicio es cuando se ha creado
+    this.endTime = Clock.getInstance().getTime();
     this.task = task;
 
     if (task.getStartTime() == null) {
@@ -85,7 +86,7 @@ public class Interval implements Observer {
     logger.trace("El intervalo ha sido actualizado.");
     /* A cada tick se actualiza la duration y el endTime */
     this.duration = this.duration.plusSeconds(Clock.getInstance().getPeriod());
-    this.endTime = this.startTime.plusSeconds(Clock.getInstance().getPeriod());
+    this.endTime = this.endTime.plusSeconds(Clock.getInstance().getPeriod());
 
     this.task.update(this); //actualiza el parent
 
