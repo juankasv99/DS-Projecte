@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_app/page_addactivity.dart';
 import 'package:flutter_test_app/page_intervals.dart';
 import 'package:flutter_test_app/page_report.dart';
-import 'package:flutter_test_app/tree.dart' hide getTree; //old getTree()
+import 'package:flutter_test_app/tree.dart' as Tree hide getTree; //old getTree()
 import 'package:flutter_test_app/requests.dart';
 import 'dart:async';
 import 'package:flutter_test_app/util/colors.dart';
@@ -22,7 +22,7 @@ class PageActivities extends StatefulWidget {
 class _PageActivitiesState extends State<PageActivities> {
   //late Tree tree;
   late int id;
-  late Future<Tree> futureTree;
+  late Future<Tree.Tree> futureTree;
 
   late Timer _timer;
   static const int periodeRefresh = 3;
@@ -37,7 +37,7 @@ class _PageActivitiesState extends State<PageActivities> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Tree>(
+    return FutureBuilder<Tree.Tree>(
       future: futureTree,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -86,7 +86,7 @@ class _PageActivitiesState extends State<PageActivities> {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 print("click add");
-                _createPage(snapshot.data!.root as Project);
+                _createPage(snapshot.data!.root as Tree.Project);
               },
               backgroundColor: primaryColorRedDark,
               child: const Icon(Icons.add),
@@ -164,11 +164,11 @@ class _PageActivitiesState extends State<PageActivities> {
   } 
   */
 
-  Widget _buildRow(Activity activity, int index) {
+  Widget _buildRow(Tree.Activity activity, int index) {
     String strDuration = Duration(seconds: activity.duration).toString().split('.').first;
     
 
-    if(activity is Project) {
+    if(activity is Tree.Project) {
       return ListTile(
         leading: CircleAvatar(
           child: FaIcon(FontAwesomeIcons.briefcase, color: Colors.white, size: 19,),
@@ -179,8 +179,8 @@ class _PageActivitiesState extends State<PageActivities> {
         trailing: Text('$strDuration'),
         onTap: () => _navigateDownActivities(activity.id),
       );
-    } else if (activity is Task) {
-      Task task = activity as Task;
+    } else if (activity is Tree.Task) {
+      Tree.Task task = activity as Tree.Task;
       Widget trailing;
       trailing = Text('$strDuration');
       return ListTile(
@@ -193,7 +193,7 @@ class _PageActivitiesState extends State<PageActivities> {
         trailing: trailing,
         onTap: () => _navigateDownIntervals(activity.id),
         onLongPress: () {
-          if ((activity as Task).active) {
+          if ((activity as Tree.Task).active) {
             stop(activity.id);
             _refresh();
           } else {
@@ -226,7 +226,7 @@ class _PageActivitiesState extends State<PageActivities> {
         });
   }
 
-  _createPage(Project project) {
+  _createPage(Tree.Project project) {
     _timer.cancel();
     Navigator.of(context)
       .push(MaterialPageRoute<void>(
@@ -260,7 +260,15 @@ class _PageActivitiesState extends State<PageActivities> {
     super.dispose();
   }
 
-  _sumUpProject({Activity? activity}) {
+  _sumUpProject({Tree.Activity? activity}) {
+    /*Future<Tree.Interval> lastWorked = getLastWorked(activity!.id);
+
+    Tree.Interval lastWorkedData;
+    
+    getLastWorked(activity.id).then((last) {
+      lastWorkedData = last;
+    });*/
+
       return Container(
         padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
         child: Column(
@@ -272,7 +280,7 @@ class _PageActivitiesState extends State<PageActivities> {
             ],),
             SizedBox(height: 5.0,),
             Row(children: <Widget>[
-              Text("Task Name (Project)", textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              Text("Hola", textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
               Spacer(),
               Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             ],  
@@ -304,5 +312,4 @@ class _PageActivitiesState extends State<PageActivities> {
         ),
       );
   }
-
 }

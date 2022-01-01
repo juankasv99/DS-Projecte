@@ -17,7 +17,7 @@ public class MainWebServer {
 
     // start your clock
     Clock clock = Clock.getInstance();
-    clock.setPeriod(2);
+    clock.setPeriod(1);
     clock.start();
 
     new WebServer(root);

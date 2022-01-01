@@ -6,6 +6,8 @@ import 'package:flutter_test_app/tree.dart' as Tree hide getTree;
 import 'package:flutter_test_app/requests.dart';
 import 'package:flutter_test_app/util/colors.dart';
 import 'package:flutter_test_app/util/semicircle.dart';
+import 'package:flutter_test_app/util/functions.dart';
+import 'package:intl/intl.dart';
 
 class PageIntervals extends StatefulWidget {
   final int id;
@@ -21,7 +23,7 @@ class _PageIntervalsState extends State<PageIntervals> {
   late Future<Tree.Tree> futureTree;
 
   late Timer _timer;
-  static const int periodeRefresh = 6;
+  static const int periodeRefresh = 1;
 
   @override
   void initState() {
@@ -71,12 +73,12 @@ class _PageIntervalsState extends State<PageIntervals> {
                 ),
             Expanded(
               child: ListView.separated(
-                padding: const EdgeInsets.only(top: 20.0),
+                //padding: const EdgeInsets.only(top: 10.0),
                 itemCount: numChildren,
                 itemBuilder: (BuildContext context, int index) =>
                         _buildRow(snapshot.data!.root.children[index], index),
                 separatorBuilder: (BuildContext context, int index) =>
-                const Divider(),
+                const Divider(height: 1),
               ),
             ),]),
             floatingActionButton: FloatingActionButton(
@@ -120,7 +122,7 @@ class _PageIntervalsState extends State<PageIntervals> {
   String strFinalDate = interval.finalDate.toString().split('.')[0];
   return ListTile(
     leading: _generateClock(interval, index),
-    title: Text(strInitialDate),
+    //title: Text(strInitialDate),
     isThreeLine: true,
     subtitle: Text("From: ${strInitialDate} \nTo: ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
     trailing: Text(strDuration),
@@ -147,6 +149,7 @@ void dispose() {
     assert(activity is Tree.Activity);
     Tree.Task task = activity as Tree.Task;
     if(task.active){
+      Tree.Interval currentInterval = task.children[task.children.length - 1];
       return Container(
       padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
       child: Column(
@@ -158,13 +161,13 @@ void dispose() {
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
             Spacer(),
-            Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Text(printDuration(task.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
           ],),
           SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text("HH:MM:SS", textAlign: TextAlign.center, style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Colors.grey[800]),),
+            Text(printDuration(currentInterval.duration), textAlign: TextAlign.center, style: TextStyle(fontSize: 70.0, fontWeight: FontWeight.bold, color: Colors.grey[800]),),
           ],),
           SizedBox(height: 0.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -187,20 +190,20 @@ void dispose() {
           ],),
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
-            Text("Task Name (Project)", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Text(DateFormat('dd/MM/yy - HH:mm:ss').format(task.finalDate!), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             Spacer(),
-            Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Text(printDuration(task.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
           ],),
-          SizedBox(height: 20.0),
+          SizedBox(height: 35.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
             Text("Started on:", textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),),
           ],),
-          SizedBox(height: 5.0,),
+          SizedBox(height: 10.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.center, style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
+            Text(DateFormat('dd/MM/yy - HH:mm:ss').format(task.initialDate!), textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
           ],),
         ],),
     );
@@ -209,6 +212,9 @@ void dispose() {
   }
 
   _generateClock(Tree.Interval interval, int index) {
+    int _secs = interval.duration % 60;
+    int _mins = (interval.duration / 60).truncate();
+    int _hours = (interval.duration / 3600).truncate();
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
@@ -220,16 +226,26 @@ void dispose() {
             shape: BoxShape.circle,
           ),
         ),
-        const SemiCircleWidget(
-          diameter: 10,
+        SemiCircleWidget(
+          sweepAngle: (_hours * 30.0) % 360.0, 
+          color: Colors.blue[900],
+          diameter: 23,
+        ),
+        SemiCircleWidget(
+          diameter: 14,
           //hay que mirar si queremos hacer el tiempo en minutos/horas o el porcentage de la tarea
           //aqui va la variable que cambia el valor
-          sweepAngle: (90.0 * 6.0) % 360.0,
-          color: primaryColorRedDark,
+          sweepAngle: (_mins * 6.0) % 360.0,
+          color: primaryColorRedLight,
+        ),
+        SemiCircleWidget(
+          sweepAngle: (_secs * 6.0) % 360.0, 
+          color: Colors.green[900],
+          diameter: 5,
         ),
         Container(
-          height: 30,
-          width: 30,
+          height: 25,
+          width: 25,
           decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.circle,

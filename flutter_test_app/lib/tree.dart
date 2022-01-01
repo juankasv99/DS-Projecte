@@ -16,8 +16,8 @@ abstract class Activity {
   Activity.fromJson(Map<String, dynamic> json)
     : id = json['id'],
       name = json['name'],
-      initialDate = json['initialDate'] == null ? null : _dateFormatter.parse(json['initialDate']),
-      finalDate = json['finalDate'] == null ? null : _dateFormatter.parse(json['finalDate']),
+      initialDate = json['startTime'] == null ? null : _dateFormatter.parse(json['startTime']),
+      finalDate = json['endTime'] == null ? null : _dateFormatter.parse(json['endTime']),
       duration = json['duration'];
 }
 
@@ -58,6 +58,7 @@ class Interval {
   DateTime? finalDate;
   int duration;
   bool active;
+  String task;
 
   Interval.fromJson(Map<String, dynamic> json)
       : id = json['id'] ?? 1, //lo mismo que un operador ternario, si el valor es null el valor es 1, si no es el valor que ya tenga
@@ -65,7 +66,8 @@ class Interval {
         finalDate = json['endTime'] == null ? null : _dateFormatter.parse(json['endTime']),
         duration = json['duration'],
         //active = json['active'];
-        active = false;
+        active = false,
+        task = json['task'];
 }
 
 

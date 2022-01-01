@@ -47,3 +47,19 @@ Future<void> stop(int id) async {
     throw Exception('Failed to get children');
   }
 }
+
+/*Future<Interval> getLastWorked(int id) async {
+  var uri = Uri.parse("$baseUrl/last?$id");
+  final response = await client.get(uri);
+
+  if(response.statusCode == 200) {
+    print("statusCode=$response.statusCode");
+    print(response.body);
+
+    Map<String, dynamic> decoded = convert.jsonDecode(response.body);
+    return Interval.fromJson(decoded);
+  } else {
+    print("statusCode=$response.statusCode");
+    throw Exception("Failed to get last Interval");
+  }
+}*/
