@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // Based on
@@ -146,6 +147,7 @@ public class WebServer {
           break;
         }
         case "add": {
+          System.out.println(Arrays.toString(tokens));
           break;
         }
         case "last": {
