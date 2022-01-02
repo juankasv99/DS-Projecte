@@ -48,6 +48,36 @@ Future<void> stop(int id) async {
   }
 }
 
+Future<void> add(String name, String parent, String tag, String type) async {
+  var uri = Uri.parse("$baseUrl/add?$name$parent$tag$type");
+  final response = await client.get(uri);
+
+  List<String> finalString = tag.replaceAll(" ", "").split(",");
+
+  if (response.statusCode == 200) {
+    print("statusCode=$response.statusCode");
+  } else {
+    print("statusCode=$response.statusCode");
+    throw Exception('Failed to get children');
+  }
+}
+
+Future<Task> getLastTask(int id) async{
+  var uri = Uri.parse("$baseUrl/last?$id");
+  final response = await client.get(uri);
+
+  if(response.statusCode == 200) {
+    print("statusCode=$response.statusCode");
+    print(response.body);
+
+    Map<String, dynamic> decoded = convert.jsonDecode(response.body);
+    return Task.fromJson(decoded);
+  } else {
+    print("statusCode=$response.statusCode");
+    throw Exception("Failed to get children");
+  }
+}
+
 /*Future<Interval> getLastWorked(int id) async {
   var uri = Uri.parse("$baseUrl/last?$id");
   final response = await client.get(uri);

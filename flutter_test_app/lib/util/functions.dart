@@ -8,3 +8,9 @@ String printDuration(int duration) {
   String twoDigitSeconds = twoDigits(toDuration.inSeconds.remainder(60));
   return "${twoDigits(toDuration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
 }
+
+String titleCase(String string) {
+  if(string.trim().isEmpty) return "";
+
+  return "${string[0].toUpperCase()}${string.substring(1)}";
+}

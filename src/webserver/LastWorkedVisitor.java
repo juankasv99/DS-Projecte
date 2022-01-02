@@ -51,9 +51,12 @@ public class LastWorkedVisitor implements ProjectVisitor {
 
   @Override
   public void visitTask(Task task) {
-    if (this.foundProjectComponent == null || task.getEndTime().isAfter(this.foundProjectComponent.getEndTime())) {
-      this.foundProjectComponent = task;
+    if(task.getEndTime() != null){
+      if (this.foundProjectComponent == null || task.getEndTime().isAfter(this.foundProjectComponent.getEndTime())) {
+        this.foundProjectComponent = task;
+      }
     }
+
   }
 
   @Override

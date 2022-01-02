@@ -6,7 +6,9 @@ import 'package:flutter_test_app/tree.dart' as Tree hide getTree; //old getTree(
 import 'package:flutter_test_app/requests.dart';
 import 'dart:async';
 import 'package:flutter_test_app/util/colors.dart';
+import 'package:flutter_test_app/util/functions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class PageActivities extends StatefulWidget {
   final int id;
@@ -27,11 +29,15 @@ class _PageActivitiesState extends State<PageActivities> {
   late Timer _timer;
   static const int periodeRefresh = 3;
 
+  late Tree.Task lastWorkedTask;
+
   @override
   void initState() {
     super.initState();
     id = widget.id; //of PageActivities
     futureTree = getTree(id);
+    
+    getLastTask(id).then((val) {lastWorkedTask = val;});
     _activateTimer();
   }
 
@@ -182,7 +188,24 @@ class _PageActivitiesState extends State<PageActivities> {
     } else if (activity is Tree.Task) {
       Tree.Task task = activity as Tree.Task;
       Widget trailing;
-      trailing = Text('$strDuration');
+      trailing =  Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text('$strDuration'),
+          IconButton(
+            onPressed: () {
+              task.active ? stop(task.id) : start(task.id);
+              setState(() {
+                
+              });
+            },
+            icon: task.active ? Icon(Icons.pause_circle_rounded) : Icon(Icons.play_circle_rounded),
+            iconSize: 40,
+            splashRadius: 25,
+            color: primaryColorRedDark,
+          ),
+        ],
+      );
       return ListTile(
         leading: CircleAvatar(
           child: FaIcon(FontAwesomeIcons.listOl, color: Colors.white, size: 20,),
@@ -193,13 +216,13 @@ class _PageActivitiesState extends State<PageActivities> {
         trailing: trailing,
         onTap: () => _navigateDownIntervals(activity.id),
         onLongPress: () {
-          if ((activity as Tree.Task).active) {
+          /*if ((activity as Tree.Task).active) {
             stop(activity.id);
             _refresh();
           } else {
             start(activity.id);
             _refresh();
-          }
+          }*/
         }, 
       );
     } else {
@@ -269,6 +292,13 @@ class _PageActivitiesState extends State<PageActivities> {
       lastWorkedData = last;
     });*/
 
+    //int id = activity!.id;    
+    
+    //getLastTask(activity!.id).then((val) {lastWorkedTask = val;});
+
+    String startedString = activity!.initialDate == null ? "Not Started Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.initialDate!);
+    String endedString = activity.initialDate == null ? "No Working Session Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.finalDate!);
+
       return Container(
         padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
         child: Column(
@@ -280,9 +310,9 @@ class _PageActivitiesState extends State<PageActivities> {
             ],),
             SizedBox(height: 5.0,),
             Row(children: <Widget>[
-              Text("Hola", textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              Text(activity.finalDate == null ? "-" : titleCase(lastWorkedTask.name), textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
               Spacer(),
-              Text("hh:mm:ss", textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              Text(printDuration(activity.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             ],  
             ),
             SizedBox(height: 25.0),
@@ -290,7 +320,7 @@ class _PageActivitiesState extends State<PageActivities> {
               children: <Widget>[
                 Text("Started:", textAlign: TextAlign.start, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),),
                 Spacer(),
-                Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+                Text(startedString, textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
               ],
             ),
             SizedBox(height: 2.0,),
@@ -298,14 +328,19 @@ class _PageActivitiesState extends State<PageActivities> {
               children: <Widget>[
                 Text("Last Worked:", textAlign: TextAlign.start, style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),),
                 Spacer(),
-                Text("DD/MM/AA - hh:mm:ss", textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+                Text(endedString, textAlign: TextAlign.end, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 
-              IconButton(onPressed: () {}, icon: Icon(Icons.play_circle), iconSize: 45, splashRadius: 30, color: primaryColorRedDark,)
+              IconButton(onPressed: () {
+                lastWorkedTask.active ? stop(lastWorkedTask.id) : start(lastWorkedTask.id);
+                setState(() {
+                  getLastTask(activity.id).then((val) {lastWorkedTask = val;});
+                });
+              }, icon: lastWorkedTask.active ? Icon(Icons.pause_circle_rounded) : Icon(Icons.play_circle_rounded), iconSize: 45, splashRadius: 30, color: primaryColorRedDark,)
             ],)
             
           ],

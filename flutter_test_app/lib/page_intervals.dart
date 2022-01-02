@@ -117,15 +117,16 @@ class _PageIntervalsState extends State<PageIntervals> {
       .toString()
       .split('.')
       .first;
-  String strInitialDate = interval.initialDate.toString().split('.')[0];
+  String strInitialDate = DateFormat('dd/MM/yy - HH:mm:ss').format(interval.initialDate!);
   // this removes the microseconds part
-  String strFinalDate = interval.finalDate.toString().split('.')[0];
+  String strFinalDate = DateFormat('dd/MM/yy - HH:mm:ss').format(interval.finalDate!);
   return ListTile(
     leading: _generateClock(interval, index),
     //title: Text(strInitialDate),
-    isThreeLine: true,
-    subtitle: Text("From: ${strInitialDate} \nTo: ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
+    //isThreeLine: true,
+    title: Text("From: ${strInitialDate} \nTo: ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
     trailing: Text(strDuration),
+    dense: true,
   );
 
 }
@@ -190,7 +191,7 @@ void dispose() {
           ],),
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
-            Text(DateFormat('dd/MM/yy - HH:mm:ss').format(task.finalDate!), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Text(task.finalDate == null ? "-" : DateFormat('dd/MM/yy - HH:mm:ss').format(task.finalDate!), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             Spacer(),
             Text(printDuration(task.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
           ],),
@@ -203,7 +204,7 @@ void dispose() {
           SizedBox(height: 10.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text(DateFormat('dd/MM/yy - HH:mm:ss').format(task.initialDate!), textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
+            Text(task.initialDate == null ? "-" : DateFormat('dd/MM/yy - HH:mm:ss').format(task.initialDate!), textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
           ],),
         ],),
     );
