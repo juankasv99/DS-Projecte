@@ -7,21 +7,18 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Aquesta classe en un visitor que recorre tota la jerarquia.
- * En cada ProjectComponent mira els tags que te i els compara.
- * Amb el tag amb el que s'has creat la classe.
- * Si el te mostra el ProjectComponent.
+ * En cada ProjectComponent ...
  *
  * @author Grup 1 Torn 422
  * @version 1.0.
  */
 
-public class SearchByIdVisitor implements ProjectVisitor {
+public class LastWorkedVisitor implements ProjectVisitor {
 
-  private static SearchByIdVisitor uniqueInstance;
+  private static LastWorkedVisitor uniqueInstance;
   private final ProjectComponent root;
-  private int id;
   private ProjectComponent foundProjectComponent;
-  Logger logger = LoggerFactory.getLogger(SearchByIdVisitor.class);
+  Logger logger = LoggerFactory.getLogger(LastWorkedVisitor.class);
 
   /**
    * Al ser un singleton en comptes de cridar al constructor es crida.
@@ -30,37 +27,31 @@ public class SearchByIdVisitor implements ProjectVisitor {
    *
    * @author Grup 1 Torn 422
    */
-  public static SearchByIdVisitor getInstance(ProjectComponent root) {
+  public static LastWorkedVisitor getInstance(ProjectComponent root) {
     if (uniqueInstance == null) {
-      uniqueInstance = new SearchByIdVisitor(root);
+      uniqueInstance = new LastWorkedVisitor(root);
     }
 
     return uniqueInstance;
   }
 
-  private SearchByIdVisitor(ProjectComponent root) {
+  private LastWorkedVisitor(ProjectComponent root) {
     this.root = root;
-    this.id = 0;
     this.foundProjectComponent = null;
   }
 
-  public ProjectComponent search(int id) {
-    this.id = id;
+  public ProjectComponent search() {
     this.root.acceptVisitor(this);
 
     return this.foundProjectComponent;
   }
 
   @Override
-  public void visitProject(Project project) {
-    if (project.getId() == this.id) {
-      this.foundProjectComponent = project;
-    }
-  }
+  public void visitProject(Project project) {}
 
   @Override
   public void visitTask(Task task) {
-    if (task.getId() == this.id) {
+    if (this.foundProjectComponent == null || task.getEndTime().isAfter(this.foundProjectComponent.getEndTime())) {
       this.foundProjectComponent = task;
     }
   }

@@ -45,6 +45,11 @@ public class WebServer {
     return searchByIdVisitor.search(id);
   }
 
+  private ProjectComponent findLastWorkedTask(ProjectComponent projectComponent) {
+    LastWorkedVisitor lastWorkedVisitor = LastWorkedVisitor.getInstance(projectComponent);
+    return lastWorkedVisitor.search();
+  }
+
   private class SocketThread extends Thread {
     // SocketThread sees WebServer attributes
     private final Socket insocked;
@@ -147,7 +152,8 @@ public class WebServer {
           int id = Integer.parseInt(tokens[1]);
           ProjectComponent activity = findActivityById(id);
           assert (activity != null);
-          body = ((Task) activity).getCurrentInterval().toJson().toString();
+          ProjectComponent lastWorkedTask = findLastWorkedTask(activity);
+          body = lastWorkedTask.toJson(1).toString();
           break;
         }
         default:
