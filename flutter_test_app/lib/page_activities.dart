@@ -29,7 +29,9 @@ class _PageActivitiesState extends State<PageActivities> {
   late Timer _timer;
   static const int periodeRefresh = 3;
 
-  late Tree.Task lastWorkedTask;
+  Widget icon = Icon(Icons.play_circle_rounded);
+
+  Tree.Task? lastWorkedTask;
 
   @override
   void initState() {
@@ -37,7 +39,6 @@ class _PageActivitiesState extends State<PageActivities> {
     id = widget.id; //of PageActivities
     futureTree = getTree(id);
     
-    getLastTask(id).then((val) {lastWorkedTask = val;});
     _activateTimer();
   }
 
@@ -196,7 +197,14 @@ class _PageActivitiesState extends State<PageActivities> {
             onPressed: () {
               task.active ? stop(task.id) : start(task.id);
               setState(() {
-                
+                getLastTask(activity.id).then((val) {lastWorkedTask = val;});
+                if (lastWorkedTask == null) {
+                      icon = Icon(Icons.play_circle_rounded);
+                    } else {
+                      lastWorkedTask!.active
+                          ? icon = Icon(Icons.play_circle_rounded)
+                          : icon = Icon(Icons.pause_circle_rounded);
+                    } 
               });
             },
             icon: task.active ? Icon(Icons.pause_circle_rounded) : Icon(Icons.play_circle_rounded),
@@ -284,20 +292,23 @@ class _PageActivitiesState extends State<PageActivities> {
   }
 
   _sumUpProject({Tree.Activity? activity}) {
-    /*Future<Tree.Interval> lastWorked = getLastWorked(activity!.id);
-
-    Tree.Interval lastWorkedData;
     
-    getLastWorked(activity.id).then((last) {
-      lastWorkedData = last;
-    });*/
+    if(activity!.finalDate != null){
+      getLastTask(activity.id).then((val) {lastWorkedTask = val;});
+    }
 
-    //int id = activity!.id;    
-    
-    //getLastTask(activity!.id).then((val) {lastWorkedTask = val;});
+    String startedString = activity.initialDate == null ? "Not Started Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.initialDate!);
+    String endedString = activity.finalDate == null ? "No Working Session Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.finalDate!);
 
-    String startedString = activity!.initialDate == null ? "Not Started Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.initialDate!);
-    String endedString = activity.initialDate == null ? "No Working Session Yet" : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.finalDate!);
+
+    //Widget icon = Icon(Icons.play_circle_rounded);
+
+    if (lastWorkedTask == null){
+      icon = Icon(Icons.play_circle_rounded);
+    }
+    else {
+      lastWorkedTask!.active ? Icon(Icons.pause_circle_rounded) : Icon(Icons.play_circle_rounded);
+    }
 
       return Container(
         padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0),
@@ -310,7 +321,7 @@ class _PageActivitiesState extends State<PageActivities> {
             ],),
             SizedBox(height: 5.0,),
             Row(children: <Widget>[
-              Text(activity.finalDate == null ? "-" : titleCase(lastWorkedTask.name), textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+              Text(activity.finalDate == null ? "-" : titleCase(lastWorkedTask?.name ?? "-"), textAlign: TextAlign.start, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
               Spacer(),
               Text(printDuration(activity.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             ],  
@@ -336,11 +347,19 @@ class _PageActivitiesState extends State<PageActivities> {
               children: <Widget>[
                 
               IconButton(onPressed: () {
-                lastWorkedTask.active ? stop(lastWorkedTask.id) : start(lastWorkedTask.id);
+                lastWorkedTask!.active ? stop(lastWorkedTask!.id) : start(lastWorkedTask!.id);
                 setState(() {
                   getLastTask(activity.id).then((val) {lastWorkedTask = val;});
+
+                  if (lastWorkedTask == null) {
+                      icon = Icon(Icons.play_circle_rounded);
+                    } else {
+                      lastWorkedTask!.active
+                          ? icon = Icon(Icons.play_circle_rounded)
+                          : icon = Icon(Icons.pause_circle_rounded);
+                    }
                 });
-              }, icon: lastWorkedTask.active ? Icon(Icons.pause_circle_rounded) : Icon(Icons.play_circle_rounded), iconSize: 45, splashRadius: 30, color: primaryColorRedDark,)
+              }, icon: icon, iconSize: 45, splashRadius: 30, color: primaryColorRedDark,)
             ],)
             
           ],

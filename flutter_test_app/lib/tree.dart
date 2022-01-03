@@ -42,7 +42,7 @@ class Project extends Activity {
 class Task extends Activity {
   bool active;
   Task.fromJson(Map<String, dynamic> json) :
-            active = json['active'],
+            active = json['active'] ?? false,
             
             super.fromJson(json) {
     for (Map<String, dynamic> jsonChild in json['intervals']) {

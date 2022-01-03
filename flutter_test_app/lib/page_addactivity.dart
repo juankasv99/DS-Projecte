@@ -26,12 +26,11 @@ class _PageAddActivityState extends State<PageAddActivity> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final tagController = TextEditingController();
-  String dropdownValue = "";
   
   String newActivityName = "";
   String newActivityParent = "";
   String newActivityTag = "";
-  String newActivityType = "";
+  String newActivityType = "Project";
 
   static const List<String> typeList = ["Project", "Task"];
   static const List<String> listTags = ["java", "Dart", "python", "flutter", "Java", "IntelliJ", "c++", "SQL", "C++"];
@@ -144,7 +143,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                       //dropdownColor: primaryColorRedLight,
                       onChanged: (String? newValue) {
                         setState(() {
-                          dropdownValue = newValue!;
+                          newActivityParent = newValue!;
                         });
                       },
                       items: <String>["Home", "software testing", "databases"]
@@ -223,6 +222,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Creating ${nameController.text}"))
                           );
+                          _formKey.currentState!.save();
                           add(newActivityName, newActivityParent, newActivityTag, newActivityType);
                         }
                         },

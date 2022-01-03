@@ -49,10 +49,13 @@ Future<void> stop(int id) async {
 }
 
 Future<void> add(String name, String parent, String tag, String type) async {
-  var uri = Uri.parse("$baseUrl/add?$name$parent$tag$type");
+  
+  List<String> finalString = tag.replaceAll(" ", "").split(",");
+  
+  var uri = Uri.parse("$baseUrl/add?$name&$parent&$finalString&$type");
   final response = await client.get(uri);
 
-  List<String> finalString = tag.replaceAll(" ", "").split(",");
+  
 
   if (response.statusCode == 200) {
     print("statusCode=$response.statusCode");
@@ -71,25 +74,20 @@ Future<Task> getLastTask(int id) async{
     print(response.body);
 
     Map<String, dynamic> decoded = convert.jsonDecode(response.body);
-    return Task.fromJson(decoded);
+
+
+    
+    if (decoded["type"] == "Project")
+    {
+      String newjson = '{"duration":0,"parent":"none","intervals":[],"name":"-","active":false,"id":99,"type":"Task"}';
+      Map<String, dynamic> newDecoded = convert.jsonDecode(newjson);
+      return Task.fromJson(newDecoded);
+    } else {
+      return Task.fromJson(decoded);
+    }
+    
   } else {
     print("statusCode=$response.statusCode");
     throw Exception("Failed to get children");
   }
 }
-
-/*Future<Interval> getLastWorked(int id) async {
-  var uri = Uri.parse("$baseUrl/last?$id");
-  final response = await client.get(uri);
-
-  if(response.statusCode == 200) {
-    print("statusCode=$response.statusCode");
-    print(response.body);
-
-    Map<String, dynamic> decoded = convert.jsonDecode(response.body);
-    return Interval.fromJson(decoded);
-  } else {
-    print("statusCode=$response.statusCode");
-    throw Exception("Failed to get last Interval");
-  }
-}*/
