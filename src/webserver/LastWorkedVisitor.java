@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class LastWorkedVisitor implements ProjectVisitor {
 
   private static LastWorkedVisitor uniqueInstance;
-  private final ProjectComponent root;
+  private ProjectComponent root;
   private ProjectComponent foundProjectComponent;
   Logger logger = LoggerFactory.getLogger(LastWorkedVisitor.class);
 
@@ -40,7 +40,8 @@ public class LastWorkedVisitor implements ProjectVisitor {
     this.foundProjectComponent = null;
   }
 
-  public ProjectComponent search() {
+  public ProjectComponent search(ProjectComponent root) {
+    this.root = root;
     this.root.acceptVisitor(this);
 
     return this.foundProjectComponent;

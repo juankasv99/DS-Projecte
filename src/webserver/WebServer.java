@@ -48,7 +48,7 @@ public class WebServer {
 
   private ProjectComponent findLastWorkedTask(ProjectComponent projectComponent) {
     LastWorkedVisitor lastWorkedVisitor = LastWorkedVisitor.getInstance(projectComponent);
-    return lastWorkedVisitor.search();
+    return lastWorkedVisitor.search(projectComponent);
   }
 
   private class SocketThread extends Thread {
