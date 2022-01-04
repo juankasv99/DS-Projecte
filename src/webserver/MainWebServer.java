@@ -26,29 +26,29 @@ public class MainWebServer {
   private static ProjectComponent makeTreeCourses() throws InterruptedException {
     Project root = new Project("Home", null);
 
-    Project softwareDesign = new Project("software design", root);
+    Project softwareDesign = new Project("Software Design", root);
     softwareDesign.addTag("java");
     softwareDesign.addTag("flutter");
-    Project problems = new Project("problems", softwareDesign);
-    Task firstList = new Task("first list", problems);
+    Project problems = new Project("Problems", softwareDesign);
+    Task firstList = new Task("First List", problems);
     firstList.addTag("java");
-    Task secondList = new Task("second list", problems);
+    Task secondList = new Task("Second List", problems);
     secondList.addTag("Dart");
-    Project projectTimeTracker = new Project("project time tracker", softwareDesign);
-    Task readHandout = new Task("read handout", projectTimeTracker);
-    Task firstMilestone = new Task("first milestone", projectTimeTracker);
+    Project projectTimeTracker = new Project("Project Time Tracker", softwareDesign);
+    Task readHandout = new Task("Read Handout", projectTimeTracker);
+    Task firstMilestone = new Task("First Milestone", projectTimeTracker);
     firstMilestone.addTag("Java");
     firstMilestone.addTag("IntelliJ");
 
-    Project softwareTesting = new Project("software testing", root);
+    Project softwareTesting = new Project("Software Testing", root);
     softwareTesting.addTag("c++");
     softwareTesting.addTag("Java");
     softwareTesting.addTag("python");
-    Project databases = new Project("databases", root);
+    Project databases = new Project("Databases", root);
     databases.addTag("SQL");
     databases.addTag("python");
     databases.addTag("C++");
-    Task transportation = new Task("transportation", root);
+    Task transportation = new Task("Transportation", root);
 
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
 
