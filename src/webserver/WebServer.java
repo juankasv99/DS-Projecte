@@ -1,5 +1,6 @@
 package webserver;
 
+import main.Project;
 import main.ProjectComponent;
 import main.Task;
 
@@ -147,7 +148,33 @@ public class WebServer {
           break;
         }
         case "add": {
-          System.out.println(Arrays.toString(tokens));
+          String name = tokens[1];
+          int parentId = Integer.parseInt(tokens[2]);
+          String unprocessedTokens = tokens[3];
+          String type = tokens[4];
+
+          ProjectComponent parentActivity = findActivityById(parentId);
+          ProjectComponent newActivity = null;
+          if (type.equals("Project")) {
+            newActivity = new Project(name, parentActivity);
+          } else if (type.equals("Task")) {
+            newActivity = new Task(name, parentActivity);
+          }
+
+          if (newActivity != null) {
+            String[] processedTokens = unprocessedTokens.split(",");
+            for (String tag : processedTokens) {
+              newActivity.addTag(tag);
+            }
+
+            if (parentActivity != null) {
+              parentActivity.addChildren(newActivity);
+            }
+
+            body = "{}";
+          } else {
+            body = "{\"error\": \"Type must be Project or Task\"}";
+          }
           break;
         }
         case "last": {
