@@ -1,7 +1,11 @@
 package webserver;
 
+import main.Interval;
+import main.Project;
 import main.ProjectComponent;
 import main.Task;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -49,6 +54,11 @@ public class WebServer {
   private ProjectComponent findLastWorkedTask(ProjectComponent projectComponent) {
     LastWorkedVisitor lastWorkedVisitor = LastWorkedVisitor.getInstance(projectComponent);
     return lastWorkedVisitor.search(projectComponent);
+  }
+
+  private ArrayList<ProjectComponent> getProjectList(ProjectComponent projectComponent) {
+    ProjectListVisitor projectListVisitor = ProjectListVisitor.getInstance(projectComponent);
+    return projectListVisitor.getProjectList(projectComponent);
   }
 
   private class SocketThread extends Thread {
@@ -147,7 +157,33 @@ public class WebServer {
           break;
         }
         case "add": {
-          System.out.println(Arrays.toString(tokens));
+          String name = tokens[1];
+          int parentId = Integer.parseInt(tokens[2]);
+          String unprocessedTokens = tokens[3];
+          String type = tokens[4];
+
+          ProjectComponent parentActivity = findActivityById(parentId);
+          ProjectComponent newActivity = null;
+          if (type.equals("Project")) {
+            newActivity = new Project(name, parentActivity);
+          } else if (type.equals("Task")) {
+            newActivity = new Task(name, parentActivity);
+          }
+
+          if (newActivity != null) {
+            String[] processedTokens = unprocessedTokens.split(",");
+            for (String tag : processedTokens) {
+              newActivity.addTag(tag);
+            }
+
+            if (parentActivity != null) {
+              parentActivity.addChildren(newActivity);
+            }
+
+            body = "{}";
+          } else {
+            body = "{\"error\": \"Type must be Project or Task\"}";
+          }
           break;
         }
         case "last": {
@@ -156,6 +192,22 @@ public class WebServer {
           assert (activity != null);
           ProjectComponent lastWorkedTask = findLastWorkedTask(activity);
           body = lastWorkedTask.toJson(1).toString();
+          break;
+        }
+        case "projects": {
+          int id = Integer.parseInt(tokens[1]);
+          ProjectComponent activity = findActivityById(id);
+          assert (activity != null);
+          ArrayList<ProjectComponent> projectList = getProjectList(activity);
+
+          JSONObject json = new JSONObject();
+          JSONArray jsonProjects = new JSONArray();
+          for (ProjectComponent project : projectList) {
+            jsonProjects.put(project.toJson(1));
+          }
+          json.put("projects", jsonProjects);
+
+          body = json.toString();
           break;
         }
         default:
