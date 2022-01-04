@@ -43,10 +43,17 @@ public class ProjectListVisitor implements ProjectVisitor {
   }
 
   public ArrayList<ProjectComponent> getProjectList(ProjectComponent root) {
-    this.root = root;
-    this.root.acceptVisitor(this);
+
+    if(root != null) {
+      this.root = root;
+      this.root.acceptVisitor(this);
+    }
 
     return this.projectList;
+  }
+
+  public int getProjectListSize() {
+    return projectList.size();
   }
 
   @Override

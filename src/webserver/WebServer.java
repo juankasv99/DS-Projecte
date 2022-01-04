@@ -58,7 +58,13 @@ public class WebServer {
 
   private ArrayList<ProjectComponent> getProjectList(ProjectComponent projectComponent) {
     ProjectListVisitor projectListVisitor = ProjectListVisitor.getInstance(projectComponent);
-    return projectListVisitor.getProjectList(projectComponent);
+
+    if(projectListVisitor.getProjectListSize() == 0)
+      return projectListVisitor.getProjectList(projectComponent);
+
+    else
+      return projectListVisitor.getProjectList(null);
+
   }
 
   private class SocketThread extends Thread {
@@ -205,9 +211,18 @@ public class WebServer {
           for (ProjectComponent project : projectList) {
             jsonProjects.put(project.toJson(1));
           }
+
+
+          System.out.println(jsonProjects.length());
+          System.out.println(projectList.size());
+
           json.put("projects", jsonProjects);
 
           body = json.toString();
+
+          projectList = null;
+          jsonProjects = null;
+
           break;
         }
         default:

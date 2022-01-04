@@ -50,7 +50,7 @@ Future<void> stop(int id) async {
 
 Future<void> add(String name, String parent, String tag, String type) async {
   
-  List<String> finalString = tag.replaceAll(" ", "").split(",");
+  String finalString = tag.replaceAll(",", "");
   
   var uri = Uri.parse("$baseUrl/add?$name&$parent&$finalString&$type");
   final response = await client.get(uri);
@@ -63,6 +63,33 @@ Future<void> add(String name, String parent, String tag, String type) async {
     print("statusCode=$response.statusCode");
     throw Exception('Failed to get children');
   }
+}
+
+Future<List<Project>> getProjectList(int id) async {
+  var uri = Uri.parse("$baseUrl/projects?$id");
+  final response = await client.get(uri);
+
+  if(response.statusCode == 200){
+    print("statusCode=$response.statusCode");
+    print(response.body);
+
+    Map<String, dynamic> decoded = convert.jsonDecode(response.body);
+
+    List<Project> projectList = [];
+
+    print(decoded["projects"].length);
+
+    for(int i = 0; i<decoded["projects"].length; i++){
+      projectList.add(Project.fromJson(decoded["projects"][i]));
+    }
+    return projectList;
+  }
+
+  else {
+    print("statusCode=$response.statusCode");
+    throw Exception("Failed to get children");
+  }
+  
 }
 
 Future<Task> getLastTask(int id) async{

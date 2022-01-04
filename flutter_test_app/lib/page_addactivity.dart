@@ -35,11 +35,21 @@ class _PageAddActivityState extends State<PageAddActivity> {
   static const List<String> typeList = ["Project", "Task"];
   static const List<String> listTags = ["java", "Dart", "python", "flutter", "Java", "IntelliJ", "c++", "SQL", "C++"];
 
+  static  List<Project> projectList = [];
+
   @override
   void initState() {
     super.initState();
     project = widget.project;
     id = project.id;
+
+    //projectList = getProjectList(id) as List<Project>;
+    getProjectList(id).then((value) {
+      projectList = value;
+      setState(() {
+        
+      });
+    });
   }
 
   @override
@@ -146,11 +156,11 @@ class _PageAddActivityState extends State<PageAddActivity> {
                           newActivityParent = newValue!;
                         });
                       },
-                      items: <String>["Home", "software testing", "databases"]
-                        .map<DropdownMenuItem<String>>((String value){
+                      items: projectList
+                        .map<DropdownMenuItem<String>>((Project value){
                           return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value)
+                            value: value.id.toString(),
+                            child: Text(value.name)
                           );
                         }).toList(),
                       validator: (value) {
