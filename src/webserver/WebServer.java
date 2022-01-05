@@ -1,12 +1,5 @@
 package webserver;
 
-import main.Interval;
-import main.Project;
-import main.ProjectComponent;
-import main.Task;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,17 +9,34 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.Task;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 // Based on
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
 // http://www.jcgonzalez.com/java-socket-mini-server-http-example
 
+/**
+ * Some Javadoc.
+ *
+ * @author Grup 1 Torn 422.
+ */
 public class WebServer {
   private static final int PORT = 8080; // port to listen to
 
   private ProjectComponent currentActivity;
   private final ProjectComponent root;
 
+  /**
+   * Some Javadoc.
+   *
+   * @author Grup 1 Torn 422.
+   */
   public WebServer(ProjectComponent root) {
     this.root = root;
     System.out.println(root);

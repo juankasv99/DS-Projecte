@@ -1,15 +1,21 @@
 package webserver;
 
-import main.*;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
+import main.*;
 
+/**
+ * Some Javadoc.
+ */
 public class MainWebServer {
   public static void main(String[] args) throws InterruptedException {
     webServer();
   }
 
+  /**
+   * Some Javadoc.
+   *
+   */
   public static void webServer() throws InterruptedException {
     final ProjectComponent root = makeTreeCourses();
     // implement this method that returns the tree of

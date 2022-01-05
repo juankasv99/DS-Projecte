@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
  * @author Grup 1 Torn 422
  * @version 1.0.
  */
-
 public class SearchByIdVisitor implements ProjectVisitor {
 
   private static SearchByIdVisitor uniqueInstance;
@@ -44,6 +43,11 @@ public class SearchByIdVisitor implements ProjectVisitor {
     this.foundProjectComponent = null;
   }
 
+  /**
+   * Some Javadoc.
+   *
+   * @author Grup 1 Torn 422.
+   */
   public ProjectComponent search(int id) {
     this.id = id;
     this.root.acceptVisitor(this);

@@ -1,5 +1,8 @@
 package webserver;
 
+/**
+ * Some Javadoc.
+ */
 public class IdGenerator {
 
   private static IdGenerator uniqueInstance;
@@ -9,6 +12,9 @@ public class IdGenerator {
     this.id = 0;
   }
 
+  /**
+   * Some Javadoc.
+   */
   public static IdGenerator getInstance() {
     if (uniqueInstance == null) {
       uniqueInstance = new IdGenerator();
@@ -17,6 +23,9 @@ public class IdGenerator {
     return uniqueInstance;
   }
 
+  /**
+   * Some Javadoc.
+   */
   public int getId() {
     int id =  this.id;
     this.id = this.id + 1;

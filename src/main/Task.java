@@ -3,7 +3,6 @@ package main;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -242,6 +241,11 @@ public class Task extends ProjectComponent {
 
   // public void removeChildren(ProjectComponent children) {}
 
+  /**
+   * Some Javadoc.
+   *
+   * @author Grup 1 Torn 422.
+   */
   public Interval getCurrentInterval() {
     // Invariants
     assert this.invariants() : "Los invariants no se cumplen.";

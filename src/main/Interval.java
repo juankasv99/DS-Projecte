@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Observer;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -97,6 +96,10 @@ public class Interval implements Observer {
     visitor.visitInterval(this);
   }
 
+  /**
+   * Some javadoc.
+   * 
+   */
   public JSONObject toJson() {
     JSONObject json = new JSONObject();
 
