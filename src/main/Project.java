@@ -252,6 +252,12 @@ public class Project extends ProjectComponent {
     }
     json.put("children", jsonChildren);
 
+    JSONArray jsonTags = new JSONArray();
+    for (String tag : this.getTags()) {
+      jsonTags.put(tag);
+    }
+    json.put("tags", jsonTags);
+
     return json;
   }
 
@@ -267,8 +273,6 @@ public class Project extends ProjectComponent {
     if (this.getDuration().toSeconds() < 0) {
       check = false;
     }
-
-    // Getchildren peta como palomita en el micro
 
     return check;
   }

@@ -182,10 +182,6 @@ public class WebServer {
               newActivity.addTag(tag);
             }
 
-            if (parentActivity != null) {
-              parentActivity.addChildren(newActivity);
-            }
-
             body = "{}";
           } else {
             body = "{\"error\": \"Type must be Project or Task\"}";
