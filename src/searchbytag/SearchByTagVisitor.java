@@ -27,7 +27,7 @@ public class SearchByTagVisitor implements ProjectVisitor {
   private ProjectComponent root;
   private String tag;
   private ArrayList<ProjectComponent> projectComponentList;
-  Logger logger = LoggerFactory.getLogger(SearchByTagSearchVisitor.class);
+  Logger logger = LoggerFactory.getLogger(SearchByTagVisitor.class);
 
   public SearchByTagVisitor(ProjectComponent root) {
     this.root = root;
