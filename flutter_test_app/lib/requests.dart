@@ -50,7 +50,7 @@ Future<void> stop(int id) async {
 
 Future<void> add(String name, String parent, String tag, String type) async {
   
-  String finalString = tag.replaceAll(",", "");
+  String finalString = tag.replaceAll(" ", "");
   
   var uri = Uri.parse("$baseUrl/add?$name&$parent&$finalString&$type");
   final response = await client.get(uri);

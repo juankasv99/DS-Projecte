@@ -182,9 +182,7 @@ public class WebServer {
               newActivity.addTag(tag);
             }
 
-            if (parentActivity != null) {
-              parentActivity.addChildren(newActivity);
-            }
+
 
             body = "{}";
           } else {

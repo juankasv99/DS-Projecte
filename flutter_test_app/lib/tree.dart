@@ -12,12 +12,14 @@ abstract class Activity {
   DateTime? finalDate;
   int duration;
   List<dynamic> children = List<dynamic>.empty(growable: true);
+  List<String> tags = List<String>.empty();
 
   Activity.fromJson(Map<String, dynamic> json)
     : id = json['id'],
       name = json['name'],
       initialDate = json['startTime'] == null ? null : _dateFormatter.parse(json['startTime']),
       finalDate = json['endTime'] == null ? null : _dateFormatter.parse(json['endTime']),
+      tags = json['tags'] ?? null,
       duration = json['duration'];
 }
 
