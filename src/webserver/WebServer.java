@@ -51,9 +51,9 @@ public class WebServer {
     return searchByIdVisitor.search(id);
   }
 
-  private ProjectComponent findLastWorkedTask(ProjectComponent projectComponent) {
-    LastWorkedVisitor lastWorkedVisitor = LastWorkedVisitor.getInstance(projectComponent);
-    return lastWorkedVisitor.search(projectComponent);
+  private ProjectComponent findLastWorkedTask(ProjectComponent root) {
+    LastWorkedVisitor lastWorkedVisitor = new LastWorkedVisitor(root);
+    return lastWorkedVisitor.search();
   }
 
   private ArrayList<ProjectComponent> getProjectList(ProjectComponent root) {

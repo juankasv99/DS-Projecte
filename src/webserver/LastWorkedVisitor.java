@@ -15,33 +15,16 @@ import org.slf4j.LoggerFactory;
 
 public class LastWorkedVisitor implements ProjectVisitor {
 
-  private static LastWorkedVisitor uniqueInstance;
   private ProjectComponent root;
   private ProjectComponent foundProjectComponent;
   Logger logger = LoggerFactory.getLogger(LastWorkedVisitor.class);
 
-  /**
-   * Al ser un singleton en comptes de cridar al constructor es crida.
-   * a aquesta funcio si mai sha cridat abans crida al constructor.
-   * sino retorna la instancia del objecta actual.
-   *
-   * @author Grup 1 Torn 422
-   */
-  public static LastWorkedVisitor getInstance(ProjectComponent root) {
-    if (uniqueInstance == null) {
-      uniqueInstance = new LastWorkedVisitor(root);
-    }
-
-    return uniqueInstance;
-  }
-
-  private LastWorkedVisitor(ProjectComponent root) {
+  public LastWorkedVisitor(ProjectComponent root) {
     this.root = root;
     this.foundProjectComponent = null;
   }
 
-  public ProjectComponent search(ProjectComponent root) {
-    this.root = root;
+  public ProjectComponent search() {
     this.root.acceptVisitor(this);
 
     return this.foundProjectComponent;
