@@ -44,10 +44,10 @@ public class ProjectListVisitor implements ProjectVisitor {
 
   public ArrayList<ProjectComponent> getProjectList(ProjectComponent root) {
 
-    if(root != null) {
+
       this.root = root;
       this.root.acceptVisitor(this);
-    }
+
 
     return this.projectList;
   }

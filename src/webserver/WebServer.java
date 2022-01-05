@@ -59,11 +59,8 @@ public class WebServer {
   private ArrayList<ProjectComponent> getProjectList(ProjectComponent projectComponent) {
     ProjectListVisitor projectListVisitor = ProjectListVisitor.getInstance(projectComponent);
 
-    if(projectListVisitor.getProjectListSize() == 0)
-      return projectListVisitor.getProjectList(projectComponent);
+    return projectListVisitor.getProjectList(projectComponent);
 
-    else
-      return projectListVisitor.getProjectList(null);
 
   }
 

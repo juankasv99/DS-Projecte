@@ -12,7 +12,7 @@ abstract class Activity {
   DateTime? finalDate;
   int duration;
   List<dynamic> children = List<dynamic>.empty(growable: true);
-  List<String> tags = List<String>.empty();
+  List<dynamic> tags = List<dynamic>.empty();
 
   Activity.fromJson(Map<String, dynamic> json)
     : id = json['id'],
