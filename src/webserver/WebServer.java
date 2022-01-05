@@ -15,6 +15,7 @@ import main.ProjectComponent;
 import main.Task;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import searchbytag.SearchByTagVisitor;
 
 
 // Based on
@@ -74,6 +75,11 @@ public class WebServer {
   private ArrayList<String> getTagList(ProjectComponent root) {
     TagListVisitor tagListVisitor = new TagListVisitor(root);
     return tagListVisitor.getTagList();
+  }
+
+  private ArrayList<ProjectComponent> getProjectComponentsByTag(ProjectComponent root, String tag) {
+    SearchByTagVisitor searchByTagVisitor = new SearchByTagVisitor(root);
+    return searchByTagVisitor.getProjectComponentList(tag);
   }
 
   private class SocketThread extends Thread {
@@ -242,6 +248,26 @@ public class WebServer {
           }
 
           json.put("tags", jsonTags);
+
+          body = json.toString();
+        }
+        case "search_tag": {
+          int id = Integer.parseInt(tokens[1]);
+          String tag = tokens[2];
+          ProjectComponent activity = findActivityById(id);
+          assert (activity != null);
+          ArrayList<ProjectComponent> projectComponentList = getProjectComponentsByTag(activity, tag);
+
+          JSONObject json = new JSONObject();
+          JSONArray jsonProjectComponents = new JSONArray();
+          for (ProjectComponent projectComponent : projectComponentList) {
+            jsonProjectComponents.put(projectComponent.toJson(1));
+          }
+
+          System.out.println(jsonProjectComponents.length());
+          System.out.println(projectComponentList.size());
+
+          json.put("project_components", jsonProjectComponents);
 
           body = json.toString();
         }

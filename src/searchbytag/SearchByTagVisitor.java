@@ -1,5 +1,6 @@
 package searchbytag;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import main.Interval;
 import main.Project;
@@ -8,6 +9,7 @@ import main.ProjectVisitor;
 import main.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import webserver.SearchByTagSearchVisitor;
 
 
 /**
@@ -22,29 +24,15 @@ import org.slf4j.LoggerFactory;
 
 public class SearchByTagVisitor implements ProjectVisitor {
 
-  private static SearchByTagVisitor uniqueInstance;
-  private final ProjectComponent root;
+  private ProjectComponent root;
   private String tag;
-  Logger logger = LoggerFactory.getLogger(SearchByTagVisitor.class);
+  private ArrayList<ProjectComponent> projectComponentList;
+  Logger logger = LoggerFactory.getLogger(SearchByTagSearchVisitor.class);
 
-  /**
-   * Al ser un singleton en comptes de cridar al constructor es crida.
-   * a aquesta funcio si mai sha cridat abans crida al constructor.
-   * sino retorna la instancia del objecta actual.
-   *
-   * @author Grup 1 Torn 422
-   */
-  public static SearchByTagVisitor getInstance(ProjectComponent root) {
-    if (uniqueInstance == null) {
-      uniqueInstance = new SearchByTagVisitor(root);
-    }
-
-    return uniqueInstance;
-  }
-
-  private SearchByTagVisitor(ProjectComponent root) {
+  public SearchByTagVisitor(ProjectComponent root) {
     this.root = root;
     this.tag = "";
+    this.projectComponentList = new ArrayList<>();
   }
 
   public void search(String tag) {
@@ -52,10 +40,16 @@ public class SearchByTagVisitor implements ProjectVisitor {
     this.root.acceptVisitor(this);
   }
 
+  public ArrayList<ProjectComponent> getProjectComponentList(String tag) {
+    this.search(tag);
+    return this.projectComponentList;
+  }
+
   @Override
   public void visitProject(Project project) {
-    for (String projecttag : project.getTags()) {
-      if (Objects.equals(projecttag.toLowerCase(), tag.toLowerCase())) {
+    for (String projectTag : project.getTags()) {
+      if (Objects.equals(projectTag.toLowerCase(), tag.toLowerCase())) {
+        this.projectComponentList.add(project);
         logger.info("Project " + project.getName() + " has tag " + tag);
       }
     }
@@ -63,8 +57,9 @@ public class SearchByTagVisitor implements ProjectVisitor {
 
   @Override
   public void visitTask(Task task) {
-    for (String tasktag : task.getTags()) {
-      if (Objects.equals(tasktag.toLowerCase(), tag.toLowerCase())) {
+    for (String taskTag : task.getTags()) {
+      if (Objects.equals(taskTag.toLowerCase(), tag.toLowerCase())) {
+        this.projectComponentList.add(task);
         logger.info("Task " + task.getName() + " has tag " + tag);
       }
     }
