@@ -59,6 +59,7 @@ public class SearchByIdVisitor implements ProjectVisitor {
   public void visitProject(Project project) {
     if (project.getId() == this.id) {
       this.foundProjectComponent = project;
+      logger.info("Project found: " + project);
     }
   }
 
@@ -66,6 +67,7 @@ public class SearchByIdVisitor implements ProjectVisitor {
   public void visitTask(Task task) {
     if (task.getId() == this.id) {
       this.foundProjectComponent = task;
+      logger.info("Task found: " + task);
     }
   }
 
