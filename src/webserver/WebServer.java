@@ -56,12 +56,9 @@ public class WebServer {
     return lastWorkedVisitor.search(projectComponent);
   }
 
-  private ArrayList<ProjectComponent> getProjectList(ProjectComponent projectComponent) {
-    ProjectListVisitor projectListVisitor = ProjectListVisitor.getInstance(projectComponent);
-
-    return projectListVisitor.getProjectList(projectComponent);
-
-
+  private ArrayList<ProjectComponent> getProjectList(ProjectComponent root) {
+    ProjectListVisitor projectListVisitor = new ProjectListVisitor(root);
+    return projectListVisitor.getProjectList();
   }
 
   private class SocketThread extends Thread {

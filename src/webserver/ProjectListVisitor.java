@@ -17,43 +17,18 @@ import java.util.ArrayList;
 
 public class ProjectListVisitor implements ProjectVisitor {
 
-  private static ProjectListVisitor uniqueInstance;
   private ProjectComponent root;
   private ArrayList<ProjectComponent> projectList;
   Logger logger = LoggerFactory.getLogger(ProjectListVisitor.class);
 
-  /**
-   * Al ser un singleton en comptes de cridar al constructor es crida.
-   * a aquesta funcio si mai sha cridat abans crida al constructor.
-   * sino retorna la instancia del objecta actual.
-   *
-   * @author Grup 1 Torn 422
-   */
-  public static ProjectListVisitor getInstance(ProjectComponent root) {
-    if (uniqueInstance == null) {
-      uniqueInstance = new ProjectListVisitor(root);
-    }
-
-    return uniqueInstance;
-  }
-
-  private ProjectListVisitor(ProjectComponent root) {
+  public ProjectListVisitor(ProjectComponent root) {
     this.root = root;
     this.projectList = new ArrayList<>();
   }
 
-  public ArrayList<ProjectComponent> getProjectList(ProjectComponent root) {
-
-
-      this.root = root;
-      this.root.acceptVisitor(this);
-
-
+  public ArrayList<ProjectComponent> getProjectList() {
+    this.root.acceptVisitor(this);
     return this.projectList;
-  }
-
-  public int getProjectListSize() {
-    return projectList.size();
   }
 
   @Override
