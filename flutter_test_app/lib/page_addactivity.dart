@@ -33,7 +33,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
   String newActivityType = "Project";
 
   static const List<String> typeList = ["Project", "Task"];
-  static const List<String> listTags = ["java", "Dart", "python", "flutter", "Java", "IntelliJ", "c++", "SQL", "C++"];
+  static List<String> listTags = ["java", "Dart", "python", "flutter", "Java", "IntelliJ", "c++", "SQL", "C++"];
 
   static  List<Project> projectList = [];
 
@@ -46,6 +46,13 @@ class _PageAddActivityState extends State<PageAddActivity> {
     //projectList = getProjectList(id) as List<Project>;
     getProjectList(id).then((value) {
       projectList = value;
+      setState(() {
+        
+      });
+    });
+
+    getTags(id).then((value) {
+      listTags = value;
       setState(() {
         
       });
@@ -221,11 +228,15 @@ class _PageAddActivityState extends State<PageAddActivity> {
                     //   },
                     // ),
                     
-                    SizedBox(height: 25,),
-        
+                    SizedBox(height: 45,),
+                    
                     ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(primaryColorRedDark),
+                      style: ElevatedButton.styleFrom(
+                        //fixedSize: MediaQuery.of(context).size.width,
+                        primary: primaryColorRedDark,
+                        elevation: 3,
+                        onPrimary: Colors.white,
+                        minimumSize: Size(230,40),
                       ),
                       onPressed: () {
                         if(_formKey.currentState!.validate()) {
@@ -234,9 +245,11 @@ class _PageAddActivityState extends State<PageAddActivity> {
                           );
                           _formKey.currentState!.save();
                           add(newActivityName, newActivityParent, newActivityTag, newActivityType);
+
+                          Navigator.of(context).pop();
                         }
                         },
-                      child: const Text("Save"))
+                      child: const Text("Save", style: TextStyle(fontSize: 17),))
                   ],
                 ),
               ),

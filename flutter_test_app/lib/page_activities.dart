@@ -55,6 +55,9 @@ class _PageActivitiesState extends State<PageActivities> {
                 snapshot.data!.root.name,
               ),
               actions: <Widget>[
+                IconButton(icon: Icon(Icons.search),
+                onPressed: () {},),
+                
                 IconButton(
                     icon: Icon(Icons.home),
                     onPressed: () {
@@ -64,6 +67,7 @@ class _PageActivitiesState extends State<PageActivities> {
                       }
                       PageActivities(id: 0);
                     }),
+                
                 //TODO: other actions
               ],
             ),
@@ -196,7 +200,7 @@ class _PageActivitiesState extends State<PageActivities> {
           backgroundColor: primaryColorRedDark,
         ),
         title: Text('${activity.name}'),
-        trailing: Text('$strDuration'),
+        trailing: Text('$strDuration', style: TextStyle(fontSize: 19),),
         subtitle: Text(
           "Started: $strStarted\nTo: $strEnded",
           style: TextStyle(fontSize: 14),
@@ -240,7 +244,7 @@ class _PageActivitiesState extends State<PageActivities> {
             ),
             Flexible(
               flex: 2,
-              child: Text('$strDuration', style: TextStyle(fontSize: 17),),
+              child: Text('$strDuration', style: TextStyle(fontSize: 19),),
             ),
           ],
         ),
