@@ -163,7 +163,7 @@ public class WebServer {
           break;
         }
         case "add": {
-          String name = tokens[1];
+          String name = tokens[1].replace("%20", " ");
           int parentId = Integer.parseInt(tokens[2]);
           String unprocessedTokens = tokens[3];
           String type = tokens[4];
@@ -181,8 +181,6 @@ public class WebServer {
             for (String tag : processedTokens) {
               newActivity.addTag(tag);
             }
-
-
 
             body = "{}";
           } else {
