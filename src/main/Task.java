@@ -296,9 +296,14 @@ public class Task extends ProjectComponent {
     }
     json.put("intervals", jsonIntervals);
 
+    JSONArray jsonTags = new JSONArray();
+    for (String tag : this.getTags()) {
+      jsonTags.put(tag);
+    }
+    json.put("tags", jsonTags);
+
     return json;
   }
-
 
   private boolean invariants() {
     boolean check = !this.getName().isEmpty();
