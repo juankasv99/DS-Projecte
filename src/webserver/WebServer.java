@@ -61,6 +61,11 @@ public class WebServer {
     return projectListVisitor.getProjectList();
   }
 
+  private ArrayList<String> getTagList(ProjectComponent root) {
+    TagListVisitor tagListVisitor = new TagListVisitor(root);
+    return tagListVisitor.getTagList();
+  }
+
   private class SocketThread extends Thread {
     // SocketThread sees WebServer attributes
     private final Socket insocked;
@@ -202,7 +207,6 @@ public class WebServer {
             jsonProjects.put(project.toJson(1));
           }
 
-
           System.out.println(jsonProjects.length());
           System.out.println(projectList.size());
 
@@ -214,6 +218,22 @@ public class WebServer {
           jsonProjects = null;
 
           break;
+        }
+        case "tags": {
+          int id = Integer.parseInt(tokens[1]);
+          ProjectComponent activity = findActivityById(id);
+          assert (activity != null);
+          ArrayList<String> tagList = getTagList(activity);
+
+          JSONObject json = new JSONObject();
+          JSONArray jsonTags = new JSONArray();
+          for (String tag : tagList) {
+            jsonTags.put(tag);
+          }
+
+          json.put("tags", jsonTags);
+
+          body = json.toString();
         }
         default:
           assert false;

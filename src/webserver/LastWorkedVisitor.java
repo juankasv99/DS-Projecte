@@ -26,7 +26,6 @@ public class LastWorkedVisitor implements ProjectVisitor {
 
   public ProjectComponent search() {
     this.root.acceptVisitor(this);
-
     return this.foundProjectComponent;
   }
 
