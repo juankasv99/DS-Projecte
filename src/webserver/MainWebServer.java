@@ -18,6 +18,8 @@ public class MainWebServer {
    */
   public static void webServer() throws InterruptedException {
     final ProjectComponent root = makeTreeCourses();
+    // final ProjectComponent root = makeVoidTree();
+    // final ProjectComponent root = makeLoadedTree();
     // implement this method that returns the tree of
     // appendix A in the practicum handout
 
@@ -58,16 +60,28 @@ public class MainWebServer {
 
     PrinterVisitor printer = PrinterVisitor.getInstance(root);
 
-    /*transportation.startTask();
-    Thread.sleep(2000);
-    transportation.stopTask();*/
+    return root;
+  }
 
-    /*LocalDateTime start = LocalDateTime.now();
-    Thread.sleep(1000);
-    LocalDateTime end = LocalDateTime.now();
+  private static ProjectComponent makeVoidTree() throws InterruptedException {
+    Project root = new Project("Home", null);
 
-    Duration duration = Duration.ofSeconds(1);
-    Interval test = new Interval(start,end,duration,transportation);*/
+    PrinterVisitor printer = PrinterVisitor.getInstance(root);
+
+    return root;
+  }
+
+  private static ProjectComponent makeLoadedTree() throws InterruptedException {
+    Loadjson loadjson = new Loadjson();
+    try {
+      loadjson.load("test.json");
+    } catch (Exception e) {
+      return makeVoidTree();
+    }
+    Project root = loadjson.getRoot();
+
+    PrinterVisitor printer = PrinterVisitor.getInstance(root);
+
     return root;
   }
 }

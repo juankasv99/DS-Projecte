@@ -9,10 +9,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-import main.Interval;
-import main.Project;
-import main.ProjectComponent;
-import main.Task;
+
+import main.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import searchbytag.SearchByTagVisitor;
@@ -80,6 +78,12 @@ public class WebServer {
   private ArrayList<ProjectComponent> getProjectComponentsByTag(ProjectComponent root, String tag) {
     SearchByTagVisitor searchByTagVisitor = new SearchByTagVisitor(root);
     return searchByTagVisitor.getProjectComponentList(tag);
+  }
+
+  private void saveJson() {
+    Savejsonvisitor savejsonvisitor = new Savejsonvisitor();
+    this.root.acceptVisitor(savejsonvisitor);
+    savejsonvisitor.save("src/webserver/test.json");
   }
 
   private class SocketThread extends Thread {
@@ -278,6 +282,9 @@ public class WebServer {
         default:
           assert false;
       }
+
+      saveJson();
+
       System.out.println(body);
       return body;
     }
