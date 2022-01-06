@@ -1,0 +1,33 @@
+{
+  "duration": 180,
+  "children": [{
+    "duration": 180,
+    "parent": "Home",
+    "intervals": [
+      {
+        "duration": 16,
+        "task": "First Task",
+        "startTime": "2022-01-06T21:41:49.756760400",
+        "endTime": "2022-01-06T21:42:05.756760400"
+      },
+      {
+        "duration": 38,
+        "task": "First Task",
+        "startTime": "2022-01-06T21:43:14.756664300",
+        "endTime": "2022-01-06T21:43:52.756664300"
+      },
+      {
+        "duration": 126,
+        "task": "First Task",
+        "startTime": "2022-01-06T21:44:19.755593400",
+        "endTime": "2022-01-06T21:46:25.755593400"
+      }
+    ],
+    "name": "First Task",
+    "startTime": "2022-01-06T21:41:49.756760400",
+    "endTime": "2022-01-06T21:46:25.755593400"
+  }],
+  "name": "Home",
+  "startTime": "2022-01-06T21:41:49.756760400",
+  "endTime": "2022-01-06T21:46:25.755593400"
+}

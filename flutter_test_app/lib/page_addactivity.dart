@@ -72,6 +72,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primaryColorRed,

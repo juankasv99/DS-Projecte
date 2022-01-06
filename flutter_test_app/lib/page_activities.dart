@@ -9,6 +9,7 @@ import 'package:flutter_test_app/requests.dart';
 import 'dart:async';
 import 'package:flutter_test_app/util/colors.dart';
 import 'package:flutter_test_app/util/functions.dart';
+import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -37,6 +38,10 @@ class _PageActivitiesState extends State<PageActivities> {
 
   Image flagCat = Image.asset('assets/cat.png', height: 30, width: 30,);
   Image flagEng = Image.asset('assets/eng.png', height: 30, width: 30,);
+  Image logo = Image.asset('assets/timetrackerlogo.png');
+
+  List<String> orderList = ["alph", "date"];
+  int _selectedIndex = 0;
 
 
   Tree.Task? lastWorkedTask;
@@ -55,13 +60,14 @@ class _PageActivitiesState extends State<PageActivities> {
   @override
   Widget build(BuildContext context) {
     Map<String, Image> displayImage = {"eng" : flagEng, "cat": flagCat};
+    
 
     return FutureBuilder<Tree.Tree>(
       future: futureTree,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
-            appBar: AppBar(
+            appBar: drawerFlag(snapshot.data!.root.children.length < 1, snapshot.data!.root.id == 0) ? AppBar(
               centerTitle: true,
               backgroundColor: primaryColorRed,
               title: Text(
@@ -87,9 +93,9 @@ class _PageActivitiesState extends State<PageActivities> {
                 
                 //TODO: other actions
               ],
-            ),
+            ) : null,
             drawer: id == 0 ? _buildDrawer(displayImage) : null,
-            body: Column(
+            body: drawerFlag(snapshot.data!.root.children.length < 1, snapshot.data!.root.id == 0) ? Column(
               children: <Widget>[
                 _sumUpProject(activity: snapshot.data!.root),
                 SizedBox(height: 5.0),
@@ -113,6 +119,21 @@ class _PageActivitiesState extends State<PageActivities> {
                   ),
                 ),
               ],
+            )
+            :
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 150, horizontal: 35),
+                child: Column(
+                  children: <Widget>[
+                    Text(globals.stringLang[globals.selectedLang]!["welcome"].toString().toUpperCase(), 
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.grey[800],)),
+                    logo,
+                    SizedBox(height: 40,),
+                    Text(globals.stringLang[globals.selectedLang]!["welcomemsg"], textAlign: TextAlign.center,)
+                  ],
+                ),
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
@@ -143,10 +164,10 @@ class _PageActivitiesState extends State<PageActivities> {
         Duration(seconds: activity.duration).toString().split('.').first;
 
     String strStarted = activity.initialDate != null
-        ? DateFormat('dd/MM/yy - HH:mm:ss').format(activity.initialDate!)
+        ? DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(activity.initialDate!)
         : "-";
     String strEnded = activity.finalDate != null
-        ? DateFormat('dd/MM/yy - HH:mm:ss').format(activity.finalDate!)
+        ? DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(activity.finalDate!)
         : "-";
 
     if (activity is Tree.Project) {
@@ -314,11 +335,11 @@ class _PageActivitiesState extends State<PageActivities> {
     }
 
     String startedString = activity.initialDate == null
-        ? "Not Started Yet"
-        : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.initialDate!);
+        ? globals.stringLang[globals.selectedLang]!["NotStartedYet"]
+        : DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(activity.initialDate!);
     String endedString = activity.finalDate == null
-        ? "No Working Session Yet"
-        : DateFormat('dd/MM/yy - HH:mm:ss').format(activity.finalDate!);
+        ? globals.stringLang[globals.selectedLang]!["NoWorkingSessionYet"]
+        : DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(activity.finalDate!);
 
     //Widget icon = Icon(Icons.play_circle_rounded);
 
@@ -504,8 +525,49 @@ class _PageActivitiesState extends State<PageActivities> {
                 },
                 ),
           ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.55,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: Text(globals.stringLang[globals.selectedLang]!["orderSelect"], style: TextStyle(
+              fontSize: 15, 
+            ),),
+            ),
+          ),
+          Center(
+            child: FlutterToggleTab(
+              width: 50,
+              borderRadius: 10,
+              selectedIndex: _selectedIndex,
+              selectedTextStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600
+                      ),
+              unSelectedTextStyle: TextStyle(
+                        color: primaryColorRedLight,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+                      ),
+              labels: [globals.stringLang[globals.selectedLang]!["orderName"], globals.stringLang[globals.selectedLang]!["orderDate"]],
+              icons: [Icons.sort_by_alpha, Icons.access_time],
+              selectedLabelIndex: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                  globals.selectedOrdr = orderList[index];
+                });
+              },
+            ),
+          )
         ],
       ),
     );
+  }
+
+  drawerFlag(bool cond1, bool cond2) {
+    if(cond1 && cond2) {
+      return !true;
+    } else {
+      return !false;
+    }
   }
 }

@@ -1,7 +1,7 @@
 library my_prj.globals;
 
 String selectedLang = "eng";
-String selectedOrdr = "date"; //alph or date
+String selectedOrdr = "alph"; //alph or date
 
 Map<String, Map> stringLang = {
     "eng" : {
@@ -14,6 +14,8 @@ Map<String, Map> stringLang = {
       "startedTile" : "Started:",
       "toTile"  : "To:",
       "home" : "Home",
+      "NotStartedYet" : "Not Started Yet",
+      "NoWorkingSessionYet": "No Working Session Yet",
 
       //AddActivity Page
       "titlePage" : "New Activity",
@@ -47,6 +49,15 @@ Map<String, Map> stringLang = {
       "eng" : "English",
       "cat" : "Catalan",
 
+      //Splash Screen
+      "welcome": "Welcome to",
+      "welcomemsg" : "We see you don't have any project or task yet.\n\nStart using the App creating your first activity!",
+
+      "formatDate" : "MM/dd/yy - HH:mm:ss",
+      "orderSelect" : "Select the elements on screen order",
+      "orderDate" : "Date",
+      "orderName" : "Name",
+
     },
 
     "cat" : {
@@ -59,6 +70,8 @@ Map<String, Map> stringLang = {
       "startedTile" : "Inici:",
       "toTile"  : "Final:",
       "home" : "Inici",
+      "NotStartedYet" : "Sense Inici",
+      "NoWorkingSessionYet": "Sense Sessions",
       
       //AddActivity Page
       "titlePage" : "Nova Activitat",
@@ -92,6 +105,14 @@ Map<String, Map> stringLang = {
       "eng" : "Anglès",
       "cat" : "Català",
 
+      //Splash Screen
+      "welcome": "Bienvenido a",
+      "welcomemsg" : "Veiem que encara no tens cap projecte o tasca encara.\nComença a gaudir de l'aplicació creant la teva primera activitat!",
+
+      "formatDate" : "dd/MM/yy - HH:mm:ss",
+      "orderSelect" : "Selecciona l'ordre dels elements en pantalla",
+      "orderDate" : "Date",
+      "orderName" : "Name",
     }
 
 };

@@ -119,9 +119,9 @@ class _PageIntervalsState extends State<PageIntervals> {
       .toString()
       .split('.')
       .first;
-  String strInitialDate = DateFormat('dd/MM/yy - HH:mm:ss').format(interval.initialDate!);
+  String strInitialDate = DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(interval.initialDate!);
   // this removes the microseconds part
-  String strFinalDate = DateFormat('dd/MM/yy - HH:mm:ss').format(interval.finalDate!);
+  String strFinalDate = DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(interval.finalDate!);
   return ListTile(
     leading: _generateClock(interval, index),
     //title: Text(strInitialDate),
@@ -193,7 +193,7 @@ void dispose() {
           ],),
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
-            Text(task.finalDate == null ? "-" : DateFormat('dd/MM/yy - HH:mm:ss').format(task.finalDate!), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
+            Text(task.finalDate == null ? "-" : DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(task.finalDate!), textAlign: TextAlign.start, style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
             Spacer(),
             Text(printDuration(task.duration), textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600, color: Colors.grey[600]),),
           ],),
@@ -206,7 +206,7 @@ void dispose() {
           SizedBox(height: 10.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text(task.initialDate == null ? "-" : DateFormat('dd/MM/yy - HH:mm:ss').format(task.initialDate!), textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
+            Text(task.initialDate == null ? "-" : DateFormat(globals.stringLang[globals.selectedLang]!["formatDate"]).format(task.initialDate!), textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
           ],),
         ],),
     );
