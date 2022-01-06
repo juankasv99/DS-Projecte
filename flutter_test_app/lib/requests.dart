@@ -135,27 +135,64 @@ Future<List<String>> getTags(int id) async{
     return tagsList;
   }
   else {
-    print("statusCode=$response.statusCode");
+    print("statusCode=${response.statusCode}");
     throw Exception("Failed to get children");
   }
   
 }
 
+Future<List<Map<String, dynamic>>> searchByTag(int id, String tag) async{
+  var uri = Uri.parse("$baseUrl/search_tag?$id?$tag");
+  final response = await client.get(uri);
 
+  List<Map<String, dynamic>> activityList = [];
 
-/*
-List<Project> projectList = [];
+  if(response.statusCode == 200){
+    print(response.body);
 
-    print(decoded["projects"].length);
+    Map<String, dynamic> decoded = convert.jsonDecode(response.body);
 
-    for(int i = 0; i<decoded["projects"].length; i++){
-      projectList.add(Project.fromJson(decoded["projects"][i]));
+    List<dynamic> data = decoded["project_components"];
+
+    
+
+    for(int i = 0; i<data.length; i++) {
+      activityList.add(data[i]);
     }
-    return projectList;
-  }
 
+  return activityList;
+  }
   else {
-    print("statusCode=$response.statusCode");
+    print("statusCode=${response.statusCode}");
     throw Exception("Failed to get children");
   }
-*/
+}
+
+
+
+// Future<List<Project>> getProjectList(int id) async {
+//   var uri = Uri.parse("$baseUrl/projects?$id");
+//   final response = await client.get(uri);
+
+//   if(response.statusCode == 200){
+//     print("statusCode=$response.statusCode");
+//     print(response.body);
+
+//     Map<String, dynamic> decoded = convert.jsonDecode(response.body);
+
+//     List<Project> projectList = [];
+
+//     print(decoded["projects"].length);
+
+//     for(int i = 0; i<decoded["projects"].length; i++){
+//       projectList.add(Project.fromJson(decoded["projects"][i]));
+//     }
+//     return projectList;
+//   }
+
+//   else {
+//     print("statusCode=$response.statusCode");
+//     throw Exception("Failed to get children");
+//   }
+  
+// }

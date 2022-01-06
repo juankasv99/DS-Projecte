@@ -250,6 +250,8 @@ public class WebServer {
           json.put("tags", jsonTags);
 
           body = json.toString();
+
+          break;
         }
         case "search_tag": {
           int id = Integer.parseInt(tokens[1]);
@@ -270,6 +272,8 @@ public class WebServer {
           json.put("project_components", jsonProjectComponents);
 
           body = json.toString();
+
+          break;
         }
         default:
           assert false;

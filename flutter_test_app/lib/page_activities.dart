@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_app/page_addactivity.dart';
 import 'package:flutter_test_app/page_intervals.dart';
 import 'package:flutter_test_app/page_report.dart';
+import 'package:flutter_test_app/page_search.dart';
 import 'package:flutter_test_app/tree.dart' as Tree
     hide getTree; //old getTree()
 import 'package:flutter_test_app/requests.dart';
@@ -56,7 +57,9 @@ class _PageActivitiesState extends State<PageActivities> {
               ),
               actions: <Widget>[
                 IconButton(icon: Icon(Icons.search),
-                onPressed: () {},),
+                onPressed: () {
+                  _navigateSearch(id);
+                },),
                 
                 IconButton(
                     icon: Icon(Icons.home),
@@ -268,7 +271,7 @@ class _PageActivitiesState extends State<PageActivities> {
           "Started: $strStarted\nTo: $strEnded",
           style: TextStyle(fontSize: 14),
         ),
-        onTap: () => _navigateDownIntervals(activity.id),
+        onTap: () => navigateDownIntervals(activity.id),
         onLongPress: () {
           /*if ((activity as Tree.Task).active) {
             stop(activity.id);
@@ -284,7 +287,16 @@ class _PageActivitiesState extends State<PageActivities> {
     }
   }
 
-  _navigateDownIntervals(int childId) {
+  _navigateSearch(int actualId) {
+    Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => PageSearch(id: actualId)))
+      .then((var value) {
+        _activateTimer();
+        _refresh();
+      });
+  }
+
+  navigateDownIntervals(int childId) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => PageIntervals(childId)))
         .then((var value) {
