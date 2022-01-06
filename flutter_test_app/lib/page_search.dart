@@ -5,6 +5,8 @@ import 'package:flutter_test_app/requests.dart';
 import 'package:flutter_test_app/util/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter_test_app/util/languages.dart' as globals;
+
 class PageSearch extends StatefulWidget {
   final int id;
 
@@ -48,7 +50,7 @@ class _PageSearchState extends State<PageSearch> {
     super.initState();
     id = widget.id;
 
-    searchResult = Center(child: Container(child: Text("Waiting for tag search"),));
+    searchResult = Center(child: Text(globals.stringLang[globals.selectedLang]!["waiting"]),);
 
     getTags(id).then((value) {
       listTags = value;
@@ -120,7 +122,7 @@ class _PageSearchState extends State<PageSearch> {
                         });
                       },
                     ),
-                    hintText: "Search by tag...",
+                    hintText: globals.stringLang[globals.selectedLang]!["searchByTag"],
                     border: InputBorder.none
 
                   ),
@@ -142,7 +144,7 @@ class _PageSearchState extends State<PageSearch> {
       itemBuilder: (context, index) => ListTile(
         leading: activityList[index]["type"] == "Project" ? projectIcon : taskIcon,
         title: Text(activityList[index]["name"], style: TextStyle(fontSize: 20, color: Colors.grey[800]),),
-        subtitle: Text("Tags: " + activityList[index]["tags"].toString().replaceAll("[", "").replaceAll("]", ""),style: TextStyle(
+        subtitle: Text(globals.stringLang[globals.selectedLang]!["tags"] + activityList[index]["tags"].toString().replaceAll("[", "").replaceAll("]", ""),style: TextStyle(
           fontSize: 15,
         ),),
         onTap: () {

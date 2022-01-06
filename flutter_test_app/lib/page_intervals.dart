@@ -9,6 +9,8 @@ import 'package:flutter_test_app/util/semicircle.dart';
 import 'package:flutter_test_app/util/functions.dart';
 import 'package:intl/intl.dart';
 
+import 'package:flutter_test_app/util/languages.dart' as globals;
+
 class PageIntervals extends StatefulWidget {
   final int id;
 
@@ -124,9 +126,9 @@ class _PageIntervalsState extends State<PageIntervals> {
     leading: _generateClock(interval, index),
     //title: Text(strInitialDate),
     //isThreeLine: true,
-    title: Text("From: ${strInitialDate} \nTo: ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
+    title: Text("${globals.stringLang[globals.selectedLang]!["fromIntervals"]} ${strInitialDate} \n${globals.stringLang[globals.selectedLang]!["toIntervals"]} ${strFinalDate}", style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w400),),//Text('from ${strInitialDate} to ${strFinalDate}'),
     trailing: Text(strDuration),
-    dense: true,
+    //dense: true,
   );
 
 }
@@ -157,7 +159,7 @@ void dispose() {
         children: <Widget>[
           Row(children: <Widget>[
             Spacer(),
-            Text("Total Duration", textAlign: TextAlign.end, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),)
+            Text(globals.stringLang[globals.selectedLang]!["totalDuration"], textAlign: TextAlign.end, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),)
           ],),
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
@@ -173,7 +175,7 @@ void dispose() {
           SizedBox(height: 0.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text("Current Working Period", textAlign: TextAlign.center, style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
+            Text(globals.stringLang[globals.selectedLang]!["currentWorkingPeriod"], textAlign: TextAlign.center, style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700, color: Colors.grey[600]),),
           ],),
         ],),
     );
@@ -185,9 +187,9 @@ void dispose() {
       child: Column(
         children: <Widget>[
           Row(children: <Widget>[
-            Text("Last Time Worked", textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),),
+            Text(globals.stringLang[globals.selectedLang]!["lastTimeWorkedIntervals"], textAlign: TextAlign.start, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),),
             Spacer(),
-            Text("Total Duration", textAlign: TextAlign.end, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),)
+            Text(globals.stringLang[globals.selectedLang]!["totalDuration"], textAlign: TextAlign.end, style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),)
           ],),
           SizedBox(height: 3.0,),
           Row(children: <Widget>[
@@ -199,7 +201,7 @@ void dispose() {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-            Text("Started on:", textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),),
+            Text(globals.stringLang[globals.selectedLang]!["startedOn"], textAlign: TextAlign.center, style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),),
           ],),
           SizedBox(height: 10.0,),
           Row(mainAxisAlignment: MainAxisAlignment.center,

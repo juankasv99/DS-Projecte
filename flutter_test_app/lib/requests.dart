@@ -1,6 +1,7 @@
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'tree.dart';
+import 'package:flutter_test_app/util/languages.dart' as globals;
 
 final http.Client client = http.Client();
 
@@ -19,6 +20,72 @@ Future<Tree> getTree(int id) async {
     print(response.body);
 
     Map<String, dynamic> decoded = convert.jsonDecode(response.body);
+    //decoded["children"] = decoded["children"].sort((a, b) => a["name"].compareTo(b["name"]));
+
+    // decoded["children"].sort((m1, m2) {
+    //   var r = m1["name"].compareTo(m2["name"]);
+    //   if (r != 0) return r;
+    // });
+
+    List<Map<String, dynamic>> newList = List.empty(growable: true);
+
+    if(globals.selectedOrdr == "alph") {
+
+      if(decoded["children"] != null && decoded["children"].length > 0) {
+        newList.add(decoded["children"][0]);
+        for(int i = 1; i < decoded["children"].length; i++) {
+
+          for(int j = 0; j < newList.length; j++)
+          {
+            if(decoded["children"][i]["name"].compareTo(newList[j]["name"]) < 0) {
+              newList.insert(j, decoded["children"][i]);
+              break;
+            }
+            if(j == newList.length-1){
+              newList.insert(j+1, decoded["children"][i]);
+              break;
+            }
+          }
+
+        }
+      }
+      decoded["children"] = newList;
+    }
+
+    else{
+      if(decoded["children"] != null && decoded["children"].length > 0) {
+        newList.add(decoded["children"][0]);
+        for(int i = 1; i < decoded["children"].length; i++) {
+
+          if(decoded["children"][i]["endTime"] == null)
+          {
+            newList.insert(newList.length, decoded["children"][i]);
+            continue;
+          }
+
+          for(int j = 0; j < newList.length; j++)
+          {
+            if(newList[j]["endTime"] == null) {
+              newList.insert(j, decoded["children"][i]);
+              break;
+            }
+            if(decoded["children"][i]["endTime"].compareTo(newList[j]["endTime"]) > 0) {
+              newList.insert(j, decoded["children"][i]);
+              break;
+            }
+            if(j == newList.length-1){
+              newList.insert(j+1, decoded["children"][i]);
+              break;
+            }
+          }
+
+        }
+      }
+
+      decoded["children"] = newList;
+    }
+    
+    
     return Tree(decoded);
   } else {
     print("statusCode=$response.statusCode");

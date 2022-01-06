@@ -8,6 +8,8 @@ import 'package:flutter_test_app/util/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 
+import 'package:flutter_test_app/util/languages.dart' as globals;
+
 
 class PageAddActivity extends StatefulWidget {
   final Project project;
@@ -33,7 +35,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
   String newActivityType = "Project";
 
   static const List<String> typeList = ["Project", "Task"];
-  static List<String> listTags = ["java", "Dart", "python", "flutter", "Java", "IntelliJ", "c++", "SQL", "C++"];
+  static List<String> listTags = [];
 
   static  List<Project> projectList = [];
 
@@ -73,7 +75,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: primaryColorRed,
-        title: Text("New Activity"),
+        title: Text(globals.stringLang[globals.selectedLang]!["titlePage"]),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.home),
@@ -110,7 +112,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                       fontSize: 14,
                       fontWeight: FontWeight.w400
                     ),
-                  labels: ["Project","Task"],
+                  labels: [globals.stringLang[globals.selectedLang]!["projectOption"], globals.stringLang[globals.selectedLang]!["taskOption"]],
                   icons: [FontAwesomeIcons.suitcase, FontAwesomeIcons.listOl],
                   selectedLabelIndex: (index) {
                     setState(() {
@@ -140,10 +142,10 @@ class _PageAddActivityState extends State<PageAddActivity> {
                             color: primaryColorRed
                           )
                         ),
-                        border: UnderlineInputBorder(), labelText: "Name"),
+                        border: UnderlineInputBorder(), labelText: globals.stringLang[globals.selectedLang]!["nameTip"],),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter a name";
+                          return globals.stringLang[globals.selectedLang]!["errorName"];
                         }
                         return null;
                       },
@@ -155,7 +157,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                       //value: project.name,
                       onSaved: (newValue) => newActivityParent,
                       icon: const Icon(Icons.arrow_drop_down_rounded),
-                      hint: Text("Directory"),
+                      hint: Text(globals.stringLang[globals.selectedLang]!["directoryTip"],),
                       elevation: 16,
                       //dropdownColor: primaryColorRedLight,
                       onChanged: (String? newValue) {
@@ -172,7 +174,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                         }).toList(),
                       validator: (value) {
                         if (value == null) {
-                          return "Please select the project directory";
+                          return globals.stringLang[globals.selectedLang]!["errorDirectory"];
                         }
                         return null;
                       },
@@ -192,7 +194,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                             color: primaryColorRed
                           )
                         ),
-                        border: UnderlineInputBorder(), labelText: "Tag"),
+                        border: UnderlineInputBorder(), labelText: globals.stringLang[globals.selectedLang]!["tagTip"],),
                     ),
 
                     // Autocomplete<String>(
@@ -241,7 +243,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                       onPressed: () {
                         if(_formKey.currentState!.validate()) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Creating ${nameController.text}"))
+                            SnackBar(content: Text("${globals.stringLang[globals.selectedLang]!["savemsg"]} ${nameController.text}"))
                           );
                           _formKey.currentState!.save();
                           add(newActivityName, newActivityParent, newActivityTag, newActivityType);
@@ -249,7 +251,7 @@ class _PageAddActivityState extends State<PageAddActivity> {
                           Navigator.of(context).pop();
                         }
                         },
-                      child: const Text("Save", style: TextStyle(fontSize: 17),))
+                      child: Text(globals.stringLang[globals.selectedLang]!["saveTip"], style: TextStyle(fontSize: 17),))
                   ],
                 ),
               ),

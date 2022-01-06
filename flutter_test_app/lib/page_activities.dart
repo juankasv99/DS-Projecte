@@ -12,6 +12,8 @@ import 'package:flutter_test_app/util/functions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
+import 'package:flutter_test_app/util/languages.dart' as globals;
+
 class PageActivities extends StatefulWidget {
   final int id;
 
@@ -22,7 +24,6 @@ class PageActivities extends StatefulWidget {
 }
 
 class _PageActivitiesState extends State<PageActivities> {
-  //late Tree tree;
   late int id;
   late Future<Tree.Tree> futureTree;
 
@@ -30,6 +31,13 @@ class _PageActivitiesState extends State<PageActivities> {
   static const int periodeRefresh = 3;
 
   Widget icon = Icon(Icons.play_circle_rounded);
+
+  List<String> languagesList = ["eng", "cat"];
+  Map<String, String> displayList = {"eng" : "English", "cat": "Català"};
+
+  Image flagCat = Image.asset('assets/cat.png', height: 30, width: 30,);
+  Image flagEng = Image.asset('assets/eng.png', height: 30, width: 30,);
+
 
   Tree.Task? lastWorkedTask;
 
@@ -39,11 +47,15 @@ class _PageActivitiesState extends State<PageActivities> {
     id = widget.id; //of PageActivities
     futureTree = getTree(id);
 
+    
+
     _activateTimer();
   }
 
   @override
   Widget build(BuildContext context) {
+    Map<String, Image> displayImage = {"eng" : flagEng, "cat": flagCat};
+
     return FutureBuilder<Tree.Tree>(
       future: futureTree,
       builder: (context, snapshot) {
@@ -53,6 +65,8 @@ class _PageActivitiesState extends State<PageActivities> {
               centerTitle: true,
               backgroundColor: primaryColorRed,
               title: Text(
+                snapshot.data!.root.id == 0 ?
+                globals.stringLang[globals.selectedLang]!["home"] :
                 snapshot.data!.root.name,
               ),
               actions: <Widget>[
@@ -74,6 +88,7 @@ class _PageActivitiesState extends State<PageActivities> {
                 //TODO: other actions
               ],
             ),
+            drawer: id == 0 ? _buildDrawer(displayImage) : null,
             body: Column(
               children: <Widget>[
                 _sumUpProject(activity: snapshot.data!.root),
@@ -121,64 +136,7 @@ class _PageActivitiesState extends State<PageActivities> {
       },
     );
   }
-  /*
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tree.root.name),
-        actions: <Widget>[
-          IconButton(icon: const Icon(Icons.home), onPressed: () {
-            //YA ESTAMOS ALLÍ, NO HACE FALTA MOVERSE
-          }  
-              ),
-          IconButton(icon: const Icon(Icons.addchart),
-                      onPressed: () {
-                        Navigator.of(context)
-                        .push(MaterialPageRoute<void>(
-                          builder: (context) => const PageReport(),
-                        ));
-                      },)
-          
-        ],
-      ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16.0),
-        itemCount: tree.root.children.length,
-        itemBuilder: (BuildContext context, int index) =>
-            _buildRow(tree.root.children[index], index),
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-      ),
-    );
-  }
-
-  Widget _buildRow(Activity activity, int index) {
-    String strDuration =
-        Duration(seconds: activity.duration).toString().split('.').first;
-    // split by '.' and taking first element of resulting list
-    // removes the microseconds part
-    if (activity is Project) {
-      return ListTile(
-        title: Text(activity.name),
-        trailing: Text(strDuration),
-        onTap: () => {},
-        // TODO, navigate down to show children tasks and projects
-      );
-    } else if (activity is Task) {
-      Task task = activity as Task;
-      Widget trailing;
-      trailing = Text(strDuration);
-      return ListTile(
-        title: Text(activity.name),
-        trailing: trailing,
-        onTap: () => _navigateDownIntervals(index),
-        onLongPress: () {},
-        // TODO start/stop counting the time for tis task
-      );
-    } else {
-      throw (Exception("Activity that is neither a Task or a Project"));
-    }
-  } 
-  */
+  
 
   Widget _buildRow(Tree.Activity activity, int index) {
     String strDuration =
@@ -205,7 +163,7 @@ class _PageActivitiesState extends State<PageActivities> {
         title: Text('${activity.name}'),
         trailing: Text('$strDuration', style: TextStyle(fontSize: 19),),
         subtitle: Text(
-          "Started: $strStarted\nTo: $strEnded",
+          "${globals.stringLang[globals.selectedLang]!["startedTile"]} $strStarted\n${globals.stringLang[globals.selectedLang]!["toTile"]} $strEnded",
           style: TextStyle(fontSize: 14),
         ),
         onTap: () => _navigateDownActivities(activity.id),
@@ -268,7 +226,7 @@ class _PageActivitiesState extends State<PageActivities> {
         title: Text('${activity.name}', style: TextStyle(fontSize: 20),),
         trailing: trailing,
         subtitle: Text(
-          "Started: $strStarted\nTo: $strEnded",
+          "${globals.stringLang[globals.selectedLang]!["startedTile"]} $strStarted\n${globals.stringLang[globals.selectedLang]!["toTile"]} $strEnded",
           style: TextStyle(fontSize: 14),
         ),
         onTap: () => navigateDownIntervals(activity.id),
@@ -379,13 +337,13 @@ class _PageActivitiesState extends State<PageActivities> {
           Row(
             children: <Widget>[
               Text(
-                "Last Task Worked",
+                globals.stringLang[globals.selectedLang]!["lastTaskWorked"],
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),
               ),
               Spacer(),
               Text(
-                "Project Duration",
+                globals.stringLang[globals.selectedLang]!["projectDuration"],
                 textAlign: TextAlign.end,
                 style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w700),
               )
@@ -421,7 +379,7 @@ class _PageActivitiesState extends State<PageActivities> {
           Row(
             children: <Widget>[
               Text(
-                "Started:",
+                globals.stringLang[globals.selectedLang]!["started"],
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
               ),
@@ -442,7 +400,7 @@ class _PageActivitiesState extends State<PageActivities> {
           Row(
             children: <Widget>[
               Text(
-                "Last Worked:",
+                globals.stringLang[globals.selectedLang]!["lastWorked"],
                 textAlign: TextAlign.start,
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
               ),
@@ -486,6 +444,66 @@ class _PageActivitiesState extends State<PageActivities> {
               )
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  _buildDrawer(displayImage) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height * 0.19,
+            child: DrawerHeader(
+              padding: EdgeInsets.symmetric(vertical: 24, horizontal: 18),
+              decoration: BoxDecoration(
+                color: primaryColorRedDark
+              ),
+              child: Text(globals.stringLang[globals.selectedLang]!["drawerHeader"], style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500),),
+            ),
+          ),
+          Center(
+            child: DropdownButton(
+              value: globals.selectedLang,
+              icon: const Icon(Icons.arrow_drop_down_rounded),
+              hint: Text(globals.stringLang[globals.selectedLang]!["dropdownhint"]),
+              items: languagesList
+                .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: 
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          displayImage[value],
+                          SizedBox(width: 20,),
+                          Text(displayList[value]!),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+                onChanged: (String? value) {
+                  
+                  setState(() {
+                    globals.selectedLang = value!;
+                    
+                  });
+                  Timer(Duration(milliseconds: 750), () {
+                    Navigator.pop(context);
+                  });
+                  
+                },
+                ),
+          ),
         ],
       ),
     );
