@@ -36,7 +36,7 @@ public class ProjectListVisitor implements ProjectVisitor {
   public void visitProject(Project project) {
 
     this.projectList.add(project);
-    logger.info("Project " + project + " added to list");
+    logger.info("Project " + project.getName() + " added to list");
   }
 
   @Override

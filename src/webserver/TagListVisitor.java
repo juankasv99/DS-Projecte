@@ -37,7 +37,7 @@ public class TagListVisitor implements ProjectVisitor {
     for (String tag : project.getTags()) {
       if (!this.tagList.contains(tag)) {
         this.tagList.add(tag);
-        logger.info("Tag: '" + tag + "' was added to project " + project);
+        logger.info("Tag: '" + tag + "' was added to project " + project.getName());
       }
     }
   }
@@ -47,7 +47,7 @@ public class TagListVisitor implements ProjectVisitor {
     for (String tag : task.getTags()) {
       if (!this.tagList.contains(tag)) {
         this.tagList.add(tag);
-        logger.info("Tag: '" + tag + "' was added to task " + task);
+        logger.info("Tag: '" + tag + "' was added to task " + task.getName());
       }
     }
   }

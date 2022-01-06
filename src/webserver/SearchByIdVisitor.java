@@ -24,8 +24,8 @@ public class SearchByIdVisitor implements ProjectVisitor {
 
   /**
    * Al ser un singleton en comptes de cridar al constructor es crida.
-   * a aquesta funcio si mai sha cridat abans crida al constructor.
-   * sino retorna la instancia del objecta actual.
+   * a aquesta funcio. Si mai sha cridat abans, crida al constructor.
+   * En cas contrari retorna la instancia del objecte actual.
    *
    * @author Grup 1 Torn 422
    */
@@ -59,7 +59,7 @@ public class SearchByIdVisitor implements ProjectVisitor {
   public void visitProject(Project project) {
     if (project.getId() == this.id) {
       this.foundProjectComponent = project;
-      logger.info("Project found: " + project);
+      logger.info("Project found: " + project.getName());
     }
   }
 
@@ -67,7 +67,7 @@ public class SearchByIdVisitor implements ProjectVisitor {
   public void visitTask(Task task) {
     if (task.getId() == this.id) {
       this.foundProjectComponent = task;
-      logger.info("Task found: " + task);
+      logger.info("Task found: " + task.getName());
     }
   }
 
