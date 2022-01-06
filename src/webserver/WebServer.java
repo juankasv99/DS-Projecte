@@ -183,8 +183,8 @@ public class WebServer {
         case "add": {
           String name = tokens[1].replace("%20", " ");
           int parentId = Integer.parseInt(tokens[2]);
-          String unprocessedTokens = tokens[3];
-          String type = tokens[4];
+          String type = tokens[3];
+          String unprocessedTokens = tokens[4];
 
           ProjectComponent parentActivity = findActivityById(parentId);
           ProjectComponent newActivity = null;

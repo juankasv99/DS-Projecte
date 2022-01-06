@@ -1,84 +1,42 @@
 {
-  "duration": 9,
+  "duration": 6,
   "children": [
     {
-      "duration": 0,
+      "duration": 6,
       "parent": "Home",
       "children": [
         {
-          "duration": 0,
-          "parent": "Software Design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "Problems",
-              "intervals": [],
-              "name": "First List"
-            },
-            {
-              "duration": 0,
-              "parent": "Problems",
-              "intervals": [],
-              "name": "Second List"
-            }
-          ],
-          "name": "Problems"
+          "duration": 6,
+          "parent": "sin tag",
+          "intervals": [{
+            "duration": 6,
+            "task": "sin tag task",
+            "startTime": "2022-01-07T00:26:11.103829200",
+            "endTime": "2022-01-07T00:26:17.103829200"
+          }],
+          "name": "sin tag task",
+          "startTime": "2022-01-07T00:26:11.103829200",
+          "endTime": "2022-01-07T00:26:17.103829200"
         },
         {
           "duration": 0,
-          "parent": "Software Design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "Project Time Tracker",
-              "intervals": [],
-              "name": "Read Handout"
-            },
-            {
-              "duration": 0,
-              "parent": "Project Time Tracker",
-              "intervals": [],
-              "name": "First Milestone"
-            }
-          ],
-          "name": "Project Time Tracker"
+          "parent": "sin tag",
+          "children": [],
+          "name": "con tag task"
         }
       ],
-      "name": "Software Design"
+      "name": "sin tag",
+      "startTime": "2022-01-07T00:26:11.103829200",
+      "endTime": "2022-01-07T00:26:17.103829200"
     },
     {
       "duration": 0,
       "parent": "Home",
       "children": [],
-      "name": "Software Testing"
-    },
-    {
-      "duration": 0,
-      "parent": "Home",
-      "children": [],
-      "name": "Databases"
-    },
-    {
-      "duration": 9,
-      "parent": "Home",
-      "intervals": [{
-        "duration": 9,
-        "task": "Transportation",
-        "startTime": "2022-01-06T23:27:24.126003400",
-        "endTime": "2022-01-06T23:27:33.126003400"
-      }],
-      "name": "Transportation",
-      "startTime": "2022-01-06T23:27:24.126003400",
-      "endTime": "2022-01-06T23:27:33.126003400"
-    },
-    {
-      "duration": 0,
-      "parent": "Home",
-      "children": [],
-      "name": "Test"
+      "name": "etag"
     }
   ],
   "name": "Home",
-  "startTime": "2022-01-06T23:27:24.126003400",
-  "endTime": "2022-01-06T23:27:33.126003400"
+  "startTime": "2022-01-07T00:26:11.103829200",
+  "endTime": "2022-01-07T00:26:17.103829200"
 }
