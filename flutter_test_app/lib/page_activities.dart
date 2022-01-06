@@ -218,15 +218,15 @@ class _PageActivitiesState extends State<PageActivities> {
                 icon: task.active
                     ? Icon(Icons.pause_circle_rounded)
                     : Icon(Icons.play_circle_rounded),
-                iconSize: 40,
+                iconSize: 37,
                 splashRadius: 25,
                 color: primaryColorRedDark,
                 padding: const EdgeInsets.all(0.0),
               ),
             ),
             Flexible(
-              flex: 2,
-              child: Text('$strDuration', style: TextStyle(fontSize: 19),),
+              flex: 3,
+              child: Text('$strDuration', style: TextStyle(fontSize: 18),),
             ),
           ],
         ),

@@ -111,8 +111,8 @@ Map<String, Map> stringLang = {
 
       "formatDate" : "dd/MM/yy - HH:mm:ss",
       "orderSelect" : "Selecciona l'ordre dels elements en pantalla",
-      "orderDate" : "Date",
-      "orderName" : "Name",
+      "orderDate" : "Data",
+      "orderName" : "Nom",
     }
 
 };
