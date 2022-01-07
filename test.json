@@ -1,42 +1,10 @@
 {
-  "duration": 6,
-  "children": [
-    {
-      "duration": 6,
-      "parent": "Home",
-      "children": [
-        {
-          "duration": 6,
-          "parent": "sin tag",
-          "intervals": [{
-            "duration": 6,
-            "task": "sin tag task",
-            "startTime": "2022-01-07T00:26:11.103829200",
-            "endTime": "2022-01-07T00:26:17.103829200"
-          }],
-          "name": "sin tag task",
-          "startTime": "2022-01-07T00:26:11.103829200",
-          "endTime": "2022-01-07T00:26:17.103829200"
-        },
-        {
-          "duration": 0,
-          "parent": "sin tag",
-          "children": [],
-          "name": "con tag task"
-        }
-      ],
-      "name": "sin tag",
-      "startTime": "2022-01-07T00:26:11.103829200",
-      "endTime": "2022-01-07T00:26:17.103829200"
-    },
-    {
-      "duration": 0,
-      "parent": "Home",
-      "children": [],
-      "name": "etag"
-    }
-  ],
-  "name": "Home",
-  "startTime": "2022-01-07T00:26:11.103829200",
-  "endTime": "2022-01-07T00:26:17.103829200"
+  "duration": 0,
+  "children": [{
+    "duration": 0,
+    "parent": "Home",
+    "children": [],
+    "name": "Test"
+  }],
+  "name": "Home"
 }

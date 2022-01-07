@@ -82,7 +82,7 @@ public class WebServer {
   private void saveJson() {
     Savejsonvisitor savejsonvisitor = new Savejsonvisitor();
     this.root.acceptVisitor(savejsonvisitor);
-    savejsonvisitor.save("test.json");
+    savejsonvisitor.save("src/main/test.json");
   }
 
   private class SocketThread extends Thread {

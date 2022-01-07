@@ -2,6 +2,7 @@ package webserver;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.io.File;
 import main.*;
 
 /**
@@ -74,6 +75,9 @@ public class MainWebServer {
   private static ProjectComponent makeLoadedTree() throws InterruptedException {
     Loadjson loadjson = new Loadjson();
     try {
+      String filepath = "../../test.json";
+      File file = new File(filepath);
+      String path = file.getPath();
       loadjson.load("test.json");
     } catch (Exception e) {
       return makeVoidTree();
