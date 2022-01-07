@@ -1,9 +1,12 @@
 package webserver;
 
-import main.*;
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.ProjectVisitor;
+import main.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 /**
  * Aquesta classe en un visitor que recorre tota la jerarquia.
@@ -44,7 +47,8 @@ public class SearchByIdVisitor implements ProjectVisitor {
   }
 
   /**
-   * Some Javadoc.
+   * Comença la cerca en tota la jerarquia y retorna el.
+   * ProjectCompoent que te la id donada per parametre.
    *
    * @author Grup 1 Torn 422.
    */

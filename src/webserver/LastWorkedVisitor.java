@@ -1,13 +1,14 @@
 package webserver;
 
-import main.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.ProjectVisitor;
+import main.Task;
 
 /**
- * Aquesta classe en un visitor que recorre tota la jerarquia.
- * En cada ProjectComponent ...
+ * Aquesta classe es un visitor que buscara el project.
+ * component en el que es va treballar per ultima vegada.
  *
  * @author Grup 1 Torn 422
  * @version 1.0.
@@ -15,9 +16,8 @@ import org.slf4j.LoggerFactory;
 
 public class LastWorkedVisitor implements ProjectVisitor {
 
-  private ProjectComponent root;
+  private final ProjectComponent root;
   private ProjectComponent foundProjectComponent;
-  Logger logger = LoggerFactory.getLogger(LastWorkedVisitor.class);
 
   public LastWorkedVisitor(ProjectComponent root) {
     this.root = root;
