@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 public class SearchByTagVisitor implements ProjectVisitor {
 
-  private ProjectComponent root;
+  private final ProjectComponent root;
   private String tag;
   private ArrayList<ProjectComponent> projectComponentList;
   Logger logger = LoggerFactory.getLogger(SearchByTagVisitor.class);

@@ -1,7 +1,11 @@
 package webserver;
 
 /**
- * Some Javadoc.
+ * Aquesta classe s'encarrega de donar id als ProjectComponent.
+ * de manera que cadascun tingui una id diferent.
+ *
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 public class IdGenerator {
 
@@ -13,7 +17,9 @@ public class IdGenerator {
   }
 
   /**
-   * Some Javadoc.
+   * Amb el getInstance ens asegurem que només existeix
+   * un unic idGenerator i no tindrem id duplicades.
+   *
    */
   public static IdGenerator getInstance() {
     if (uniqueInstance == null) {
@@ -24,7 +30,8 @@ public class IdGenerator {
   }
 
   /**
-   * Some Javadoc.
+   * Retorna la id actual i la augmenta en 1 per
+   * a que el proxim getId tingui una id diferent.
    */
   public int getId() {
     int id =  this.id;

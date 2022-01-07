@@ -1,16 +1,18 @@
 package webserver;
 
 import java.util.ArrayList;
-import main.*;
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.ProjectVisitor;
+import main.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
 /**
  * Aquesta classe en un visitor que recorre tota la jerarquia.
- * En cada ProjectComponent ...
+ * Anira afegin tots els tags diferents que troba en els.
+ * ProjectComponent en una llista que retornara.
  *
  * @author Grup 1 Torn 422
  * @version 1.0.
@@ -18,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 public class TagListVisitor implements ProjectVisitor {
 
-  private ProjectComponent root;
+  private final ProjectComponent root;
   private ArrayList<String> tagList;
   Logger logger = LoggerFactory.getLogger(TagListVisitor.class);
 

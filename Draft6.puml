@@ -178,7 +178,6 @@ class IdGenerator {
 class WebServer {
     - PORT : int
     - root : ProjectComponent
-    - currentActivity : ProjectComponent
     + WebServer(root : ProjectComponent)
     - findActivityById(id : int) : ProjectComponent
     - findLastWorkedTask(projectComponent : ProjectComponent) : ProjectComponent

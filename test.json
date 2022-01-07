@@ -1,5 +1,10 @@
 {
   "duration": 0,
-  "children": [],
+  "children": [{
+    "duration": 0,
+    "parent": "Home",
+    "children": [],
+    "name": "Test"
+  }],
   "name": "Home"
 }

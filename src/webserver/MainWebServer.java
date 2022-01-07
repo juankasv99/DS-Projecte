@@ -1,11 +1,18 @@
 package webserver;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-import main.*;
+import java.io.File;
+import main.Clock;
+import main.Loadjson;
+import main.PrinterVisitor;
+import main.Project;
+import main.ProjectComponent;
+import main.Task;
 
 /**
- * Some Javadoc.
+ * S'encarga de cargar l'estructura i enviarla al Socket del WebServer.
+ *
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 public class MainWebServer {
   public static void main(String[] args) throws InterruptedException {
@@ -13,12 +20,13 @@ public class MainWebServer {
   }
 
   /**
-   * Some Javadoc.
+   * Crea de forma predeterminada o carrega d'un JSON una jerarquia de ProjectComponent.
+   * i l'envia al Socket, també inicilitzara el Clock.
    *
    */
   public static void webServer() throws InterruptedException {
     //final ProjectComponent root = makeTreeCourses();
-     final ProjectComponent root = makeVoidTree();
+    final ProjectComponent root = makeVoidTree();
     //final ProjectComponent root = makeLoadedTree();
     // implement this method that returns the tree of
     // appendix A in the practicum handout
@@ -74,6 +82,9 @@ public class MainWebServer {
   private static ProjectComponent makeLoadedTree() throws InterruptedException {
     Loadjson loadjson = new Loadjson();
     try {
+      String filepath = "../../test.json";
+      File file = new File(filepath);
+      String path = file.getPath();
       loadjson.load("test.json");
     } catch (Exception e) {
       return makeVoidTree();

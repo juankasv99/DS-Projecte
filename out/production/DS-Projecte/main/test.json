@@ -1,69 +1,26 @@
 {
-  "duration": 0,
-  "children": [
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [
-        {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "first list"
-            },
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "second list"
-            }
-          ],
-          "name": "problems"
-        },
-        {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "read handout"
-            },
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "first milestone"
-            }
-          ],
-          "name": "project time tracker"
-        }
-      ],
-      "name": "software design"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [],
-      "name": "software testing"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [],
-      "name": "databases"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "intervals": [],
-      "name": "transportation"
-    }
-  ],
-  "name": "root"
+  "duration": 11,
+  "children": [{
+    "duration": 11,
+    "parent": "Home",
+    "children": [{
+      "duration": 11,
+      "parent": "Hola",
+      "intervals": [{
+        "duration": 11,
+        "task": "Task",
+        "startTime": "2022-01-07T01:15:31.004493100",
+        "endTime": "2022-01-07T01:15:42.004493100"
+      }],
+      "name": "Task",
+      "startTime": "2022-01-07T01:15:31.004493100",
+      "endTime": "2022-01-07T01:15:42.004493100"
+    }],
+    "name": "Hola",
+    "startTime": "2022-01-07T01:15:31.004493100",
+    "endTime": "2022-01-07T01:15:42.004493100"
+  }],
+  "name": "Home",
+  "startTime": "2022-01-07T01:15:31.004493100",
+  "endTime": "2022-01-07T01:15:42.004493100"
 }

@@ -1,69 +1,40 @@
 {
-  "duration": 0,
-  "children": [
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [
+  "duration": 100,
+  "children": [{
+    "duration": 100,
+    "parent": "Home",
+    "children": [{
+      "duration": 100,
+      "parent": "Test",
+      "intervals": [
         {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "first list"
-            },
-            {
-              "duration": 0,
-              "parent": "problems",
-              "intervals": [],
-              "name": "second list"
-            }
-          ],
-          "name": "problems"
+          "duration": 87,
+          "task": "Test",
+          "startTime": "2022-01-07T01:17:39.645135200",
+          "endTime": "2022-01-07T01:19:06.645135200"
         },
         {
-          "duration": 0,
-          "parent": "software design",
-          "children": [
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "read handout"
-            },
-            {
-              "duration": 0,
-              "parent": "project time tracker",
-              "intervals": [],
-              "name": "first milestone"
-            }
-          ],
-          "name": "project time tracker"
+          "duration": 6,
+          "task": "Test",
+          "startTime": "2022-01-07T01:19:12.644776",
+          "endTime": "2022-01-07T01:19:18.644776"
+        },
+        {
+          "duration": 7,
+          "task": "Test",
+          "startTime": "2022-01-07T01:19:27.645437900",
+          "endTime": "2022-01-07T01:19:34.645437900"
         }
       ],
-      "name": "software design"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [],
-      "name": "software testing"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "children": [],
-      "name": "databases"
-    },
-    {
-      "duration": 0,
-      "parent": "root",
-      "intervals": [],
-      "name": "transportation"
-    }
-  ],
-  "name": "root"
+      "name": "Test",
+      "startTime": "2022-01-07T01:17:39.645135200",
+      "endTime": "2022-01-07T01:19:34.645437900"
+    }],
+    "name": "Test",
+    "startTime": "2022-01-07T01:17:39.645135200",
+    "endTime": "2022-01-07T01:19:34.645437900"
+  }],
+  "name": "Home",
+  "startTime": "2022-01-07T01:17:39.645135200",
+  "endTime": "2022-01-07T01:19:34.645437900"
 }

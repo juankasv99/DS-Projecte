@@ -6,10 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
-import main.*;
+import main.Project;
+import main.ProjectComponent;
+import main.Savejsonvisitor;
+import main.Task;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import searchbytag.SearchByTagVisitor;
@@ -20,18 +23,23 @@ import searchbytag.SearchByTagVisitor;
 // http://www.jcgonzalez.com/java-socket-mini-server-http-example
 
 /**
- * Some Javadoc.
+ * Aquesta classe es la que ens fa de enpoint.
+ * Aqui es on es conectara la aplicacio i fara crides.
+ * demanant diferents tipus de serveis.
  *
- * @author Grup 1 Torn 422.
+ * @author Grup 1 Torn 422
+ * @version 1.0.
  */
 public class WebServer {
   private static final int PORT = 8080; // port to listen to
 
-  private ProjectComponent currentActivity;
+  private final ProjectComponent currentActivity;
   private final ProjectComponent root;
 
   /**
-   * Some Javadoc.
+   * En el constructor s'inicia el ServerSocket.
+   * Aquest es queda en un bucle infinit escoltant.
+   * Quan li arribi una petició la avalua i si esta contemplada la resol.
    *
    * @author Grup 1 Torn 422.
    */
@@ -82,7 +90,7 @@ public class WebServer {
   private void saveJson() {
     Savejsonvisitor savejsonvisitor = new Savejsonvisitor();
     this.root.acceptVisitor(savejsonvisitor);
-    savejsonvisitor.save("test.json");
+    savejsonvisitor.save("src/main/test.json");
   }
 
   private class SocketThread extends Thread {
@@ -220,7 +228,7 @@ public class WebServer {
           assert (activity != null);
           ArrayList<ProjectComponent> projectList = getProjectList(activity);
 
-          JSONObject json = new JSONObject();
+
           JSONArray jsonProjects = new JSONArray();
           for (ProjectComponent project : projectList) {
             jsonProjects.put(project.toJson(1));
@@ -229,6 +237,7 @@ public class WebServer {
           System.out.println(jsonProjects.length());
           System.out.println(projectList.size());
 
+          JSONObject json = new JSONObject();
           json.put("projects", jsonProjects);
 
           body = json.toString();
@@ -261,17 +270,18 @@ public class WebServer {
           String tag = tokens[2];
           ProjectComponent activity = findActivityById(id);
           assert (activity != null);
-          ArrayList<ProjectComponent> projectComponentList = getProjectComponentsByTag(activity, tag);
+          ArrayList<ProjectComponent> projectComponList = getProjectComponentsByTag(activity, tag);
 
-          JSONObject json = new JSONObject();
+
           JSONArray jsonProjectComponents = new JSONArray();
-          for (ProjectComponent projectComponent : projectComponentList) {
+          for (ProjectComponent projectComponent : projectComponList) {
             jsonProjectComponents.put(projectComponent.toJson(1));
           }
 
           System.out.println(jsonProjectComponents.length());
-          System.out.println(projectComponentList.size());
+          System.out.println(projectComponList.size());
 
+          JSONObject json = new JSONObject();
           json.put("project_components", jsonProjectComponents);
 
           body = json.toString();
