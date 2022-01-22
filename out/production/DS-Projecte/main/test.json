@@ -1,26 +1,33 @@
 {
-  "duration": 11,
-  "children": [{
-    "duration": 11,
-    "parent": "Home",
-    "children": [{
-      "duration": 11,
-      "parent": "Hola",
+  "duration": 20,
+  "children": [
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Hey"
+    },
+    {
+      "duration": 20,
+      "parent": "Home",
       "intervals": [{
-        "duration": 11,
-        "task": "Task",
-        "startTime": "2022-01-07T01:15:31.004493100",
-        "endTime": "2022-01-07T01:15:42.004493100"
+        "duration": 20,
+        "task": "Hey2",
+        "startTime": "2022-01-07T09:22:41.273065500",
+        "endTime": "2022-01-07T09:23:01.273065500"
       }],
-      "name": "Task",
-      "startTime": "2022-01-07T01:15:31.004493100",
-      "endTime": "2022-01-07T01:15:42.004493100"
-    }],
-    "name": "Hola",
-    "startTime": "2022-01-07T01:15:31.004493100",
-    "endTime": "2022-01-07T01:15:42.004493100"
-  }],
+      "name": "Hey2",
+      "startTime": "2022-01-07T09:22:41.273065500",
+      "endTime": "2022-01-07T09:23:01.273065500"
+    },
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Escucha"
+    }
+  ],
   "name": "Home",
-  "startTime": "2022-01-07T01:15:31.004493100",
-  "endTime": "2022-01-07T01:15:42.004493100"
+  "startTime": "2022-01-07T09:22:41.273065500",
+  "endTime": "2022-01-07T09:23:01.273065500"
 }

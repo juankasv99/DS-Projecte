@@ -18,8 +18,8 @@ public class MainWebServer {
    *
    */
   public static void webServer() throws InterruptedException {
-    //final ProjectComponent root = makeTreeCourses();
-     final ProjectComponent root = makeVoidTree();
+    final ProjectComponent root = makeTreeCourses();
+     //final ProjectComponent root = makeVoidTree();
     //final ProjectComponent root = makeLoadedTree();
     // implement this method that returns the tree of
     // appendix A in the practicum handout

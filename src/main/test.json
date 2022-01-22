@@ -1,40 +1,114 @@
 {
-  "duration": 100,
-  "children": [{
-    "duration": 100,
-    "parent": "Home",
-    "children": [{
-      "duration": 100,
-      "parent": "Test",
-      "intervals": [
+  "duration": 31,
+  "children": [
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [
         {
-          "duration": 87,
-          "task": "Test",
-          "startTime": "2022-01-07T01:17:39.645135200",
-          "endTime": "2022-01-07T01:19:06.645135200"
+          "duration": 0,
+          "parent": "Software Design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "Problems",
+              "intervals": [],
+              "name": "First List"
+            },
+            {
+              "duration": 0,
+              "parent": "Problems",
+              "intervals": [],
+              "name": "Second List"
+            }
+          ],
+          "name": "Problems"
         },
         {
-          "duration": 6,
-          "task": "Test",
-          "startTime": "2022-01-07T01:19:12.644776",
-          "endTime": "2022-01-07T01:19:18.644776"
-        },
-        {
-          "duration": 7,
-          "task": "Test",
-          "startTime": "2022-01-07T01:19:27.645437900",
-          "endTime": "2022-01-07T01:19:34.645437900"
+          "duration": 0,
+          "parent": "Software Design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "Project Time Tracker",
+              "intervals": [],
+              "name": "Read Handout"
+            },
+            {
+              "duration": 0,
+              "parent": "Project Time Tracker",
+              "intervals": [],
+              "name": "First Milestone"
+            }
+          ],
+          "name": "Project Time Tracker"
         }
       ],
-      "name": "Test",
-      "startTime": "2022-01-07T01:17:39.645135200",
-      "endTime": "2022-01-07T01:19:34.645437900"
-    }],
-    "name": "Test",
-    "startTime": "2022-01-07T01:17:39.645135200",
-    "endTime": "2022-01-07T01:19:34.645437900"
-  }],
+      "name": "Software Design"
+    },
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Software Testing"
+    },
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Databases"
+    },
+    {
+      "duration": 22,
+      "parent": "Home",
+      "intervals": [
+        {
+          "duration": 4,
+          "task": "Transportation",
+          "startTime": "2022-01-07T09:32:53.420815500",
+          "endTime": "2022-01-07T09:32:57.420815500"
+        },
+        {
+          "duration": 18,
+          "task": "Transportation",
+          "startTime": "2022-01-07T09:33:55.408837200",
+          "endTime": "2022-01-07T09:34:13.408837200"
+        }
+      ],
+      "name": "Transportation",
+      "startTime": "2022-01-07T09:32:53.420815500",
+      "endTime": "2022-01-07T09:34:13.408837200"
+    },
+    {
+      "duration": 9,
+      "parent": "Home",
+      "children": [{
+        "duration": 9,
+        "parent": "Ghvt",
+        "intervals": [
+          {
+            "duration": 3,
+            "task": "Gbko",
+            "startTime": "2022-01-07T09:30:07.421802100",
+            "endTime": "2022-01-07T09:30:10.421802100"
+          },
+          {
+            "duration": 6,
+            "task": "Gbko",
+            "startTime": "2022-01-07T09:31:35.411437",
+            "endTime": "2022-01-07T09:31:41.411437"
+          }
+        ],
+        "name": "Gbko",
+        "startTime": "2022-01-07T09:30:07.421802100",
+        "endTime": "2022-01-07T09:31:41.411437"
+      }],
+      "name": "Ghvt",
+      "startTime": "2022-01-07T09:30:07.421802100",
+      "endTime": "2022-01-07T09:31:41.411437"
+    }
+  ],
   "name": "Home",
-  "startTime": "2022-01-07T01:17:39.645135200",
-  "endTime": "2022-01-07T01:19:34.645437900"
+  "startTime": "2022-01-07T09:30:07.421802100",
+  "endTime": "2022-01-07T09:34:13.408837200"
 }
