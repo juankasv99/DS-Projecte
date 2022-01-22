@@ -21,7 +21,7 @@ import webserver.IdGenerator;
  */
 
 public abstract class ProjectComponent {
-  private int id;
+  private final int id;
   private final String name;
   private final ProjectComponent parent;
   private LocalDateTime startTime;

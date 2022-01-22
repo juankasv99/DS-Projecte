@@ -1,16 +1,18 @@
 package webserver;
 
 import java.util.ArrayList;
-import main.*;
+import main.Interval;
+import main.Project;
+import main.ProjectComponent;
+import main.ProjectVisitor;
+import main.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
 /**
- * Aquesta classe en un visitor que recorre tota la jerarquia.
- * En cada ProjectComponent ...
+ * Aquesta classe es un Visitor que.
+ * recorre i retorna una llista amb tots el Projects que hi ha.
+ * desde el ProjectComponent que se li passa amb aquest inclos.
  *
  * @author Grup 1 Torn 422
  * @version 1.0.
@@ -18,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 public class ProjectListVisitor implements ProjectVisitor {
 
-  private ProjectComponent root;
+  private final ProjectComponent root;
   private ArrayList<ProjectComponent> projectList;
   Logger logger = LoggerFactory.getLogger(ProjectListVisitor.class);
 
