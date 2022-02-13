@@ -1,0 +1,307 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Client {
+    + {static} main(args : String[])
+    - {static} testSampleTree()
+    - {static} testLoadSampleTree()
+    - {static} testOfCountingTime()
+    {static} logger : Logger
+}
+
+interface ProjectVisitor {
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class PrinterVisitor {
+    - {static} uniqueInstance : PrinterVisitor
+    - root : ProjectComponent
+    {static} logger : Logger
+    + {static} getInstance(root : ProjectComponent) : PrinterVisitor
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+    + print()
+    - PrinterVisitor(root : ProjectComponent)
+}
+
+class SaveJSONVisitor {
+    - root : JSONObject
+    - children : JSONArray
+    - intervals : JSONArray
+    {static} logger : Logger
+    + SaveJSONVisitor()
+    + getRoot() : JSONObject
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+    + save(fileName : String)
+    - removeJSONS(jsonArray : JSONArray, indexes : ArrayList<Integer>) : JSONArray
+}
+
+abstract ProjectComponent {
+    - name : String
+    - parent : ProjectComponent
+    - startTime : LocalDateTime
+    - endTime : LocalDateTime
+    - duration : Duration
+    - id : int
+    - tags : ArrayList<String>
+    {static} logger : Logger
+    + ProjectComponent(name : String, parent : ProjectComponent)
+    + getParent() : ProjectComponent
+    + getId() : int
+    + getName() : String
+    + getStartTime() : LocalDateTime
+    + getEndTime() : LocalDateTime
+    + getDuration() : Duration
+    + getTags() : ArrayList<String>
+    + setStartTime(startTime : LocalDateTime)
+    + setEndTime(endTime : LocalDateTime)
+    + setDuration(duration : Duration)
+    + addTag(tag : String)
+    + toString() : String
+    + {abstract} addChildren(children : ProjectComponent)
+    + {abstract} update(activeInterval : Interval)
+    + {abstract} acceptVisitor(visitor : ProjectVisitor)
+    + {abstract} toJson(level : int)
+    + {abstract} toString()
+}
+
+class Project {
+    - children : ArrayList<ProjectComponent>
+    {static} logger : Logger
+    + Project(name : String, parent : ProjectComponent)
+    + Project(name : String, startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, parent : ProjectComponent)
+    + update(activeInterval : Interval)
+    + getChildren(children : ArrayList<ProjectComponent>) : ArrayList<ProjectComponent>
+    + addChildren(appendChildren : ProjectComponent)
+    + setChildren(children : ArrayList<ProjectComponent>)
+    + removeChildren(children : ProjectComponent)
+    + acceptVisitor(visitor : ProjectVisitor)
+    + toJson(level : int) : JSONObject
+    - invariants() : boolean
+}
+
+class Task {
+    - intervals : ArrayList<Interval>
+    - active : boolean
+    {static} logger : Logger
+    + Task(name : String, parent : ProjectComponent)
+    + Task(name : String, startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, parent : ProjectComponent)
+    + startTask()
+    + startTask(delay : int)
+    + stopTask()
+    + activate()
+    + deactivate()
+    + update(activeInterval : Interval)
+    + getIntervals() : ArrayList<Interval>
+    + setIntervals(intervals : ArrayList<Interval>)
+    + addChildren(children : ProjectComponent)
+    + getCurrentInterval() : Interval
+    + acceptVisitor(visitor : ProjectVisitor)
+    + getCurrentInterval() : Interval
+    + toJson(level : int) : JSONObject
+    - invariants() : boolean
+}
+
+class Interval {
+    - startTime : LocalDateTime
+    - endTime : LocalDateTime
+    - duration : Duration
+    - task : Task
+    {static} logger : Logger
+    + Interval(task : Task, delay : int)
+    + Interval(startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, task : Task)
+    + getStartTime() : LocalDateTime
+    + getEndTime() : LocalDateTime
+    + getDuration() : Duration
+    + getTask() : Task
+    + stopInterval()
+    + update(o : Observable, arg Object)
+    + acceptVisitor(visitor : ProjectVisitor)
+    + toJson(level : int) : JSONObject
+    + toString() : String
+}
+
+class Clock {
+    - {static} uniqueInstance : Clock
+    - timer : Timer
+    - period : int
+    - time : LocalDateTime
+    {static} logger : Logger
+    + {static} getInstance() : Clock
+    + start()
+    + stop()
+    + getPeriod() : int
+    + setPeriod(period : int)
+    + getTime() : LocalDateTime
+    - Clock()
+    - tick()
+}
+
+class LoadJSON {
+    - root : Project
+    {static} logger : Logger
+    + LoadJSON()
+    + getRoot() : Project
+    + load(fileName : String)
+    - getstringfromjson(jsonObject : JSONObject, key : String) : String
+    - getlocaldatetimefromjson(jsonObject : JSONObject, key : String) : LocalDateTime
+    - getlongfromjson(jsonObject : JSONObject, key : String) : long
+    - loadChildren(parent : ProjectComponent, jsonChildren : JSONArray) : ArrayList<ProjectComponent>
+    - loadIntervals(task : Task, jsonIntervals : JSONArray) : ArrayList<Interval>
+}
+
+package "java.util" {
+    abstract Observable {
+        + addObserver(ob : Observer)
+        + deleteObserver(ob : Observer)
+        + setChanged()
+        + notifyObservers(arg0 : Observable, arg1 : Object)
+    }
+
+    interface Observer {
+        + update(arg0: Observable, arg1 : Object)
+    }
+}
+
+class IdGenerator {
+    - {static} uniqueInstance : IdGenerator
+    - id : int
+    + {static} getInstance() : IdGenerator
+    + getId() : int
+}
+
+class WebServer {
+    - PORT : int
+    - root : ProjectComponent
+    - currentActivity : ProjectComponent
+    + WebServer(root : ProjectComponent)
+    - findActivityById(id : int) : ProjectComponent
+    - findLastWorkedTask(projectComponent : ProjectComponent) : ProjectComponent
+    - getProjectList(root : ProjectComponent) : ArrayList<ProjectComponent>
+    - getTagList(root : ProjectComponent) : ArrayList<String>
+    - getProjectComponentsByTag(root : ProjectComponent, tag : String) : ArrayList<ProjectComponent>
+    - saveJson()
+}
+
+class SocketThread {
+    - insocked : Socket
+    SocketThread(insocket : Socket)
+    + run()
+    - makeBodyAnswer(tockens : String[]) : String
+    - makeHeaderAnswer() : String
+
+}
+
+class Thread {
+    +run()
+}
+
+class LastWorkedVisitor {
+    - root : ProjectComponent
+    - foundProjectComponent : ProjectComponent
+    + LastWorkedVisitor(root : ProjectComponent)
+    + search() : ProjectComponent
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class ProjectListVisitor {
+    - root : ProjectComponent
+    - projectList : ArrayList<ProjectComponent>
+    {static} logger : Logger
+    + ProjectListVisitor(root : ProjectComponent)
+    + getProjectList() : ArrayList<ProjectComponent>
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class TagListVisitor {
+    - root : ProjectComponent
+    - tagList : ArrayList<String>
+    {static} logger : Logger
+    + TagListVisitor(root : ProjectComponent)
+    + getTagList() : ArrayList<String>
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class SearchByTagVisitor {
+    - root : ProjectComponent
+    - tag : String
+    - ProjectComponentList : ArrayList<ProjectComponent>
+    {static} logger : Logger
+    + SearchByTagVisitor(root : ProjectComponent)
+    + search()
+    + getProjectComponentList(tag : String) : ArrayList<ProjectComponent>
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class SearchByIdVisitor {
+    - {static} uniqueInstance : SearchByIdVisitor
+    - root : ProjectComponent
+    - foundProjectComponent : ProjectComponent
+    - id : int
+    {static} logger : Logger
+    + {static} getInstance(root : ProjectComponent) : SearchByIdVisitor
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+    + search(id : int) : ProjectComponent
+    - SearchByIdVisitor(root : ProjectComponent)
+}
+
+class Client_fita2 {
+    {static} logger : Logger
+    + {static} main(args : String[])
+    + {static} testSearchByTag()
+}
+
+class MainWebServer {
+    + {static} main(args : String[])
+    + {static} WebServer()
+    - {static} makeTreeCourses() : ProjectComponent
+    - {static} makeVoidTree() : ProjectComponent
+    - {static} makeLoadedTree() : ProjectComponent
+}
+
+WebServer +-- SocketThread
+MainWebServer "1" --> "1" WebServer
+SocketThread --|> Thread
+
+Observable "0..*" o-- "1" Observer : observers
+
+Clock --|> Observable
+Interval ..|> Observer
+
+Client "1" --> "0..*" ProjectComponent
+Client_fita2 "1" --> "0..*" ProjectComponent
+MainWebServer "1" --> "0..*" ProjectComponent
+Project "0..n" o-- "1" ProjectComponent : projectComponent
+Project --|> ProjectComponent
+Task --|> ProjectComponent
+Interval "0..n" o-- "1" Task : intervals
+IdGenerator --> ProjectComponent
+
+Client "1" --> "0..*" ProjectVisitor
+Client_fita2 "1" --> "0..*" ProjectVisitor
+MainWebServer "1" --> "0..*" ProjectVisitor
+
+PrinterVisitor --|> ProjectVisitor
+SaveJSONVisitor --|> ProjectVisitor
+LastWorkedVisitor --|> ProjectVisitor
+ProjectListVisitor --|> ProjectVisitor
+SearchByIdVisitor --|> ProjectVisitor
+TagListVisitor --|> ProjectVisitor
+SearchByTagVisitor --|> ProjectVisitor
+LoadJSON --> "1" Project : "root"
+@enduml

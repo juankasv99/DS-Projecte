@@ -1,0 +1,2 @@
+- Hem inclós una dracera per cada Task Tile (element de qualsevol llista que sigui una Task) per tal que puguem iniciar o parar la tasca en qüestió.
+- Hem inclós la descripció del que fan els botons de Play/Pause de cada Task Tile (Cada element de la llista que són Tasks).

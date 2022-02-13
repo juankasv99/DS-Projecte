@@ -1,0 +1,163 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Client {
+    + {static} main(args : String[])
+    - {static} testSampleTree()
+    - {static} testLoadSampleTree()
+    - {static} testOfCountingTime()
+}
+
+interface ProjectVisitor {
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+}
+
+class PrinterVisitor {
+    - {static} uniqueInstance : PrinterVisitor
+    - root : ProjectComponent
+    + {static} getInstance(root : ProjectComponent) : PrinterVisitor
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+    + print()
+    - PrinterVisitor(root : ProjectComponent)
+}
+
+class SaveJSONVisitor {
+    - root : JSONObject
+    - children : JSONArray
+    - intervals : JSONArray
+    + SaveJSONVisitor()
+    + getRoot() : JSONObject
+    + visitProject(project : Project)
+    + visitTask(task : Task)
+    + visitInterval(interval : Interval)
+    + save(fileName : String)
+    - removeJSONS(jsonArray : JSONArray, indexes : ArrayList<Integer>) : JSONArray
+}
+
+abstract ProjectComponent {
+    - name : String
+    - parent : ProjectComponent
+    - startTime : LocalDateTime
+    - endTime : LocalDateTime
+    - duration : Duration
+    + ProjectComponent(name : String, parent : ProjectComponent)
+    + getParent() : ProjectComponent
+    + getName() : String
+    + getStartTime() : LocalDateTime
+    + getEndTime() : LocalDateTime
+    + getDuration() : Duration
+    + setStartTime(startTime : LocalDateTime)
+    + setEndTime(endTime : LocalDateTime)
+    + setDuration(duration : Duration)
+    + toString() : String
+    + {abstract} addChildren(children : ProjectComponent)
+    + {abstract} removeChildren(children : ProjectComponent)
+    + {abstract} update(activeInterval : Interval)
+    + {abstract} acceptVisitor(visitor : ProjectVisitor)
+}
+
+class Project {
+    - children : ArrayList<ProjectComponent>
+    + Project(name : String, parent : ProjectComponent)
+    + Project(name : String, startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, parent : ProjectComponent)
+    + update(activeInterval : Interval)
+    + getChildren(children : ArrayList<ProjectComponent>) : ArrayList<ProjectComponent>
+    + addChildren(appendChildren : ProjectComponent)
+    + removeChildren(children : ProjectComponent)
+    + acceptVisitor(visitor : ProjectVisitor)
+}
+
+class Task {
+    - ZERO_SECONDS_DELAY : int
+    - intervals : ArrayList<Interval>
+    + Task(name : String, parent : ProjectComponent)
+    + Task(name : String, startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, parent : ProjectComponent)
+    + startTask()
+    + startTask(delay : int)
+    + stopTask()
+    + update(activeInterval : Interval)
+    + getIntervals() : ArrayList<Interval>
+    + setIntervals(intervals : ArrayList<Interval>)
+    + addChildren(children : ProjectComponent)
+    + removeChildren(children : ProjectComponent)
+    + acceptVisitor(visitor : ProjectVisitor)
+    - getCurrentInterval() : Interval
+}
+
+class Interval {
+    - startTime : LocalDateTime
+    - endTime : LocalDateTime
+    - duration : Duration
+    - task : Task
+    + Interval(task : Task, delay : int)
+    + Interval(startTime : LocalDateTime, endTime : LocalDateTime, duration : Duration, task : Task)
+    + getStartTime() : LocalDateTime
+    + getEndTime() : LocalDateTime
+    + getDuration() : Duration
+    + getTask() : Task
+    + stopInterval()
+    + update(o : Observable, arg Object)
+    + acceptVisitor(visitor : ProjectVisitor)
+    + toString() : String
+}
+
+class Clock {
+    - {static} uniqueInstance : Clock
+    - timer : Timer
+    - period : int
+    - time : LocalDateTime
+    + {static} getInstance() : Clock
+    + start()
+    + stop()
+    + getPeriod() : int
+    + setPeriod(period : int)
+    + getTime() : LocalDateTime
+    - Clock()
+    - tick()
+}
+
+class LoadJSON {
+    - root : Project
+    + LoadJSON()
+    + getRoot() : Project
+    + load(fileName : String)
+    - getStringFromJSON(jsonObject : JSONObject, key : String) : String
+    - getLocalDateTimeFromJson(jsonObject : JSONObject, key : String) : LocalDateTime
+    - getLongFromJSON(jsonObject : JSONObject, key : String) : long
+    - loadChildren(parent : ProjectComponent, jsonChildren : JSONArray) : ArrayList<ProjectComponent>
+    - loadIntervals(task : Task, jsonIntervals : JSONArray) : ArrayList<Interval>
+}
+
+package "java.util" {
+    abstract Observable {
+        + addObserver(ob : Observer)
+        + deleteObserver(ob : Observer)
+        + setChanged()
+        + notifyObservers(arg0 : Observable, arg1 : Object)
+    }
+
+    interface Observer {
+        + update(arg0: Observable, arg1 : Object)
+    }
+}
+
+Observable "0..*" o-- "1" Observer : observers
+
+Clock --|> Observable
+Interval ..|> Observer
+
+Client "1" --> "0..*" ProjectComponent
+Project "0..n" o-- "1" ProjectComponent : projectComponent
+Project --|> ProjectComponent
+Task --|> ProjectComponent
+Interval "0..n" o-- "1" Task : intervals
+
+Client "1" --> "0..*" ProjectVisitor
+PrinterVisitor --|> ProjectVisitor
+SaveJSONVisitor --|> ProjectVisitor
+LoadJSON --> "1" Project : "root"
+@enduml

@@ -1,0 +1,78 @@
+{
+  "duration": 7,
+  "children": [
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [
+        {
+          "duration": 0,
+          "parent": "Software Design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "Problems",
+              "intervals": [],
+              "name": "First List"
+            },
+            {
+              "duration": 0,
+              "parent": "Problems",
+              "intervals": [],
+              "name": "Second List"
+            }
+          ],
+          "name": "Problems"
+        },
+        {
+          "duration": 0,
+          "parent": "Software Design",
+          "children": [
+            {
+              "duration": 0,
+              "parent": "Project Time Tracker",
+              "intervals": [],
+              "name": "Read Handout"
+            },
+            {
+              "duration": 0,
+              "parent": "Project Time Tracker",
+              "intervals": [],
+              "name": "First Milestone"
+            }
+          ],
+          "name": "Project Time Tracker"
+        }
+      ],
+      "name": "Software Design"
+    },
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Software Testing"
+    },
+    {
+      "duration": 0,
+      "parent": "Home",
+      "children": [],
+      "name": "Databases"
+    },
+    {
+      "duration": 7,
+      "parent": "Home",
+      "intervals": [{
+        "duration": 7,
+        "task": "Transportation",
+        "startTime": "2022-01-07T00:01:03.509391",
+        "endTime": "2022-01-07T00:01:10.509391"
+      }],
+      "name": "Transportation",
+      "startTime": "2022-01-07T00:01:03.509391",
+      "endTime": "2022-01-07T00:01:10.509391"
+    }
+  ],
+  "name": "Home",
+  "startTime": "2022-01-07T00:01:03.509391",
+  "endTime": "2022-01-07T00:01:10.509391"
+}
